@@ -12,13 +12,13 @@ html, body {
 /* ===== LAPOR STATUS BADGES ===== */
 .lapor-badge-masuk    { background:#FFF3E0; color:#E65100; }
 .lapor-badge-diproses { background:#E3F2FD; color:#1565C0; }
-.lapor-badge-selesai  { background:#E8F5E9; color:#2E7D32; }
+.lapor-badge-selesai  { background:#eff6ff; color:#1d4ed8; }
 .lapor-badge-ditolak  { background:#FCE4EC; color:#AD1457; }
 
 /* ===== SURAT PENGANTAR STATUS BADGES ===== */
 .surat-badge-diajukan  { background:#FFF8E1; color:#F9A825; }
 .surat-badge-diproses  { background:#E3F2FD; color:#1565C0; }
-.surat-badge-disetujui { background:#E8F5E9; color:#2E7D32; }
+.surat-badge-disetujui { background:#eff6ff; color:#1d4ed8; }
 .surat-badge-ditolak   { background:#FCE4EC; color:#AD1457; }
 
 
@@ -41,8 +41,8 @@ html, body {
       outline: none;
     }
     .app-input:focus {
-      border-color: #43A047;
-      box-shadow: 0 0 0 2px rgba(67,160,71,.15);
+      border-color: #2563eb;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235,.15);
     }
     
     /* ===== iOS AUTO-ZOOM FIX ===== */
@@ -68,9 +68,9 @@ html, body {
       user-select: none;
     }
     .chip.active {
-      background: #43A047;
+      background: #2563eb;
       color: #fff;
-      border-color: #43A047;
+      border-color: #2563eb;
     }
     .nav-item {
       display: flex;
@@ -89,7 +89,7 @@ html, body {
       fill: none;
     }
     .nav-item.active {
-      color: #43A047;
+      color: #2563eb;
       font-weight: 500;
     }
     .nav-item.disabled {
@@ -100,7 +100,7 @@ html, body {
       height: 20px;
     }
     .nav-app.active {
-      color: #43A047;
+      color: #2563eb;
       font-weight: 600;
     }
     .nav-app.disabled {
@@ -311,14 +311,14 @@ html, body {
 
   .chip-year:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(67,160,71,0.25);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235,0.25);
   }
 
   .chip-year.active {
-    background: #43A047;
+    background: #2563eb;
     color: #ffffff;
-    border-color: #43A047;
-    box-shadow: 0 4px 10px rgba(67,160,71,0.25);
+    border-color: #2563eb;
+    box-shadow: 0 4px 10px rgba(37, 99, 235,0.25);
   }
 
   /* =========================
@@ -346,11 +346,11 @@ html, body {
   }
 
   .hunian-card.active {
-    border-color: #43A047;
+    border-color: #2563eb;
     background: #ecf7ee;
-    color: #1b5e20;
+    color: #1e3a8a;
 
-    box-shadow: 0 6px 16px rgba(67,160,71,0.25);
+    box-shadow: 0 6px 16px rgba(37, 99, 235,0.25);
   }
 
   .hunian-card .price {
@@ -457,9 +457,9 @@ html, body {
   }
 
   .tab-btn.active {
-    background: #43A047;
+    background: #2563eb;
     color: #ffffff;
-    box-shadow: 0 4px 10px rgba(67,160,71,.25);
+    box-shadow: 0 4px 10px rgba(37, 99, 235,.25);
   }
 
   #buktiViewer.hidden {
@@ -497,18 +497,18 @@ html, body {
   }
 
   #tabConfirmed.tab-pill.active {
-    background: #F0FDF4;
-    color: #166534;
-    border-color: #86EFAC;
+    background: #eff6ff;
+    color: #1e40af;
+    border-color: #93c5fd;
   }
 
   #tabConfirmed.tab-pill.active span:last-child {
-    background: #BBF7D0;
-    color: #166534;
+    background: #bfdbfe;
+    color: #1e40af;
   }
 
   .tab-underline.active {
-    color: #16a34a;
+    color: #2563eb;
     font-weight: 600;
   }
 
@@ -519,7 +519,7 @@ html, body {
     left: 0;
     width: 100%;
     height: 3px;
-    background: #16a34a;
+    background: #2563eb;
     border-radius: 2px;
   }
 
@@ -534,9 +534,9 @@ html, body {
   }
 
   .filter-date-chip.active {
-    background: #16a34a;
+    background: #2563eb;
     color: white;
-    border-color: #16a34a;
+    border-color: #2563eb;
   }
 
   input[type="date"]::-webkit-calendar-picker-indicator {
@@ -596,9 +596,9 @@ html, body {
   #bottomNav .nav-icon-wrap { width: 44px; height: 40px; }
 
   /* Active pill highlight on the icon wrap */
-  .nav-app.active { color: #43A047; }
+  .nav-app.active { color: #2563eb; }
   .nav-app.active .nav-icon-wrap {
-    background: rgba(67,160,71,0.10);
+    background: rgba(37, 99, 235,0.10);
   }
 
   .animate-spin {
@@ -632,9 +632,9 @@ html, body {
   }
 
   .blok-chip.active{
-    background:#E8F5E9;
-    border-color:#81C784;
-    color:#2E7D32;
+    background:#eff6ff;
+    border-color:#93c5fd;
+    color:#1d4ed8;
   }
 
 
@@ -703,15 +703,15 @@ html, body {
 
   .otp-box:focus{
     outline:none;
-    border-color:#43A047;
-    box-shadow:0 0 0 2px rgba(67,160,71,.15);
+    border-color:#2563eb;
+    box-shadow:0 0 0 2px rgba(37, 99, 235,.15);
     background:white;
   }
 
   .otp-box.filled {
-    border-color: #43A047;
-    background: #f0fdf4;
-    color: #1b5e20;
+    border-color: #2563eb;
+    background: #eff6ff;
+    color: #1e3a8a;
   }
 
   /* ===== PIN segmented box (sama look dgn otp-box) ===== */
@@ -721,14 +721,14 @@ html, body {
     border-radius:12px; border:1px solid #e5e7eb; background:#f9fafb;
     transition:all .15s ease;
   }
-  .pin-box:focus{ outline:none; border-color:#43A047; box-shadow:0 0 0 2px rgba(67,160,71,.15); background:#fff; }
-  .pin-box.filled{ border-color:#43A047; background:#f0fdf4; color:#1b5e20; }
+  .pin-box:focus{ outline:none; border-color:#2563eb; box-shadow:0 0 0 2px rgba(37, 99, 235,.15); background:#fff; }
+  .pin-box.filled{ border-color:#2563eb; background:#eff6ff; color:#1e3a8a; }
 
   /* ===== Segmented code: animasi "matching" (ringan, GPU-friendly) ===== */
   .code-box{ will-change: transform; }
 
   @keyframes codeWave{ 0%,100%{transform:translateY(0)} 35%{transform:translateY(-7px)} }
-  .code-verifying .code-box{ animation:codeWave .55s ease-in-out infinite; border-color:#43A047; }
+  .code-verifying .code-box{ animation:codeWave .55s ease-in-out infinite; border-color:#2563eb; }
   .code-verifying .code-box:nth-child(1){ animation-delay:0s }
   .code-verifying .code-box:nth-child(2){ animation-delay:.07s }
   .code-verifying .code-box:nth-child(3){ animation-delay:.14s }
@@ -737,7 +737,7 @@ html, body {
   .code-verifying .code-box:nth-child(6){ animation-delay:.35s }
 
   /* Warna kotak saat hasil (sebelum/while merge) */
-  .code-success .code-box{ border-color:#22c55e!important; background:#f0fdf4!important; color:#15803d!important; }
+  .code-success .code-box{ border-color:#3b82f6!important; background:#eff6ff!important; color:#1d4ed8!important; }
   .code-error   .code-box{ border-color:#ef4444!important; background:#fef2f2!important; color:#b91c1c!important; }
 
   /* MERGE: 6 kotak "menabrak" ke tengah lalu mengecil & memudar */
@@ -763,7 +763,7 @@ html, body {
     animation:codeBadgePop .42s cubic-bezier(.34,1.56,.64,1) .24s forwards;
   }
   .code-result-badge svg{ width:28px; height:28px; }
-  .code-result-badge.is-success{ background:#22c55e; box-shadow:0 8px 22px rgba(34,197,94,.45); }
+  .code-result-badge.is-success{ background:#3b82f6; box-shadow:0 8px 22px rgba(34,197,94,.45); }
   .code-result-badge.is-error{   background:#ef4444; box-shadow:0 8px 22px rgba(239,68,68,.45); }
   @keyframes codeBadgePop{ 0%{opacity:0;transform:scale(0)} 60%{opacity:1;transform:scale(1.14)} 100%{opacity:1;transform:scale(1)} }
 
@@ -972,16 +972,16 @@ html, body {
     flex-shrink: 0;
   }
 
-  .dsk-nav:hover { background: #F5F8F5; color: #166534; }
+  .dsk-nav:hover { background: #F5F8F5; color: #1e40af; }
 
   .dsk-nav.active {
-    background: #DCFCE7;
-    color: #166534;
+    background: #dbeafe;
+    color: #1e40af;
     font-weight: 600;
   }
 
   .dsk-nav-cta {
-    background: linear-gradient(135deg, #43A047, #2E7D32);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: white !important;
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(46,125,50,0.25);
@@ -989,7 +989,7 @@ html, body {
   }
 
   .dsk-nav-cta:hover {
-    background: linear-gradient(135deg, #388E3C, #1B5E20) !important;
+    background: linear-gradient(135deg, #1d4ed8, #1e3a8a) !important;
     box-shadow: 0 4px 12px rgba(46,125,50,0.35);
   }
 
@@ -1090,7 +1090,7 @@ html, body {
       padding: 0 18px;
       font-size: 17px;
       font-weight: 900;
-      color: #1B5E20;
+      color: #1e3a8a;
       letter-spacing: -0.5px;
       pointer-events: none;
     }
@@ -1127,12 +1127,12 @@ html, body {
 
     .nav-app:hover {
       background: #F5F8F5 !important;
-      color: #166534 !important;
+      color: #1e40af !important;
     }
 
     .nav-app.active {
-      background: #DCFCE7 !important;
-      color: #166534 !important;
+      background: #dbeafe !important;
+      color: #1e40af !important;
       font-weight: 600 !important;
     }
 
@@ -1189,7 +1189,7 @@ html, body {
     /* ── Bayar IPL — push both Bayar + Logout to bottom ── */
     #navFabBayarBtn {
       margin-top: auto !important;
-      background: linear-gradient(135deg, #43A047 0%, #2E7D32 100%) !important;
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
       color: white !important;
       border-radius: 8px !important;
       padding: 8px 12px !important;
@@ -1855,7 +1855,7 @@ body.dark nav {
   border-color: #1f1f2e !important;
 }
 body.dark .nav-item { color: #475569 !important; }
-body.dark .nav-item.active { color: #4ade80 !important; }
+body.dark .nav-item.active { color: #60a5fa !important; }
 
 /* ── Modals & Sheets ── */
 body.dark #sheet { background: #13131e !important; }
@@ -1870,8 +1870,8 @@ body.dark #notifPanel p.text-gray-900 { color: #f1f5f9 !important; }
 body.dark #notifList .flex { border-color: #2a2a3d !important; }
 
 /* ── Fasum cards (light colored bg) ── */
-body.dark [style*="background:#f0fdf4"],
-body.dark [style*="background: #f0fdf4"] { background: #1a2e22 !important; }
+body.dark [style*="background:#eff6ff"],
+body.dark [style*="background: #eff6ff"] { background: #172554 !important; }
 body.dark [style*="background:#fff7ed"],
 body.dark [style*="background: #fff7ed"] { background: #2e1f0f !important; }
 body.dark [style*="background:#fef2f2"],
@@ -1882,24 +1882,24 @@ body.dark [style*="background:#fdf4ff"],
 body.dark [style*="background: #fdf4ff"] { background: #1e0f2e !important; }
 
 /* Fasum card override via tailwind classes */
-body.dark .bg-green-50 { background: #1a2e22 !important; }
+body.dark .bg-blue-50 { background: #172554 !important; }
 body.dark .bg-orange-50 { background: #2e1f0f !important; }
 body.dark .bg-red-50    { background: #2e0f0f !important; }
 body.dark .bg-blue-50   { background: #0f1a2e !important; }
 body.dark .bg-purple-50 { background: #1e0f2e !important; }
 body.dark .bg-yellow-50 { background: #2e2a0f !important; }
-body.dark .bg-teal-50   { background: #0f2e2a !important; }
+body.dark .bg-blue-50   { background: #172554 !important; }
 
 /* ── Lapor badges ── */
 body.dark .lapor-badge-masuk    { background: #2e1a0f; color: #fb923c; }
 body.dark .lapor-badge-diproses { background: #0f1a2e; color: #60a5fa; }
-body.dark .lapor-badge-selesai  { background: #0f2e1a; color: #4ade80; }
+body.dark .lapor-badge-selesai  { background: #172554; color: #60a5fa; }
 body.dark .lapor-badge-ditolak  { background: #2e0f1a; color: #f472b6; }
 
 /* ── Surat Pengantar badges ── */
 body.dark .surat-badge-diajukan  { background: #2e2a0f; color: #facc15; }
 body.dark .surat-badge-diproses  { background: #0f1a2e; color: #60a5fa; }
-body.dark .surat-badge-disetujui { background: #0f2e1a; color: #4ade80; }
+body.dark .surat-badge-disetujui { background: #172554; color: #60a5fa; }
 body.dark .surat-badge-ditolak   { background: #2e0f1a; color: #f472b6; }
 
 /* ── IPL form sheet content ── */
@@ -2037,8 +2037,8 @@ body.dark #sayaPage .text-gray-500 { color: #64748b !important; }
   body.dark .desktop-sidebar-footer { border-color: #2a2a3d !important; }
   /* Item nav biasa (kecuali CTA & logout) */
   body.dark .dsk-nav:not(.dsk-nav-cta):not(.dsk-nav-logout) { color: #94a3b8 !important; }
-  body.dark .dsk-nav:not(.dsk-nav-cta):not(.dsk-nav-logout):hover { background: #1f1f2e !important; color: #4ade80 !important; }
-  body.dark .dsk-nav.active:not(.dsk-nav-cta) { background: #14331f !important; color: #4ade80 !important; }
+  body.dark .dsk-nav:not(.dsk-nav-cta):not(.dsk-nav-logout):hover { background: #1f1f2e !important; color: #60a5fa !important; }
+  body.dark .dsk-nav.active:not(.dsk-nav-cta) { background: #172554 !important; color: #60a5fa !important; }
   /* CTA "Bayar IPL" — teks tetap putih di dark mode */
   body.dark .dsk-nav-cta { color: #ffffff !important; }
   body.dark .dsk-nav-cta svg { color: #ffffff !important; }
@@ -2082,22 +2082,22 @@ body.dark #sayaPage .text-gray-500 { color: #64748b !important; }
   cursor: pointer;
   transition: color .15s, background .15s, box-shadow .15s, border-color .15s;
 }
-.admin-tab:hover { color: #166534; }
+.admin-tab:hover { color: #1e40af; }
 .admin-tab-active {
   background: #ffffff;
-  color: #166534;
-  border-color: #BBF7D0;
+  color: #1e40af;
+  border-color: #bfdbfe;
   box-shadow: 0 1px 3px rgba(0,0,0,0.07);
 }
 
 /* Dark mode */
 body.dark #adminTabNav { background: #13131e !important; }
 body.dark .admin-tab { color: #94a3b8; }
-body.dark .admin-tab:hover { color: #4ade80; }
+body.dark .admin-tab:hover { color: #60a5fa; }
 body.dark .admin-tab-active {
   background: #1f1f2e;
-  color: #4ade80;
-  border-color: #14331f;
+  color: #60a5fa;
+  border-color: #172554;
   box-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
@@ -2140,25 +2140,25 @@ body.dark #adminPanels .crud-inline > div {
 }
 .summary-stat-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px -8px rgba(0,0,0,0.14); }
 .summary-stat-card:active { transform: translateY(-1px); }
-.sc-green { background: linear-gradient(135deg,#F0FDF4 0%,#FFFFFF 75%); border-color:#DCFCE7; }
+.sc-green { background: linear-gradient(135deg,#eff6ff 0%,#FFFFFF 75%); border-color:#dbeafe; }
 .sc-amber { background: linear-gradient(135deg,#FFFBEB 0%,#FFFFFF 75%); border-color:#FDE68A; }
 .sc-blue  { background: linear-gradient(135deg,#EFF6FF 0%,#FFFFFF 75%); border-color:#DBEAFE; }
 
-body.dark .sc-green { background: linear-gradient(135deg,#0e2a1b 0%,#1a1a27 80%); border-color:#14331f; }
+body.dark .sc-green { background: linear-gradient(135deg,#172554 0%,#1a1a27 80%); border-color:#172554; }
 body.dark .sc-amber { background: linear-gradient(135deg,#2a210e 0%,#1a1a27 80%); border-color:#3a2e10; }
 body.dark .sc-blue  { background: linear-gradient(135deg,#0e1f34 0%,#1a1a27 80%); border-color:#1e3a5f; }
 body.dark .summary-stat-card:hover { box-shadow: 0 10px 24px -8px rgba(0,0,0,0.5); }
 
 /* Admin navbar: tab "Verifikasi Bayar" sebagai aksi (navigasi), bukan toggle */
 .admin-tab-action {
-  color: #166534;
-  background: #DCFCE7;
-  border-color: #BBF7D0;
+  color: #1e40af;
+  background: #dbeafe;
+  border-color: #bfdbfe;
   margin-left: auto;
 }
-.admin-tab-action:hover { background: #BBF7D0; color: #14532D; }
-body.dark .admin-tab-action { background: #14331f; color: #4ade80; border-color: #1d4d2e; }
-body.dark .admin-tab-action:hover { background: #1d4d2e; }
+.admin-tab-action:hover { background: #bfdbfe; color: #1e3a8a; }
+body.dark .admin-tab-action { background: #172554; color: #60a5fa; border-color: #1e3a8a; }
+body.dark .admin-tab-action:hover { background: #1e3a8a; }
 
 /* ════════════════════════════════════════════════════════════
    Dashboard Verifikasi — tampil inline di tab admin (bukan full page)

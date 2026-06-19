@@ -319,7 +319,7 @@ function gasPost_(action, body) {
 
   // Avatar color palette — pick by first char code
   var _avatarColors_ = [
-    '#4CAF50','#2196F3','#9C27B0','#FF5722','#009688',
+    '#3b82f6','#2196F3','#9C27B0','#FF5722','#2563eb',
     '#3F51B5','#E91E63','#FF9800','#607D8B','#795548'
   ];
   function _renderProfileAvatar_(name) {
@@ -589,10 +589,10 @@ function gasPost_(action, body) {
 
       if (isLoading) {
         icon.classList.add('searching', 'searching-pulse');
-        btn.classList.add('text-green-600');
+        btn.classList.add('text-blue-600');
       } else {
         icon.classList.remove('searching', 'searching-pulse');
-        btn.classList.remove('text-green-600');
+        btn.classList.remove('text-blue-600');
       }
     }
     
@@ -2613,8 +2613,8 @@ function gasPost_(action, body) {
       const isError   = type === 'error';
       const isWarning = type === 'warning';
 
-      const bg        = isError ? 'bg-red-100'    : isWarning ? 'bg-yellow-100' : 'bg-green-100';
-      const iconColor = isError ? 'text-red-600'  : isWarning ? 'text-yellow-600' : 'text-green-600';
+      const bg        = isError ? 'bg-red-100'    : isWarning ? 'bg-yellow-100' : 'bg-blue-100';
+      const iconColor = isError ? 'text-red-600'  : isWarning ? 'text-yellow-600' : 'text-blue-600';
 
       const icon = isError
         ? `<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>`
@@ -3296,8 +3296,8 @@ function gasPost_(action, body) {
       var st = statuses[i];
       var cls, dot, clickable = '';
       if (st === 'confirmed') {
-        cls = 'bg-green-50 border-green-200 text-green-700';
-        dot = '#22C55E';
+        cls = 'bg-blue-50 border-blue-200 text-blue-700';
+        dot = '#3b82f6';
         clickable = ' onclick="wargaJumpMonth(\'' + name + '\',\'' + yr + '\')"';
       } else if (st === 'pending') {
         cls = 'bg-amber-50 border-amber-200 text-amber-700';
@@ -3321,11 +3321,11 @@ function gasPost_(action, body) {
             '<p class="text-sm font-bold text-gray-900">Status Pembayaran</p>' +
             yearSelect +
           '</div>' +
-          '<span class="text-[11px] font-semibold text-green-600">' + lunasCount + '/12 lunas</span>' +
+          '<span class="text-[11px] font-semibold text-blue-600">' + lunasCount + '/12 lunas</span>' +
         '</div>' +
         '<div class="grid grid-cols-6 gap-1.5">' + cells + '</div>' +
         '<div class="flex items-center gap-3 mt-2.5 pt-2.5 border-t border-gray-50">' +
-          '<span class="flex items-center gap-1 text-[10px] text-gray-500"><span class="w-1.5 h-1.5 rounded-full" style="background:#22C55E"></span>Lunas</span>' +
+          '<span class="flex items-center gap-1 text-[10px] text-gray-500"><span class="w-1.5 h-1.5 rounded-full" style="background:#3b82f6"></span>Lunas</span>' +
           '<span class="flex items-center gap-1 text-[10px] text-gray-500"><span class="w-1.5 h-1.5 rounded-full" style="background:#F59E0B"></span>Pending</span>' +
           '<span class="flex items-center gap-1 text-[10px] text-gray-500"><span class="w-1.5 h-1.5 rounded-full" style="background:#E5E7EB"></span>Belum bayar</span>' +
         '</div>' +
@@ -3462,7 +3462,7 @@ function gasPost_(action, body) {
     var name = currentUser.fullName || currentUser.name || currentUser.email || '';
     var role = currentUser.role === 'admin' ? 'Administrator' : 'Warga';
     var initial = name.trim().charAt(0).toUpperCase() || '?';
-    var colors = ['#E53935','#8E24AA','#1E88E5','#00ACC1','#43A047','#FB8C00','#6D4C41','#546E7A','#D81B60','#3949AB'];
+    var colors = ['#E53935','#8E24AA','#1E88E5','#00ACC1','#2563eb','#FB8C00','#6D4C41','#546E7A','#D81B60','#3949AB'];
     var color = colors[(name.charCodeAt(0) || 0) % colors.length];
 
     // Sidebar profile
@@ -4149,7 +4149,7 @@ function gasPost_(action, body) {
       if (item.current) {
         var cur = document.createElement('div');
         cur.className = 'text-xs text-gray-500';
-        cur.innerHTML = '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">PENYEWA AKTIF</span>'
+        cur.innerHTML = '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">PENYEWA AKTIF</span>'
           + '<div class="mt-1 text-gray-700">' + _escapeHtml_(item.current.nama) + '</div>'
           + '<div class="text-gray-400">' + _escapeHtml_(item.current.noHp) + ' · ' + _escapeHtml_(item.current.email) + '</div>';
         card.appendChild(cur);
@@ -4581,7 +4581,7 @@ function gasPost_(action, body) {
 
     gasPost_('requestLoginOTP', { identifier: identifier })
       .then(function() {
-        btn.innerHTML = '<svg class="w-3 h-3 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>OTP terkirim';
+        btn.innerHTML = '<svg class="w-3 h-3 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>OTP terkirim';
         setTimeout(function() {
           btn.innerHTML = "Kirim ulang";
           startOTPCountdown();
@@ -4834,7 +4834,7 @@ function gasPost_(action, body) {
       el.classList.remove('text-gray-900');
       el.classList.add('text-gray-900');
       // Visual: tambah underline border bawah sebagai edit indicator
-      el.style.borderBottom = '1.5px solid #43A047';
+      el.style.borderBottom = '1.5px solid #2563eb';
       el.style.paddingBottom = '2px';
     });
 
@@ -4965,7 +4965,7 @@ function gasPost_(action, body) {
           ? '<span class="px-2 py-0.5 text-[11px] rounded-full bg-yellow-100 text-yellow-700 font-semibold">Pending</span>'
           : isRejected
             ? '<span class="px-2 py-0.5 text-[11px] rounded-full bg-red-50 text-red-500 ring-1 ring-red-200 font-semibold">Ditolak</span>'
-            : '<span class="px-2 py-0.5 text-[11px] rounded-full bg-green-50 text-green-600 ring-1 ring-green-200 font-semibold">' + confirmedLabel + '</span>';
+            : '<span class="px-2 py-0.5 text-[11px] rounded-full bg-blue-50 text-blue-600 ring-1 ring-blue-200 font-semibold">' + confirmedLabel + '</span>';
 
         var nominalFmt = 'Rp ' + Number(item.nominal || 0).toLocaleString('id-ID');
         var tanggalFmt = item.tanggal ? formatTanggalIndonesia(item.tanggal) : '';
@@ -5022,7 +5022,7 @@ function gasPost_(action, body) {
 
             adminWaBtn =
               '<a href="' + waUrl + '" target="_blank"' +
-              ' class="flex items-center justify-center gap-1.5 text-xs font-semibold text-green-700 px-3 py-2 rounded-xl bg-green-50 border border-green-200 active:scale-95 transition">' +
+              ' class="flex items-center justify-center gap-1.5 text-xs font-semibold text-blue-700 px-3 py-2 rounded-xl bg-blue-50 border border-blue-200 active:scale-95 transition">' +
               '<svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">' +
               '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>' +
               '</svg>WA</a>';
@@ -5132,7 +5132,7 @@ function gasPost_(action, body) {
       .then(function() {
         if (btnEl) {
           btnEl.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>';
-          btnEl.className = 'flex items-center gap-1.5 text-xs font-semibold text-green-600 px-3 py-1.5 rounded-xl bg-green-50 transition';
+          btnEl.className = 'flex items-center gap-1.5 text-xs font-semibold text-blue-600 px-3 py-1.5 rounded-xl bg-blue-50 transition';
         }
         showToast('Admin sudah diingatkan', 'success');
       })
@@ -5714,7 +5714,7 @@ function gasPost_(action, body) {
     if (type === 'pending') {
       if (pendingBtn) pendingBtn.className = 'flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-semibold bg-yellow-50 text-yellow-700 border border-yellow-200 active:scale-95 transition tab-pill active';
     } else {
-      if (confirmedBtn) confirmedBtn.className = 'flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-semibold bg-green-50 text-green-700 border border-green-200 active:scale-95 transition tab-pill active';
+      if (confirmedBtn) confirmedBtn.className = 'flex-1 flex items-center justify-center gap-2 py-2 rounded-xl text-sm font-semibold bg-blue-50 text-blue-700 border border-blue-200 active:scale-95 transition tab-pill active';
     }
 
     applyFilters();
@@ -5736,7 +5736,7 @@ function gasPost_(action, body) {
       p.style.opacity   = (type === 'confirmed') ? '0.6' : '1';
     }
     if (c) {
-      c.style.boxShadow = (type === 'confirmed') ? '0 0 0 2px #22C55E' : 'none';
+      c.style.boxShadow = (type === 'confirmed') ? '0 0 0 2px #3b82f6' : 'none';
       c.style.opacity   = (type === 'pending')   ? '0.6' : '1';
     }
   }
@@ -5981,7 +5981,7 @@ function renderStars() {
     star.innerHTML = '★';
     star.className = 'text-3xl cursor-pointer transition';
 
-    star.style.color = i <= selectedRating ? '#43A047' : '#d1d5db';
+    star.style.color = i <= selectedRating ? '#2563eb' : '#d1d5db';
 
     star.onclick = () => {
       selectedRating = i;
@@ -6391,7 +6391,7 @@ function loadHomeTunggakan() {
         nomEl.innerHTML = 'Rp 0';
         badgeEl.innerHTML = '<span style="display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Lunas</span>';
         badgeEl.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white';
-        var labelElFail = document.querySelector('#homeTunggakanCard .text-green-200');
+        var labelElFail = document.querySelector('#homeTunggakanCard .text-blue-200');
         if (labelElFail) labelElFail.innerText = 'Status IPL';
         var monthElFail = document.getElementById('homeIplMonth');
         if (monthElFail) monthElFail.innerText = 'Tidak ada tagihan saat ini';
@@ -6428,7 +6428,7 @@ function loadHomeTunggakan() {
         // === HITUNG FASE JATUH TEMPO ===
         var dueDatePhase = 'normal'; // normal | warning | overdue | late
         var dueBadgeText = '';
-        var cardBg = hasUpcoming ? '#2E7D32' : 'linear-gradient(135deg, #1B5E20, #2E7D32)';
+        var cardBg = hasUpcoming ? '#1d4ed8' : 'linear-gradient(135deg, #1e3a8a, #1d4ed8)';
 
         if (hasUpcoming && res.dueDate) {
           var today = new Date();
@@ -6466,7 +6466,7 @@ function loadHomeTunggakan() {
 
         badgeEl.innerHTML = '<span style="display:flex;align-items:center;gap:5px;"><svg style="width:13px;height:13px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Lunas</span>';
         badgeEl.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white';
-        var labelEl = document.querySelector('#homeTunggakanCard .text-green-200');
+        var labelEl = document.querySelector('#homeTunggakanCard .text-blue-200');
         var cardLabel = 'Status IPL';
         if (hasUpcoming) {
           if (dueDatePhase === 'due') cardLabel = 'Jatuh Tempo Hari Ini';
@@ -6517,7 +6517,7 @@ function loadHomeTunggakan() {
         nomEl.innerText = 'Rp ' + Number(res.total).toLocaleString('id-ID');
         badgeEl.innerText = res.items.length + ' bulan';
         badgeEl.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-red-400/80 text-white';
-        var labelEl = document.querySelector('#homeTunggakanCard .text-green-200');
+        var labelEl = document.querySelector('#homeTunggakanCard .text-blue-200');
         if (labelEl) labelEl.innerText = 'Total Tunggakan';
 
         // Hitung fase overdue untuk tunggakan
@@ -6618,13 +6618,13 @@ function loadHomeTunggakan() {
 
         if (card200) {
           if (rate200) {
-            card200.style.background   = '#f0fdf4';
-            card200.style.borderTop    = '3px solid #16a34a';
-            card200.style.borderRight  = '1px solid #bbf7d0';
-            card200.style.borderBottom = '1px solid #bbf7d0';
-            card200.style.borderLeft   = '1px solid #bbf7d0';
+            card200.style.background   = '#eff6ff';
+            card200.style.borderTop    = '3px solid #2563eb';
+            card200.style.borderRight  = '1px solid #bfdbfe';
+            card200.style.borderBottom = '1px solid #bfdbfe';
+            card200.style.borderLeft   = '1px solid #bfdbfe';
             card200.style.opacity      = '1';
-            if (p200nom) { p200nom.style.color = '#15803d'; }
+            if (p200nom) { p200nom.style.color = '#1d4ed8'; }
           } else {
             card200.style.background   = '#fafafa';
             card200.style.borderTop    = '3px solid transparent';
@@ -6637,27 +6637,27 @@ function loadHomeTunggakan() {
           if (!document.getElementById('tarifBadge200') && rate200 && p200label) {
             var badge200 = document.createElement('span');
             badge200.id = 'tarifBadge200';
-            badge200.style.cssText = 'display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#15803d;background:#dcfce7;border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:0.02em;vertical-align:middle;';
-            badge200.innerHTML = '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Tarif Anda';
+            badge200.style.cssText = 'display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#1d4ed8;background:#dbeafe;border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:0.02em;vertical-align:middle;';
+            badge200.innerHTML = '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Tarif Anda';
             p200label.appendChild(badge200);
           }
           if (isMultiBlok && blokLabel200 && !document.getElementById('tarifBlokLabel200') && p200label) {
             var blokSpan200 = document.createElement('span');
             blokSpan200.id = 'tarifBlokLabel200';
-            blokSpan200.style.cssText = 'display:block;font-size:9px;color:#43A047;font-weight:600;margin-top:2px;';
+            blokSpan200.style.cssText = 'display:block;font-size:9px;color:#2563eb;font-weight:600;margin-top:2px;';
             blokSpan200.innerText = blokLabel200;
             p200label.appendChild(blokSpan200);
           }
         }
         if (card175) {
           if (rate175) {
-            card175.style.background   = '#f0fdf4';
-            card175.style.borderTop    = '3px solid #16a34a';
-            card175.style.borderRight  = '1px solid #bbf7d0';
-            card175.style.borderBottom = '1px solid #bbf7d0';
-            card175.style.borderLeft   = '1px solid #bbf7d0';
+            card175.style.background   = '#eff6ff';
+            card175.style.borderTop    = '3px solid #2563eb';
+            card175.style.borderRight  = '1px solid #bfdbfe';
+            card175.style.borderBottom = '1px solid #bfdbfe';
+            card175.style.borderLeft   = '1px solid #bfdbfe';
             card175.style.opacity      = '1';
-            if (p175nom) { p175nom.style.color = '#15803d'; }
+            if (p175nom) { p175nom.style.color = '#1d4ed8'; }
           } else {
             card175.style.background   = '#fafafa';
             card175.style.borderTop    = '3px solid transparent';
@@ -6670,20 +6670,20 @@ function loadHomeTunggakan() {
           if (!document.getElementById('tarifBadge175') && rate175 && p175label) {
             var badge175 = document.createElement('span');
             badge175.id = 'tarifBadge175';
-            badge175.style.cssText = 'display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#15803d;background:#dcfce7;border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:0.02em;vertical-align:middle;';
-            badge175.innerHTML = '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Tarif Anda';
+            badge175.style.cssText = 'display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#1d4ed8;background:#dbeafe;border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:0.02em;vertical-align:middle;';
+            badge175.innerHTML = '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg> Tarif Anda';
             p175label.appendChild(badge175);
           }
           if (isMultiBlok && blokLabel175 && !document.getElementById('tarifBlokLabel175') && p175label) {
             var blokSpan175 = document.createElement('span');
             blokSpan175.id = 'tarifBlokLabel175';
-            blokSpan175.style.cssText = 'display:block;font-size:9px;color:#15803d;font-weight:600;margin-top:2px;';
+            blokSpan175.style.cssText = 'display:block;font-size:9px;color:#1d4ed8;font-weight:600;margin-top:2px;';
             blokSpan175.innerText = blokLabel175;
             p175label.appendChild(blokSpan175);
           }
         }
-        if (p200label) p200label.style.color = rate200 ? '#15803d' : '#6b7280';
-        if (p175label) p175label.style.color = rate175 ? '#15803d' : '#6b7280';
+        if (p200label) p200label.style.color = rate200 ? '#1d4ed8' : '#6b7280';
+        if (p175label) p175label.style.color = rate175 ? '#1d4ed8' : '#6b7280';
       }
     })
     .catch(function() {
@@ -6728,7 +6728,7 @@ function openTunggakanDetail() {
     var dueColor = '';
     if (diffDays > 7) {
       dueText = 'Jatuh tempo ' + due.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
-      dueColor = '#43A047';
+      dueColor = '#2563eb';
     } else if (diffDays >= 1) {
       dueText = '🔔 Jatuh tempo ' + diffDays + ' hari lagi (' + due.toLocaleDateString('id-ID', { day: 'numeric', month: 'short' }) + ')';
       dueColor = '#b45309';
@@ -6757,8 +6757,8 @@ function openTunggakanDetail() {
     if (!upcomingItem) {
       listEl.innerHTML =
         '<div class="flex flex-col items-center py-6 gap-2">' +
-          '<div class="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center">' +
-            '<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">' +
+          '<div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center">' +
+            '<svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">' +
               '<path d="M20 6L9 17l-5-5"/>' +
             '</svg>' +
           '</div>' +
@@ -6791,10 +6791,10 @@ function openTunggakanDetail() {
     listEl.innerHTML +=
       '<div class="flex justify-between items-center py-3 border-b border-gray-50 last:border-0">' +
         '<div class="flex items-center gap-2.5">' +
-          '<div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#0d9488;"></div>' +
-          '<span class="text-sm" style="color:#0d9488;">' + upLbl + '</span>' +
+          '<div class="w-1.5 h-1.5 rounded-full flex-shrink-0" style="background:#2563eb;"></div>' +
+          '<span class="text-sm" style="color:#2563eb;">' + upLbl + '</span>' +
         '</div>' +
-        '<span class="text-sm font-semibold" style="color:#0d9488;">' + upAmt + '</span>' +
+        '<span class="text-sm font-semibold" style="color:#2563eb;">' + upAmt + '</span>' +
       '</div>';
   }
 
@@ -6834,7 +6834,7 @@ function getFasumIconSvg(key) {
 
 function getFasumStatusStyle(status) {
   var s = (status || '').toLowerCase();
-  if (s === 'normal')      return { dot: 'bg-green-400',  text: 'text-green-700',  label: 'Normal',      cardBg: 'bg-gradient-to-b from-green-50 to-white',  cardBorder: 'border-green-100', iconBg: 'bg-green-500',  iconColor: 'text-white', pillBg: 'bg-green-100', pillText: 'text-green-700' };
+  if (s === 'normal')      return { dot: 'bg-blue-400',  text: 'text-blue-700',  label: 'Normal',      cardBg: 'bg-gradient-to-b from-blue-50 to-white',  cardBorder: 'border-blue-100', iconBg: 'bg-blue-500',  iconColor: 'text-white', pillBg: 'bg-blue-100', pillText: 'text-blue-700' };
   if (s === 'maintenance') return { dot: 'bg-amber-400',  text: 'text-amber-700',  label: 'Maintenance', cardBg: 'bg-gradient-to-b from-amber-50 to-white',  cardBorder: 'border-amber-100', iconBg: 'bg-amber-400',  iconColor: 'text-white', pillBg: 'bg-amber-100', pillText: 'text-amber-700' };
   return                          { dot: 'bg-red-400',    text: 'text-red-700',    label: status || 'Gangguan', cardBg: 'bg-gradient-to-b from-red-50 to-white', cardBorder: 'border-red-100', iconBg: 'bg-red-500', iconColor: 'text-white', pillBg: 'bg-red-100', pillText: 'text-red-700' };
 }
@@ -6899,11 +6899,11 @@ function renderFasumList(showAll) {
 var KATEGORI_META = {
   'pengumuman' : { bg: 'bg-blue-500',   emoji: '📢' },
   'keamanan'   : { bg: 'bg-red-500',    emoji: '🔒' },
-  'lingkungan' : { bg: 'bg-green-600',  emoji: '🌿' },
+  'lingkungan' : { bg: 'bg-blue-600',  emoji: '🌿' },
   'sosial'     : { bg: 'bg-purple-500', emoji: '🤝' },
   'keuangan'   : { bg: 'bg-orange-500', emoji: '💰' },
   'event'      : { bg: 'bg-pink-500',   emoji: '🎉' },
-  'fasilitas'  : { bg: 'bg-teal-500',   emoji: '🏗️' }
+  'fasilitas'  : { bg: 'bg-blue-500',   emoji: '🏗️' }
 };
 
 function getKategoriMeta(kat) {
@@ -7464,7 +7464,7 @@ function renderSecurityContactList(res, listEl, onDutySet) {
       var isOnDuty = onDutySet.has(waHp);
       return '<div class="contact-item flex items-center justify-between py-2.5 border-b border-gray-50">' +
         '<div>' +
-          '<p class="text-sm font-semibold text-gray-900">' + c.nama + (isOnDuty ? ' <span class="inline-flex items-center gap-1 text-[10px] font-bold text-white bg-green-500 px-1.5 py-0.5 rounded-full align-middle">' +
+          '<p class="text-sm font-semibold text-gray-900">' + c.nama + (isOnDuty ? ' <span class="inline-flex items-center gap-1 text-[10px] font-bold text-white bg-blue-500 px-1.5 py-0.5 rounded-full align-middle">' +
             '<svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4"/></svg>' +
             'Sedang Berjaga</span>' : '') + '</p>' +
           '<p class="text-xs text-gray-400">' + c.jabatan + '</p>' +
@@ -7475,8 +7475,8 @@ function renderSecurityContactList(res, listEl, onDutySet) {
               '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>' +
             '</svg>' +
           '</a>' +
-          '<a href="https://wa.me/' + waHp + '" target="_blank" class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center active:scale-95 transition">' +
-            '<svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">' +
+          '<a href="https://wa.me/' + waHp + '" target="_blank" class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center active:scale-95 transition">' +
+            '<svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">' +
               '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>' +
             '</svg>' +
           '</a>' +
@@ -7521,8 +7521,8 @@ function renderContactList(res, listEl) {
               '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>' +
             '</svg>' +
           '</a>' +
-          '<a href="https://wa.me/' + hp + '" target="_blank" class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center active:scale-95 transition">' +
-            '<svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 24 24">' +
+          '<a href="https://wa.me/' + hp + '" target="_blank" class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center active:scale-95 transition">' +
+            '<svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24">' +
               '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>' +
             '</svg>' +
           '</a>' +
@@ -7793,7 +7793,7 @@ function renderAdminInfoPreview_(res) {
   el.innerHTML = res.data.slice(0, 3).map(function(d) {
     return '<div class="flex items-center justify-between py-1.5">' +
       '<span class="text-xs text-gray-700 truncate flex-1 pr-2">' + d.judul + '</span>' +
-      '<span class="text-[10px] px-2 py-0.5 rounded-full ' + (d.aktif ? 'bg-green-50 text-green-600' : 'bg-gray-100 text-gray-400') + ' font-medium flex-shrink-0">' +
+      '<span class="text-[10px] px-2 py-0.5 rounded-full ' + (d.aktif ? 'bg-blue-50 text-blue-600' : 'bg-gray-100 text-gray-400') + ' font-medium flex-shrink-0">' +
       (d.aktif ? 'Aktif' : 'Nonaktif') + '</span>' +
     '</div>';
   }).join('') + (res.data.length > 3 ? '<p class="text-xs text-gray-400 pt-1">+' + (res.data.length - 3) + ' lainnya</p>' : '');
@@ -7812,7 +7812,7 @@ function renderAdminFasumPreview_(res) {
   var scTotal = document.getElementById('scAdminFasumTotal');
   if (scIssue) scIssue.textContent = issues;
   if (scTotal) scTotal.textContent = '/ ' + res.data.length;
-  var STATUS_COLOR = { normal: 'bg-green-50 text-green-600', maintenance: 'bg-yellow-50 text-yellow-600' };
+  var STATUS_COLOR = { normal: 'bg-blue-50 text-blue-600', maintenance: 'bg-yellow-50 text-yellow-600' };
   el.innerHTML = res.data.slice(0, 3).map(function(d) {
     var color = STATUS_COLOR[d.status.toLowerCase()] || 'bg-red-50 text-red-500';
     return '<div class="flex items-center justify-between py-1">' +
@@ -7872,7 +7872,7 @@ function renderInfoCRUDList(res) {
       '<div class="flex-1 min-w-0">' +
         '<div class="flex items-center gap-2 mb-0.5">' +
           '<span class="text-sm font-semibold text-gray-900 truncate">' + d.judul + '</span>' +
-          '<span class="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-green-50 text-green-600' : 'bg-gray-200 text-gray-400') + ' font-medium">' + (d.aktif ? 'Aktif' : 'Nonaktif') + '</span>' +
+          '<span class="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-blue-50 text-blue-600' : 'bg-gray-200 text-gray-400') + ' font-medium">' + (d.aktif ? 'Aktif' : 'Nonaktif') + '</span>' +
         '</div>' +
         '<span class="text-[11px] text-gray-400">' + d.kategori + ' · ' + (d.tanggal || '') + '</span>' +
       '</div>' +
@@ -8065,7 +8065,7 @@ function renderFasumCRUDList(res) {
   res.data.forEach(function(d) { _fasumDataMap[d.rowNumber] = d; });
 
   var STATUS_COLOR = {
-    'normal'     : 'bg-green-50 text-green-600',
+    'normal'     : 'bg-blue-50 text-blue-600',
     'maintenance': 'bg-yellow-50 text-yellow-600'
   };
   el.innerHTML = res.data.map(function(d) {
@@ -8299,7 +8299,7 @@ function renderRiwayatPenghuniList(res) {
         ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-600">PENYEWA</span>'
         : '');
     var aktifBadge = r.aktif
-      ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-green-100 text-green-600">AKTIF</span>'
+      ? '<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-600">AKTIF</span>'
       : '';
     var periode = r.tanggalMulai + ' – ' + (r.aktif ? 'Sekarang' : (r.tanggalSelesai || '-'));
     return '<div class="bg-gray-50 rounded-2xl px-4 py-3 ' + (r.aktif ? 'border-l-4 border-primary' : '') + '">' +
@@ -8559,7 +8559,7 @@ function renderGreetingCRUDList(res) {
       '<div class="flex-1 min-w-0">' +
         '<div class="flex items-center gap-2 mb-0.5">' +
           '<span class="text-sm font-semibold text-gray-900 truncate">' + (d.judul || d.teks || '') + '</span>' +
-          '<span class="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-green-50 text-green-600' : 'bg-gray-200 text-gray-400') + ' font-medium">' + (d.aktif ? 'Aktif' : 'Nonaktif') + '</span>' +
+          '<span class="text-[10px] px-2 py-0.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-blue-50 text-blue-600' : 'bg-gray-200 text-gray-400') + ' font-medium">' + (d.aktif ? 'Aktif' : 'Nonaktif') + '</span>' +
         '</div>' +
         '<span class="text-[11px] text-gray-400">' + (d.mulai || '') + ' → ' + (d.stop || '') + '</span>' +
       '</div>' +
@@ -8668,7 +8668,7 @@ function loadAdminGreetingPreview() {
       }
       el.innerHTML = res.data.slice(0, 3).map(function(d) {
         return '<div class="flex items-center gap-2 py-1">' +
-          '<span class="w-1.5 h-1.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-green-400' : 'bg-gray-300') + '"></span>' +
+          '<span class="w-1.5 h-1.5 rounded-full flex-shrink-0 ' + (d.aktif ? 'bg-blue-400' : 'bg-gray-300') + '"></span>' +
           '<span class="text-xs text-gray-700 truncate flex-1">' + (d.judul || d.konten || d.teks || '') + '</span>' +
           '<span class="text-[10px] text-gray-400 flex-shrink-0">' + (d.mulai || '') + '</span>' +
         '</div>';
@@ -8996,7 +8996,7 @@ function handleRenovKtpUpload(input) {
       .then(function(res) {
         renovKtpFileUrl = res.url;
         if (filenameEl) {
-          filenameEl.innerHTML = '<span class="flex items-center gap-2 text-green-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="text-sm font-medium">' + file.name + '</span></span>';
+          filenameEl.innerHTML = '<span class="flex items-center gap-2 text-blue-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="text-sm font-medium">' + file.name + '</span></span>';
         }
         var preview = document.getElementById('renovKtpPreview');
         var img = document.getElementById('renovKtpImg');
@@ -9330,7 +9330,7 @@ var _PENGELUARAN_KAT_ = {
   'Lain-lain'       : []
 };
 var _PENG_MONTHS_ = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
-var _PENG_COLORS_ = ['#22C55E','#3B82F6','#F59E0B','#EF4444','#8B5CF6','#14B8A6','#EC4899','#6B7280'];
+var _PENG_COLORS_ = ['#3b82f6','#3B82F6','#F59E0B','#EF4444','#8B5CF6','#3b82f6','#EC4899','#6B7280'];
 var _pengeluaranCache = null;
 var _pemasukanCache = null;
 var _kasRiwayatMode_ = 'keluar';   // 'keluar' = pengeluaran, 'masuk' = pemasukan manual
@@ -9441,7 +9441,7 @@ function _renderPengeluaran_(){
   var saldoCard =
     '<div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">' +
       '<div class="grid grid-cols-3 divide-x divide-gray-100">' +
-        '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wide">Masuk</p><p class="text-base font-black text-green-600 mt-1 whitespace-nowrap">'+_pengRpShort_(masuk)+'</p></div>' +
+        '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wide">Masuk</p><p class="text-base font-black text-blue-600 mt-1 whitespace-nowrap">'+_pengRpShort_(masuk)+'</p></div>' +
         '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wide">Keluar</p><p class="text-base font-black text-red-500 mt-1 whitespace-nowrap">'+_pengRpShort_(keluarAll)+'</p></div>' +
         '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 font-semibold uppercase tracking-wide">Saldo</p><p class="text-base font-black '+(saldo>=0?'text-gray-900':'text-red-600')+' mt-1 whitespace-nowrap">'+_pengRpShort_(saldo)+'</p></div>' +
       '</div>' +
@@ -9503,13 +9503,13 @@ function _renderPengeluaran_(){
   // ---- Toggle Pengeluaran / Pemasukan ----
   var tabBtn = function(mode, label){
     var on = (_kasRiwayatMode_ === mode);
-    return '<button onclick="_kasSetRiwayatMode_(\''+mode+'\')" class="flex-1 text-xs font-bold py-2 rounded-lg transition '+(on?'bg-white shadow-sm '+(mode==='masuk'?'text-green-600':'text-red-500'):'text-gray-400')+'">'+label+'</button>';
+    return '<button onclick="_kasSetRiwayatMode_(\''+mode+'\')" class="flex-1 text-xs font-bold py-2 rounded-lg transition '+(on?'bg-white shadow-sm '+(mode==='masuk'?'text-blue-600':'text-red-500'):'text-gray-400')+'">'+label+'</button>';
   };
   var modeToggle =
     '<div class="flex gap-1 p-1 bg-gray-100 rounded-xl">' + tabBtn('keluar','Pengeluaran') + tabBtn('masuk','Pemasukan') + '</div>';
 
   var addBtn = isMasuk
-    ? '<button onclick="openPemasukanForm(null)" class="flex items-center gap-1 px-3 py-2 rounded-xl bg-green-600 text-white text-xs font-semibold active:scale-95 transition"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Pemasukan</button>'
+    ? '<button onclick="openPemasukanForm(null)" class="flex items-center gap-1 px-3 py-2 rounded-xl bg-blue-600 text-white text-xs font-semibold active:scale-95 transition"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Pemasukan</button>'
     : '<button onclick="openPengeluaranForm(null)" class="flex items-center gap-1 px-3 py-2 rounded-xl bg-primary text-white text-xs font-semibold active:scale-95 transition"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Tambah</button>';
 
   var header =
@@ -9535,7 +9535,7 @@ function _renderPengeluaran_(){
             '<p class="text-[11px] text-gray-400 mt-0.5">'+(d.tanggal||'')+(d.metode?(' · '+d.metode):'')+'</p>' +
             (d.keterangan? '<p class="text-[11px] text-gray-500 mt-0.5 truncate">'+d.keterangan+'</p>' : '') +
           '</div>' +
-          '<span class="text-sm font-black text-green-600 flex-shrink-0">'+_pengRpFull_(d.nominal)+'</span>' +
+          '<span class="text-sm font-black text-blue-600 flex-shrink-0">'+_pengRpFull_(d.nominal)+'</span>' +
         '</div>' +
         '<div class="flex items-center gap-2 mt-2 pt-2 border-t border-gray-50">' +
           (d.buktiUrl? '<button type="button" data-bukti="'+d.buktiUrl+'" class="lihat-bukti-btn text-[11px] font-semibold text-gray-500 px-2.5 py-1 rounded-lg bg-gray-100">Bukti</button>' : '') +
@@ -10024,7 +10024,7 @@ function _kasTransparansiHtml_(res){
       '<div class="relative flex-shrink-0 w-20 h-20">'+
         '<svg viewBox="0 0 36 36" class="w-20 h-20" style="transform:rotate(-90deg);">'+
           '<circle cx="18" cy="18" r="15.9155" fill="none" stroke="#FEE2E2" stroke-width="3.5"></circle>'+
-          '<circle cx="18" cy="18" r="15.9155" fill="none" stroke="#16A34A" stroke-width="3.5" '+
+          '<circle cx="18" cy="18" r="15.9155" fill="none" stroke="#2563eb" stroke-width="3.5" '+
             'stroke-linecap="round" stroke-dasharray="'+pct+' '+(100-pct)+'"></circle>'+
         '</svg>'+
         '<div class="absolute inset-0 flex flex-col items-center justify-center">'+
@@ -10034,8 +10034,8 @@ function _kasTransparansiHtml_(res){
       '</div>'+
       '<div class="flex-1 space-y-2">'+
         '<div class="flex items-center justify-between">'+
-          '<div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-green-500"></span><span class="text-xs text-gray-500">Pemasukan</span></div>'+
-          '<span class="text-sm font-bold text-green-600">'+_kasRpShort_(masuk)+'</span>'+
+          '<div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span><span class="text-xs text-gray-500">Pemasukan</span></div>'+
+          '<span class="text-sm font-bold text-blue-600">'+_kasRpShort_(masuk)+'</span>'+
         '</div>'+
         '<div class="flex items-center justify-between">'+
           '<div class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-red-400"></span><span class="text-xs text-gray-500">Pengeluaran</span></div>'+
@@ -10054,7 +10054,7 @@ function _kasTransparansiHtml_(res){
 function _kasInfoIplListHtml_(){
   var years = [
     { y:'2026', label:'Laporan per bulan', badge:'Terbaru', bg:'#EFF6FF', stroke:'#2563EB' },
-    { y:'2025', label:'Laporan tahunan', badge:null, bg:'#F0FDF4', stroke:'#16a34a' },
+    { y:'2025', label:'Laporan tahunan', badge:null, bg:'#eff6ff', stroke:'#2563eb' },
     { y:'2024', label:'Laporan tahunan', badge:null, bg:'#FFF7ED', stroke:'#EA580C' },
     { y:'2023', label:'Laporan tahunan', badge:null, bg:'#F5F3FF', stroke:'#7C3AED' }
   ];
@@ -10082,9 +10082,9 @@ function _kasInfoIplListHtml_(){
   return '<div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">'+
     '<div class="px-3 pt-3 flex items-center justify-between">'+
       '<p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Info Kas IPL</p>'+
-      '<div class="flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-full">'+
-        '<svg class="w-3 h-3 text-green-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'+
-        '<span class="text-[11px] text-green-600 font-semibold">Publik</span>'+
+      '<div class="flex items-center gap-1.5 bg-blue-50 px-2.5 py-1 rounded-full">'+
+        '<svg class="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>'+
+        '<span class="text-[11px] text-blue-600 font-semibold">Publik</span>'+
       '</div>'+
     '</div>'+
     '<div class="divide-y divide-gray-50 mt-1">'+rows+'</div>'+
@@ -10141,17 +10141,17 @@ function _renderAktivitasTerbaru_(res){
   var renderItem = function(it){
     var isIn = it.type === 'in';
     var icon = isIn
-      ? '<svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg>'
+      ? '<svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5 12l7-7 7 7"/></svg>'
       : '<svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12l7 7 7-7"/></svg>';
     var subTxt = isGuest ? _maskSub_(it.sub) : escapeHtml_(it.sub);
     var nominalTxt = isGuest ? 'Rp •••' : _kasRpShort_(it.nominal);
     return '<div class="px-4 py-3 flex items-center gap-3">'+
-      '<div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:'+(isIn?'#F0FDF4':'#FEF2F2')+';">'+icon+'</div>'+
+      '<div class="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style="background:'+(isIn?'#eff6ff':'#FEF2F2')+';">'+icon+'</div>'+
       '<div class="flex-1 min-w-0">'+
         '<p class="text-sm font-semibold text-gray-900 truncate">'+escapeHtml_(it.judul)+'</p>'+
         '<p class="text-[11px] text-gray-400 truncate">'+subTxt+' · '+_kasFmtTgl_(it.tanggal)+'</p>'+
       '</div>'+
-      '<p class="text-sm font-bold flex-shrink-0 '+(isIn?'text-green-600':'text-red-500')+'">'+(isIn?'+':'-')+nominalTxt+'</p>'+
+      '<p class="text-sm font-bold flex-shrink-0 '+(isIn?'text-blue-600':'text-red-500')+'">'+(isIn?'+':'-')+nominalTxt+'</p>'+
     '</div>';
   };
 
@@ -10232,7 +10232,7 @@ function _renderKasReport_(res){
   var summary =
     '<div class="flex items-center justify-between mb-1"><p class="text-xs font-bold text-gray-500 uppercase tracking-wide">Ringkasan</p>'+yearSel+'</div>'+
     '<div class="bg-white rounded-2xl border border-gray-100 p-3 grid grid-cols-3 divide-x divide-gray-100">'+
-      '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 uppercase">Masuk</p><p class="text-sm font-black text-green-600 mt-1 whitespace-nowrap">'+_kasRpShort_(res.masukAll)+'</p></div>'+
+      '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 uppercase">Masuk</p><p class="text-sm font-black text-blue-600 mt-1 whitespace-nowrap">'+_kasRpShort_(res.masukAll)+'</p></div>'+
       '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 uppercase">Keluar</p><p class="text-sm font-black text-red-500 mt-1 whitespace-nowrap">'+_kasRpShort_(res.keluarAll)+'</p></div>'+
       '<div class="px-2 text-center"><p class="text-[10px] text-gray-400 uppercase">Saldo</p><p class="text-sm font-black '+(res.saldoEfektif>=0?'text-gray-900':'text-red-600')+' mt-1 whitespace-nowrap">'+_kasRpShort_(res.saldoEfektif)+'</p></div>'+
     '</div>';
@@ -10243,7 +10243,7 @@ function _renderKasReport_(res){
       ? '<button onclick="_kasShowDetail_(\'month\','+m.idx+')" class="text-red-500 font-semibold underline decoration-dotted underline-offset-2">'+_kasRpFull_(m.keluar)+'</button>'
       : '<span class="text-gray-300">-</span>';
     var masukCell = m.masuk
-      ? '<button onclick="_kasShowDetail_(\'monthIn\','+m.idx+')" class="text-green-600 font-semibold underline decoration-dotted underline-offset-2">'+_kasRpFull_(m.masuk)+'</button>'
+      ? '<button onclick="_kasShowDetail_(\'monthIn\','+m.idx+')" class="text-blue-600 font-semibold underline decoration-dotted underline-offset-2">'+_kasRpFull_(m.masuk)+'</button>'
       : '<span class="text-gray-300">-</span>';
     return '<tr class="border-t border-gray-50">'+
       '<td class="py-1.5 text-gray-600">'+m.label+'</td>'+
@@ -10266,7 +10266,7 @@ function _renderKasReport_(res){
 
   var katsIn = Object.keys(res.byKategoriMasuk||{}).sort(function(a,b){return res.byKategoriMasuk[b]-res.byKategoriMasuk[a];});
   var catBlockIn = katsIn.length
-    ? '<div class="bg-white rounded-2xl border border-gray-100 p-3"><p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Pemasukan per Kategori '+res.year+'</p>'+katsIn.map(function(k){var kEsc=k.replace(/'/g,"\\'");return '<button onclick="_kasShowDetail_(\'katIn\',\''+kEsc+'\')" class="w-full flex justify-between items-center text-xs py-1.5 active:opacity-60"><span class="text-gray-600 flex items-center gap-1">'+k+'<svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span><span class="font-semibold text-green-700">'+_kasRpFull_(res.byKategoriMasuk[k])+'</span></button>';}).join('')+'</div>'
+    ? '<div class="bg-white rounded-2xl border border-gray-100 p-3"><p class="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Pemasukan per Kategori '+res.year+'</p>'+katsIn.map(function(k){var kEsc=k.replace(/'/g,"\\'");return '<button onclick="_kasShowDetail_(\'katIn\',\''+kEsc+'\')" class="w-full flex justify-between items-center text-xs py-1.5 active:opacity-60"><span class="text-gray-600 flex items-center gap-1">'+k+'<svg class="w-3 h-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span><span class="font-semibold text-blue-700">'+_kasRpFull_(res.byKategoriMasuk[k])+'</span></button>';}).join('')+'</div>'
     : '';
 
   var awalLine = (res.saldoAwal && res.saldoAwal !== 0)
@@ -10321,10 +10321,10 @@ function _kasShowDetail_(type, key){
   }
   total = items.reduce(function(s,e){ return s + Number(e.nominal||0); }, 0);
 
-  var accent = isIncome ? 'text-green-700' : 'text-red-600';
+  var accent = isIncome ? 'text-blue-700' : 'text-red-600';
   // Kartu total dibedakan warnanya dari kartu rincian (yg putih) — tinted
   var totalCardStyle = isIncome
-    ? 'background:#F0FDF4;border:1px solid #BBF7D0;'
+    ? 'background:#eff6ff;border:1px solid #bfdbfe;'
     : 'background:#FEF2F2;border:1px solid #FECACA;';
   var head =
     '<div class="flex items-center justify-between mb-1">' +
@@ -10357,7 +10357,7 @@ function _kasShowDetail_(type, key){
       }
       return '<div class="bg-white rounded-2xl border border-gray-100 p-3 flex items-start justify-between gap-2">' +
         '<div class="min-w-0">' + inner + '</div>' +
-        '<span class="text-sm font-black text-green-600 flex-shrink-0">'+_kasRpFull_(e.nominal)+'</span>' +
+        '<span class="text-sm font-black text-blue-600 flex-shrink-0">'+_kasRpFull_(e.nominal)+'</span>' +
       '</div>';
     }).join('');
   } else {
@@ -10407,12 +10407,12 @@ function _kasDownloadPDF_(){
 function _kasBuildPDF_(res, settings){
   settings = settings || {};
   var rows = res.months.filter(function(m){return m.masuk||m.keluar;}).map(function(m){
-    return '<tr><td>'+m.label+' '+res.year+'</td><td style="text-align:right;color:#16a34a">'+(m.masuk?_kasRpFull_(m.masuk):'-')+'</td><td style="text-align:right;color:#dc2626">'+(m.keluar?_kasRpFull_(m.keluar):'-')+'</td><td style="text-align:right">'+_kasRpFull_(m.saldoRun)+'</td></tr>';
+    return '<tr><td>'+m.label+' '+res.year+'</td><td style="text-align:right;color:#2563eb">'+(m.masuk?_kasRpFull_(m.masuk):'-')+'</td><td style="text-align:right;color:#dc2626">'+(m.keluar?_kasRpFull_(m.keluar):'-')+'</td><td style="text-align:right">'+_kasRpFull_(m.saldoRun)+'</td></tr>';
   }).join('') || '<tr><td colspan="4" style="text-align:center;color:#999">Belum ada transaksi</td></tr>';
   var kats = Object.keys(res.byKategori||{}).sort(function(a,b){return res.byKategori[b]-res.byKategori[a];});
   var catRows = kats.map(function(k){return '<tr><td>'+k+'</td><td style="text-align:right">'+_kasRpFull_(res.byKategori[k])+'</td></tr>';}).join('');
   var katsIn = Object.keys(res.byKategoriMasuk||{}).sort(function(a,b){return res.byKategoriMasuk[b]-res.byKategoriMasuk[a];});
-  var catRowsIn = katsIn.map(function(k){return '<tr><td>'+k+'</td><td style="text-align:right;color:#16a34a">'+_kasRpFull_(res.byKategoriMasuk[k])+'</td></tr>';}).join('');
+  var catRowsIn = katsIn.map(function(k){return '<tr><td>'+k+'</td><td style="text-align:right;color:#2563eb">'+_kasRpFull_(res.byKategoriMasuk[k])+'</td></tr>';}).join('');
 
   // Rincian transaksi di PDF — fokus BULAN BERJALAN (kalau tahun = tahun sekarang)
   var _MN_FULL = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -10431,7 +10431,7 @@ function _kasBuildPDF_(res, settings){
   var incDetailRows = incSel.map(function(e){
     var lt = e.late ? ' <span style="color:#dc2626;font-weight:700">· Telat</span>' : '';
     var srcLabel = e.manual ? (e.kategori || 'Pemasukan') : ('Blok ' + e.blok);
-    return '<tr><td>'+_kasFmtTgl_(e.tanggal)+'</td><td>'+srcLabel+'</td><td>'+(e.periode||'-')+lt+'</td><td style="text-align:right;color:#16a34a">'+_kasRpFull_(e.nominal)+'</td></tr>';
+    return '<tr><td>'+_kasFmtTgl_(e.tanggal)+'</td><td>'+srcLabel+'</td><td>'+(e.periode||'-')+lt+'</td><td style="text-align:right;color:#2563eb">'+_kasRpFull_(e.nominal)+'</td></tr>';
   }).join('');
 
   // Jejak pencetak (untuk watermark + footer)
@@ -10451,7 +10451,7 @@ function _kasBuildPDF_(res, settings){
   if(collMi>=0){
     pRows += '<div class="prow"><span>Penagihan '+_MN_FULL[collMi]+' '+res.year+'</span><span><b>'+paidM+'/'+(res.totalRumah||0)+' rumah ('+rate+'%)</b></span></div>';
     var mc = res.months[collMi] || {masuk:0,keluar:0};
-    pRows += '<div class="prow"><span>Net '+_MN_FULL[collMi]+'</span><span><span style="color:#16a34a">+'+_kasRpFull_(mc.masuk)+'</span> / <span style="color:#dc2626">−'+_kasRpFull_(mc.keluar)+'</span></span></div>';
+    pRows += '<div class="prow"><span>Net '+_MN_FULL[collMi]+'</span><span><span style="color:#2563eb">+'+_kasRpFull_(mc.masuk)+'</span> / <span style="color:#dc2626">−'+_kasRpFull_(mc.keluar)+'</span></span></div>';
   }
   pRows += '<div class="prow"><span>Total tunggakan</span><span><b>'+(res.tunggakanHouses||0)+' rumah · '+(res.tunggakanMonths||0)+' bulan</b>'+(res.tunggakanAmount?(' · '+_kasRpFull_(res.tunggakanAmount)):'')+'</span></div>';
   if(res.saldoAwal){ pRows += '<div class="prow"><span>Saldo awal (migrasi)</span><span><b>'+_kasRpFull_(res.saldoAwal)+'</b></span></div>'; }
@@ -10492,7 +10492,7 @@ function _kasBuildPDF_(res, settings){
       ? '<div style="display:flex;align-items:center;gap:12px"><img src="'+settings.logo+'" style="height:46px;width:auto;object-fit:contain"><h1>Laporan Kas IPL — Jade Park Serpong 2</h1></div>'
       : '<h1>Laporan Kas IPL — Jade Park Serpong 2</h1>')+
     '<div class="sub">Tahun '+res.year+' · dibuat '+res.generatedAt+'</div>'+
-    '<div class="cards"><div class="card"><div class="l">Masuk</div><div class="v" style="color:#16a34a">'+_kasRpFull_(res.masukAll)+'</div></div>'+
+    '<div class="cards"><div class="card"><div class="l">Masuk</div><div class="v" style="color:#2563eb">'+_kasRpFull_(res.masukAll)+'</div></div>'+
       '<div class="card"><div class="l">Keluar</div><div class="v" style="color:#dc2626">'+_kasRpFull_(res.keluarAll)+'</div></div>'+
       '<div class="card"><div class="l">Saldo Efektif</div><div class="v">'+_kasRpFull_(res.saldoEfektif)+'</div></div></div>'+
     penagihanBox+
@@ -10732,7 +10732,7 @@ function _renderBroadcastHistory_(history) {
     }
     if (h.channels.indexOf('wa') !== -1) {
       var waOk = h.waSuccess === true;
-      badges += '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ' + (waOk ? 'bg-green-50 text-green-600' : 'bg-red-50 text-red-500') + '">WhatsApp'
+      badges += '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold ' + (waOk ? 'bg-blue-50 text-blue-600' : 'bg-red-50 text-red-500') + '">WhatsApp'
         + ' · ' + (h.waSentTo || 0) + '/' + (h.waTotal || 0) + '</span>';
     }
     return '<div class="rounded-2xl border border-gray-100 bg-gray-50 p-3.5">'
@@ -10905,7 +10905,7 @@ function _renderAdminSummary_(res) {
   var st = res.status || {};
   var total = res.totalRumah || 0;
   var cards = [
-    { key:'dihuni',      label:'Dihuni',       count:st.dihuni||0,      cls:'sc-green', accent:'#16A34A', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>' },
+    { key:'dihuni',      label:'Dihuni',       count:st.dihuni||0,      cls:'sc-green', accent:'#2563eb', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>' },
     { key:'tidakDihuni', label:'Tidak Dihuni', count:st.tidakDihuni||0, cls:'sc-amber', accent:'#D97706', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><line x1="9" y1="22" x2="9" y2="12"/><line x1="15" y1="22" x2="15" y2="12"/>' },
     { key:'bank',        label:'Milik Bank',   count:st.bank||0,        cls:'sc-blue',  accent:'#2563EB', icon:'<rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' }
   ];
@@ -11274,7 +11274,7 @@ function openKasIPL(year) {
   loadingDiv.innerHTML =
     '<svg style="width:24px;height:24px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none">' +
       '<circle cx="12" cy="12" r="10" stroke="#e5e7eb" stroke-width="3"/>' +
-      '<path d="M12 2a10 10 0 0 1 10 10" stroke="#43A047" stroke-width="3"/>' +
+      '<path d="M12 2a10 10 0 0 1 10 10" stroke="#2563eb" stroke-width="3"/>' +
     '</svg>' +
     '<p style="font-size:13px;color:#9ca3af;font-family:sans-serif;">Memuat laporan...</p>';
 
@@ -11319,8 +11319,8 @@ function _showKasIplFallback_(container, url, year) {
 
   // Icon
   div.innerHTML =
-    '<div style="width:56px;height:56px;background:#f0fdf4;border-radius:16px;display:flex;align-items:center;justify-content:center;">' +
-      '<svg width="28" height="28" fill="none" stroke="#16a34a" stroke-width="1.8" viewBox="0 0 24 24">' +
+    '<div style="width:56px;height:56px;background:#eff6ff;border-radius:16px;display:flex;align-items:center;justify-content:center;">' +
+      '<svg width="28" height="28" fill="none" stroke="#2563eb" stroke-width="1.8" viewBox="0 0 24 24">' +
         '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>' +
         '<path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>' +
       '</svg>' +
@@ -11332,7 +11332,7 @@ function _showKasIplFallback_(container, url, year) {
     '<a href="' + url.replace('/pubhtml?gid', '/edit?gid').replace('&single=true&widget=true&headers=false', '') + '" ' +
        'target="_blank" ' +
        'style="display:flex;align-items:center;gap:8px;' +
-              'background:#16a34a;color:#fff;' +
+              'background:#2563eb;color:#fff;' +
               'padding:12px 24px;border-radius:14px;' +
               'font-size:14px;font-weight:600;' +
               'text-decoration:none;">' +
@@ -11368,7 +11368,7 @@ function _loadPubKasFolder_(container, folderId) {
   ld.id = 'kasIplFallbackBanner';
   ld.style.cssText = 'position:absolute;inset:0;background:#f9fafb;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;z-index:10;';
   ld.innerHTML =
-    '<svg style="width:24px;height:24px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e5e7eb" stroke-width="3"/><path d="M12 2a10 10 0 0 1 10 10" stroke="#43A047" stroke-width="3"/></svg>' +
+    '<svg style="width:24px;height:24px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#e5e7eb" stroke-width="3"/><path d="M12 2a10 10 0 0 1 10 10" stroke="#2563eb" stroke-width="3"/></svg>' +
     '<p style="font-size:13px;color:#9ca3af;font-family:sans-serif;">Memuat...</p>';
   container.appendChild(ld);
 
@@ -11410,7 +11410,7 @@ function _renderKasIplBrowser_(container, res) {
       if (isLast) {
         bc += '<span style="font-weight:700;color:#374151;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + _escHtml_(label) + '</span>';
       } else {
-        bc += '<button onclick="_loadPubKasFolder_(null,\'' + node.id + '\')" style="background:none;border:none;padding:0;color:#16a34a;font-weight:600;cursor:pointer;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + _escHtml_(label) + '</button>';
+        bc += '<button onclick="_loadPubKasFolder_(null,\'' + node.id + '\')" style="background:none;border:none;padding:0;color:#2563eb;font-weight:600;cursor:pointer;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">' + _escHtml_(label) + '</button>';
       }
     });
     bc += '</div>';
@@ -11563,7 +11563,7 @@ function _openKasFile_(fileId, fileName) {
     var backBtn = document.createElement('button');
     backBtn.id = 'kasBackBtn';
     backBtn.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:13px;' +
-                            'color:#43A047;font-weight:600;background:none;border:none;' +
+                            'color:#2563eb;font-weight:600;background:none;border:none;' +
                             'cursor:pointer;padding:4px 8px 4px 0;flex-shrink:0;white-space:nowrap;';
     backBtn.innerHTML =
       '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">' +
@@ -11593,7 +11593,7 @@ function _openKasFile_(fileId, fileName) {
     dlBtn.href = 'https://drive.google.com/uc?export=download&id=' + fileId;
     dlBtn.target = '_blank';
     dlBtn.style.cssText = 'display:flex;align-items:center;gap:4px;font-size:12px;' +
-                          'color:#fff;font-weight:600;background:#43A047;border:none;' +
+                          'color:#fff;font-weight:600;background:#2563eb;border:none;' +
                           'cursor:pointer;padding:6px 12px;border-radius:10px;' +
                           'text-decoration:none;flex-shrink:0;margin-left:auto;margin-right:8px;';
     dlBtn.innerHTML =
@@ -11623,7 +11623,7 @@ function _openKasFile_(fileId, fileName) {
   ldOverlay.innerHTML =
     '<svg style="width:24px;height:24px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none">' +
       '<circle cx="12" cy="12" r="10" stroke="#e5e7eb" stroke-width="3"/>' +
-      '<path d="M12 2a10 10 0 0 1 10 10" stroke="#43A047" stroke-width="3"/>' +
+      '<path d="M12 2a10 10 0 0 1 10 10" stroke="#2563eb" stroke-width="3"/>' +
     '</svg>' +
     '<p style="font-size:13px;color:#9ca3af;font-family:sans-serif;">Memuat dokumen...</p>';
   if (frameParent2) frameParent2.appendChild(ldOverlay);
@@ -11872,7 +11872,7 @@ function openJualanDetail(id){
     (d.deskripsi? '<p class="text-[11px] font-semibold text-gray-400 uppercase tracking-wide mb-1">Deskripsi</p><p class="text-sm text-gray-600 leading-relaxed whitespace-pre-line">'+_esc_(d.deskripsi)+'</p>' : '<p class="text-sm text-gray-300 italic">Tanpa deskripsi.</p>');
 
   var isOwner = d.email && d.email.toLowerCase() === _jualanMyEmail_();
-  var waBtn = waNum? '<a href="https://wa.me/'+waNum+'?text='+waMsg+'" target="_blank" rel="noopener" aria-label="Chat penjual via WhatsApp" class="flex-1 py-3.5 rounded-2xl bg-green-500 text-white font-semibold text-sm text-center active:scale-95 transition flex items-center justify-center gap-2 shadow-md shadow-green-500/20"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.061z"/></svg>Chat WhatsApp</a>' : '<span class="flex-1 text-center text-xs text-gray-400 py-3.5">Kontak tidak tersedia</span>';
+  var waBtn = waNum? '<a href="https://wa.me/'+waNum+'?text='+waMsg+'" target="_blank" rel="noopener" aria-label="Chat penjual via WhatsApp" class="flex-1 py-3.5 rounded-2xl bg-blue-500 text-white font-semibold text-sm text-center active:scale-95 transition flex items-center justify-center gap-2 shadow-md shadow-blue-500/20"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.51 5.26l-.999 3.648 3.978-1.061z"/></svg>Chat WhatsApp</a>' : '<span class="flex-1 text-center text-xs text-gray-400 py-3.5">Kontak tidak tersedia</span>';
   var ownerIcons = isOwner? '<button onclick="openJualanForm(\''+d.id+'\')" aria-label="Edit lapak" class="w-12 h-12 flex items-center justify-center rounded-2xl bg-gray-100 text-gray-600 active:scale-95"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></button>' +
                 '<button onclick="deleteJualanConfirm(\''+d.id+'\')" aria-label="Hapus lapak" class="w-12 h-12 flex items-center justify-center rounded-2xl bg-red-50 text-red-600 active:scale-95"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg></button>' : '';
   // Status sold/terjual diatur dari menu Edit (bukan di footer detail)
@@ -12218,7 +12218,7 @@ function _renderJualanQC_(){
       : '<div class="w-12 h-12 rounded-xl bg-gray-100 flex-shrink-0 flex items-center justify-center text-gray-300"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/></svg></div>';
     var st = d.status || 'published';
     var statusText = d.approved
-      ? '<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>Sudah QC</span>'
+      ? '<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-blue-600"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>Sudah QC</span>'
       : '<span class="inline-flex items-center gap-1 text-[10px] font-semibold text-amber-600"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Belum QC</span>';
     var stChip = st==='takedown'
         ? '<span class="text-[9px] font-bold text-amber-700 bg-amber-100 px-1.5 py-px rounded">Diturunkan</span>'
@@ -12227,9 +12227,9 @@ function _renderJualanQC_(){
         : '';
     var primaryBtn = d.approved
       ? '<button onclick="toggleJualanApprove(\''+d.id+'\',false,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-amber-600 bg-amber-50 active:scale-95 transition">Batalkan</button>'
-      : '<button onclick="toggleJualanApprove(\''+d.id+'\',true,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-white bg-green-500 active:scale-95 transition flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Approve</button>';
+      : '<button onclick="toggleJualanApprove(\''+d.id+'\',true,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-white bg-blue-500 active:scale-95 transition flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Approve</button>';
     var takedownBtn = (st==='takedown')
-      ? '<button onclick="toggleJualanTakedown(\''+d.id+'\',false,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-green-600 bg-green-50 active:scale-95 transition">Publish</button>'
+      ? '<button onclick="toggleJualanTakedown(\''+d.id+'\',false,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-blue-600 bg-blue-50 active:scale-95 transition">Publish</button>'
       : '<button onclick="toggleJualanTakedown(\''+d.id+'\',true,this)" class="px-3 py-1.5 rounded-lg text-[12px] font-semibold text-red-500 bg-red-50 active:scale-95 transition">Takedown</button>';
     return '<div class="bg-white rounded-2xl border border-gray-100 p-3'+(st!=='published'?' opacity-75':'')+'">' +
       '<div class="flex gap-3 items-center">' + thumb +
@@ -12258,7 +12258,7 @@ function _renderJualanQC_(){
         '<div class="flex items-center gap-2">' +
           (pendingCount
             ? '<span class="text-[11px] font-semibold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full whitespace-nowrap">'+pendingCount+' belum QC</span>'
-            : '<span class="text-[11px] font-semibold text-green-600 bg-green-50 px-2.5 py-1 rounded-full whitespace-nowrap">Semua beres ✓</span>') +
+            : '<span class="text-[11px] font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full whitespace-nowrap">Semua beres ✓</span>') +
           '<button onclick="openJualanQC(true)" title="Muat ulang" class="w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 bg-gray-100 active:scale-95"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v6h6M20 20v-6h-6"/><path d="M5 19a9 9 0 0 0 14-5M19 5a9 9 0 0 0-14 5"/></svg></button>' +
         '</div>' +
       '</div>' +
@@ -12333,7 +12333,7 @@ function _jualanFormRenderStatus_(d){
   wrap.classList.remove('hidden');
   btn.onclick = _jualanFormToggleSold_;
   if(st === 'sold'){
-    btn.className = 'w-full mt-2 py-3.5 rounded-2xl text-sm font-bold text-white bg-green-500 active:scale-95 transition flex items-center justify-center gap-2 shadow-md shadow-green-500/25';
+    btn.className = 'w-full mt-2 py-3.5 rounded-2xl text-sm font-bold text-white bg-blue-500 active:scale-95 transition flex items-center justify-center gap-2 shadow-md shadow-blue-500/25';
     btn.innerHTML = '<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>Pasang Lagi';
     if(hint) hint.innerText = 'Lapak sedang ditandai TERJUAL — tersembunyi dari warga lain.';
   } else {
@@ -13277,13 +13277,13 @@ function _renderPollList_(data) {
   if (!list) return;
   list.innerHTML = data.map(function(p, idx) {
     var badge = p.status === 'Aktif'
-      ? '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-green-50 text-green-600">Aktif</span>'
+      ? '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600">Aktif</span>'
       : '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-gray-100 text-gray-500">Selesai</span>';
     var blokTotal = (p.myBlocks || []).length;
     var votedCount = (p.votedBlocks || []).length;
     var voteInfo = (p.status === 'Aktif' && blokTotal > 0)
       ? (votedCount >= blokTotal
-          ? '<span class="text-[11px] text-green-600 font-semibold">Sudah vote</span>'
+          ? '<span class="text-[11px] text-blue-600 font-semibold">Sudah vote</span>'
           : '<span class="text-[11px] text-primary font-semibold">Belum vote</span>')
       : '';
     var deadlineTxt = p.deadline ? ('Deadline ' + _fmtTanggalID_(p.deadline)) : 'Tanpa deadline';
@@ -13402,7 +13402,7 @@ function _renderPollDetail_(p) {
   var body = document.getElementById('pollDetailBody');
   var isAdmin = currentUser && currentUser.role === 'admin';
   var statusBadge = p.status === 'Aktif'
-    ? '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-green-50 text-green-600 flex-shrink-0">Aktif</span>'
+    ? '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-blue-50 text-blue-600 flex-shrink-0">Aktif</span>'
     : '<span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-gray-100 text-gray-500 flex-shrink-0">Selesai</span>';
 
   var myBlocks = p.myBlocks || [];
@@ -13439,7 +13439,7 @@ function _renderPollDetail_(p) {
       + '<span id="pollVoteLabel">Kirim Suara</span></button>';
     html += '</div>';
   } else if (p.status === 'Aktif' && myBlocks.length > 0 && notVoted.length === 0) {
-    html += '<p class="text-xs text-center text-green-600 font-semibold bg-green-50 rounded-xl py-2">Anda sudah memberikan suara untuk semua blok Anda. Terima kasih!</p>';
+    html += '<p class="text-xs text-center text-blue-600 font-semibold bg-blue-50 rounded-xl py-2">Anda sudah memberikan suara untuk semua blok Anda. Terima kasih!</p>';
   } else if (p.status !== 'Aktif') {
     html += '<p class="text-xs text-center text-gray-400 bg-gray-50 rounded-xl py-2">Voting sudah ditutup.</p>';
   } else if (myBlocks.length === 0) {
@@ -13635,7 +13635,7 @@ function onDaftarBlokInput() {
         if (input.value.trim() !== val) return;
         if (!info) return;
         if (res && res.found) {
-          info.className = 'rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm leading-relaxed text-green-700';
+          info.className = 'rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm leading-relaxed text-blue-700';
           info.innerHTML = 'Rumah <strong>' + val + '</strong> tercatat atas nama <strong>' + (res.nama || '-') + '</strong>. ' +
             'Jika kamu penghuni baru atau pindah, lanjutkan isi data kamu di bawah.';
         } else {
@@ -13969,7 +13969,7 @@ var _adminLaporTab_   = 'all';
 var _LAPOR_STATUS_CFG_ = {
   'Masuk'    : { bg: 'bg-red-50',    text: 'text-red-600',    border: 'border-red-200',    dotCls: 'bg-red-500' },
   'Diproses' : { bg: 'bg-blue-50',   text: 'text-blue-600',   border: 'border-blue-200',   dotCls: 'bg-blue-500' },
-  'Selesai'  : { bg: 'bg-green-50',  text: 'text-green-700',  border: 'border-green-200',  dotCls: 'bg-green-500' },
+  'Selesai'  : { bg: 'bg-blue-50',  text: 'text-blue-700',  border: 'border-blue-200',  dotCls: 'bg-blue-500' },
   'Ditolak'  : { bg: 'bg-gray-100',  text: 'text-gray-500',   border: 'border-gray-200',   dotCls: 'bg-gray-400' }
 };
 function _statusDot_(cfg) { return '<span class="inline-block w-2 h-2 rounded-full flex-shrink-0 ' + (cfg.dotCls||'bg-gray-400') + '"></span>'; }
@@ -14261,12 +14261,12 @@ function clearAllNotifs_() {
 function _notifIconHtml_(subType) {
   var cfg = {
     ipl_submit  : { bg:'#3B82F6', d:'M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M12 12V4m0 0L8 8m4-4l4 4' },
-    ipl_confirm : { bg:'#10B981', d:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
+    ipl_confirm : { bg:'#3b82f6', d:'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' },
     ipl_reject  : { bg:'#EF4444', d:'M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z' },
     pedoman     : { bg:'#8B5CF6', d:'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' },
     kas         : { bg:'#F59E0B', d:'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' },
     info_cluster: { bg:'#6366F1', d:'M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z' },
-    info_fasum  : { bg:'#14B8A6', d:'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
+    info_fasum  : { bg:'#3b82f6', d:'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4' },
     reminder    : { bg:'#F97316', d:'M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9' },
     info        : { bg:'#94A3B8', d:'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z' }
   };
@@ -14517,11 +14517,11 @@ var _bannerIdx_     = 0;
 // Palet warna banner — satu tone family, cukup vivid
 var _BANNER_PALETTES_ = [
   'linear-gradient(135deg,#4f46e5,#7c3aed)', // indigo → violet
-  'linear-gradient(135deg,#0f766e,#0891b2)', // teal → cyan
+  'linear-gradient(135deg,#1d4ed8,#0891b2)', // teal → cyan
   'linear-gradient(135deg,#1d4ed8,#4f46e5)', // blue → indigo
   'linear-gradient(135deg,#7c3aed,#db2777)', // violet → pink
-  'linear-gradient(135deg,#065f46,#0f766e)', // emerald → teal
-  'linear-gradient(135deg,#1e40af,#0f766e)'  // navy → teal
+  'linear-gradient(135deg,#1e3a8a,#1d4ed8)', // emerald → teal
+  'linear-gradient(135deg,#1e40af,#1d4ed8)'  // navy → teal
 ];
 
 var _bannerItems_ = [];
@@ -14775,7 +14775,7 @@ function _renderLomba17List_(events) {
       return '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-red-50 text-red-600">' + _escapeHtml_(k) + '</span>';
     }).join(' ');
     var myBadge = ev.myCount > 0
-      ? '<div class="mt-2"><span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-green-100 text-green-700">' + _LOMBA17_ICON_CHECK_ + ev.myCount + ' peserta terdaftar dari rumah Anda</span></div>'
+      ? '<div class="mt-2"><span class="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700">' + _LOMBA17_ICON_CHECK_ + ev.myCount + ' peserta terdaftar dari rumah Anda</span></div>'
       : '';
 
     var card = document.createElement('div');
@@ -14787,7 +14787,7 @@ function _renderLomba17List_(events) {
           '<p class="text-xs text-gray-400 mt-0.5">' + _fmtLomba17Tanggal_(ev.tanggal) + (ev.jam ? ' · ' + _escapeHtml_(ev.jam) : '') + '</p>' +
           (ev.lokasi ? '<p class="text-xs text-gray-400 mt-0.5">' + _LOMBA17_ICON_PIN_ + _escapeHtml_(ev.lokasi) + '</p>' : '') +
         '</div>' +
-        '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ' + (isOpen ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500') + '">' + (isOpen ? 'Buka' : 'Ditutup') + '</span>' +
+        '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ' + (isOpen ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500') + '">' + (isOpen ? 'Buka' : 'Ditutup') + '</span>' +
       '</div>' +
       (ev.deskripsi ? '<p class="text-xs text-gray-500 mt-2">' + _escapeHtml_(ev.deskripsi) + '</p>' : '') +
       '<div class="flex flex-wrap gap-1.5 mt-2">' + kategoriHtml + '</div>' +
@@ -14962,7 +14962,7 @@ function _renderLomba17AdminList_(events) {
           (ev.lokasi ? '<p class="text-xs text-gray-400 mt-0.5">' + _LOMBA17_ICON_PIN_ + _escapeHtml_(ev.lokasi) + '</p>' : '') +
           (ev.tutupTanggal ? '<p class="text-xs text-amber-500 mt-0.5">' + _LOMBA17_ICON_CLOCK_ + 'Tutup otomatis ' + _fmtLomba17Tanggal_(ev.tutupTanggal) + (ev.tutupJam ? ' · ' + _escapeHtml_(ev.tutupJam) : '') + '</p>' : '') +
         '</div>' +
-        '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ' + (isOpen ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500') + '">' + (isOpen ? 'Buka' : 'Ditutup') + '</span>' +
+        '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ' + (isOpen ? 'bg-blue-100 text-blue-700' : 'bg-gray-100 text-gray-500') + '">' + (isOpen ? 'Buka' : 'Ditutup') + '</span>' +
       '</div>' +
       '<div class="flex flex-wrap gap-1.5 mt-2">' + kategoriHtml + '</div>';
 
@@ -14981,7 +14981,7 @@ function _renderLomba17AdminList_(events) {
     editBtn.onclick = function() { openLomba17EventForm(ev.id); };
 
     var toggleBtn = document.createElement('button');
-    toggleBtn.className = 'flex-1 py-2 rounded-xl font-semibold text-xs active:scale-95 transition ' + (isOpen ? 'bg-amber-50 text-amber-600' : 'bg-green-50 text-green-600');
+    toggleBtn.className = 'flex-1 py-2 rounded-xl font-semibold text-xs active:scale-95 transition ' + (isOpen ? 'bg-amber-50 text-amber-600' : 'bg-blue-50 text-blue-600');
     toggleBtn.innerText = isOpen ? 'Tutup Daftar' : 'Buka Daftar';
     toggleBtn.onclick = function() { toggleLomba17EventStatus(ev.id, isOpen ? 'Tutup' : 'Buka'); };
 
@@ -15085,7 +15085,7 @@ function setLomba17EventFormStatus(status) {
   var bukaBtn = document.getElementById('lomba17EventFormStatusBuka');
   var tutupBtn = document.getElementById('lomba17EventFormStatusTutup');
   bukaBtn.className = 'flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border transition ' +
-    (status === 'Buka' ? 'bg-green-500 text-white border-green-500' : 'bg-white text-gray-500 border-gray-200');
+    (status === 'Buka' ? 'bg-blue-500 text-white border-blue-500' : 'bg-white text-gray-500 border-gray-200');
   tutupBtn.className = 'flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold border transition ' +
     (status === 'Tutup' ? 'bg-gray-700 text-white border-gray-700' : 'bg-white text-gray-500 border-gray-200');
 }
@@ -15199,7 +15199,7 @@ function _renderLomba17PesertaList_(data) {
         '<p class="text-sm font-semibold text-gray-900 truncate">' + _escapeHtml_(p.namaPeserta) + '</p>' +
         '<p class="text-xs text-gray-400 truncate">' + _escapeHtml_(p.kategori) + (p.usia ? ' · ' + _escapeHtml_(p.usia) + ' th' : '') + ' · Blok ' + _escapeHtml_(p.blok) + '</p>' +
       '</div>' +
-      (waNum ? '<a href="https://wa.me/' + waNum + '" target="_blank" class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center text-green-600 flex-shrink-0"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.7 13.45L3 21l3.66-1.31a8.85 8.85 0 0 0 5.39 1.83h.01a8.94 8.94 0 0 0 8.94-8.94 8.85 8.85 0 0 0-3.4-6.26zM12.06 19.9h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81 1 1-2.74-.18-.28A7.43 7.43 0 0 1 12.06 4.56a7.39 7.39 0 0 1 5.24 12.61 7.36 7.36 0 0 1-5.24 2.73zm4.06-5.55c-.22-.11-1.31-.65-1.52-.72-.2-.08-.35-.11-.49.11-.15.22-.56.72-.69.86-.13.15-.25.16-.47.06-1.27-.64-2.1-1.14-2.95-2.59-.22-.39.22-.36.63-1.2.07-.15.04-.27-.03-.39-.07-.11-.32-.78-.45-1.05-.12-.27-.25-.23-.35-.23-.09 0-.2-.01-.31-.01-.11 0-.28.04-.43.2-.15.16-.58.57-.58 1.39 0 .82.6 1.61.69 1.72.08.11 1.16 1.78 2.84 2.5 1.93.83 1.93.56 2.27.53.35-.04 1.31-.53 1.49-1.05.19-.51.19-.95.13-1.05-.05-.09-.19-.14-.41-.25z"/></svg></a>' : '');
+      (waNum ? '<a href="https://wa.me/' + waNum + '" target="_blank" class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 flex-shrink-0"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4a8.94 8.94 0 0 0-7.7 13.45L3 21l3.66-1.31a8.85 8.85 0 0 0 5.39 1.83h.01a8.94 8.94 0 0 0 8.94-8.94 8.85 8.85 0 0 0-3.4-6.26zM12.06 19.9h-.01a7.4 7.4 0 0 1-3.78-1.04l-.27-.16-2.81 1 1-2.74-.18-.28A7.43 7.43 0 0 1 12.06 4.56a7.39 7.39 0 0 1 5.24 12.61 7.36 7.36 0 0 1-5.24 2.73zm4.06-5.55c-.22-.11-1.31-.65-1.52-.72-.2-.08-.35-.11-.49.11-.15.22-.56.72-.69.86-.13.15-.25.16-.47.06-1.27-.64-2.1-1.14-2.95-2.59-.22-.39.22-.36.63-1.2.07-.15.04-.27-.03-.39-.07-.11-.32-.78-.45-1.05-.12-.27-.25-.23-.35-.23-.09 0-.2-.01-.31-.01-.11 0-.28.04-.43.2-.15.16-.58.57-.58 1.39 0 .82.6 1.61.69 1.72.08.11 1.16 1.78 2.84 2.5 1.93.83 1.93.56 2.27.53.35-.04 1.31-.53 1.49-1.05.19-.51.19-.95.13-1.05-.05-.09-.19-.14-.41-.25z"/></svg></a>' : '');
     list.appendChild(row);
   });
 }
@@ -15291,7 +15291,7 @@ function _jagaWaBtnHtml_(noHp) {
   var hp = String(noHp || '').replace(/\D/g, '');
   if (!hp) return '';
   var waHp = hp.indexOf('0') === 0 ? '62' + hp.slice(1) : hp;
-  return '<a href="https://wa.me/' + waHp + '" target="_blank" class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500 flex items-center justify-center active:scale-95 transition shadow-sm">' +
+  return '<a href="https://wa.me/' + waHp + '" target="_blank" class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center active:scale-95 transition shadow-sm">' +
     '<svg class="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 24 24">' +
       '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>' +
     '</svg>' +
@@ -15484,7 +15484,7 @@ function _renderJagaWeekList_(data, monday) {
   var isToday = todayKey === key;
 
   var html = '';
-  html += '<div class="bg-white rounded-3xl border ' + (isToday ? 'border-primary bg-green-50/30' : 'border-gray-100') + ' p-4 shadow-sm">';
+  html += '<div class="bg-white rounded-3xl border ' + (isToday ? 'border-primary bg-blue-50/30' : 'border-gray-100') + ' p-4 shadow-sm">';
   html += '<div class="flex items-center justify-between mb-3">';
   html += '<p class="text-sm font-bold text-gray-900">' + dateLabel + '</p>';
   if (isToday) html += '<span class="text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full">Hari ini</span>';
@@ -16183,7 +16183,7 @@ function _syncFlagToggleUI_(key) {
   if (!btn) return;
   var on = _featureFlags_[key];
   btn.setAttribute('aria-checked', on ? 'true' : 'false');
-  btn.style.background = on ? '#10B981' : '#D1D5DB';
+  btn.style.background = on ? '#3b82f6' : '#D1D5DB';
   var knob = btn.querySelector('span');
   if (knob) knob.style.transform = on ? 'translateX(20px)' : 'translateX(0px)';
 }
@@ -16459,7 +16459,7 @@ function reconBreakdownHtml_(b) {
   ];
   return '<div class="flex flex-wrap gap-1 mt-1.5">' + items.map(function (it) {
     var full = it.p >= it.max, partial = it.p > 0 && it.p < it.max;
-    var cls = full ? 'bg-emerald-50 text-emerald-600' : (partial ? 'bg-amber-50 text-amber-600' : 'bg-gray-100 text-gray-400');
+    var cls = full ? 'bg-blue-50 text-blue-600' : (partial ? 'bg-amber-50 text-amber-600' : 'bg-gray-100 text-gray-400');
     var icon = reconIcon_(full ? 'check' : (partial ? 'partial' : 'x'), 'w-3 h-3');
     return '<span class="inline-flex items-center gap-1 text-[10px] px-1.5 py-0.5 rounded-md font-medium ' + cls + '">' + icon + it.l + ' ' + it.p + '/' + it.max + '</span>';
   }).join('') + '</div>';
@@ -16491,7 +16491,7 @@ function reconRender_(res) {
   // === AUTO-VERIFIED ===
   if (res.auto && res.auto.length) {
     html += '<div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">';
-    html += '<div class="px-4 py-2.5 border-b border-gray-50 text-xs font-bold text-emerald-600 flex items-center gap-1.5">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Auto-verified (' + res.auto.length + ')</div>';
+    html += '<div class="px-4 py-2.5 border-b border-gray-50 text-xs font-bold text-blue-600 flex items-center gap-1.5">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Auto-verified (' + res.auto.length + ')</div>';
     res.auto.forEach(function (it) {
       var applied = it.applied;
       var hasBukti = !!it.submission.bukti;
@@ -16501,14 +16501,14 @@ function reconRender_(res) {
         + '<p class="text-sm font-semibold text-gray-900 truncate">' + reconEsc_(it.submission.nama) + ' · ' + reconEsc_(it.submission.blok) + (hasBukti ? ' <span class="inline-flex items-center gap-0.5 align-middle text-[10px] text-blue-500 font-normal">' + reconIcon_('eye', 'w-3 h-3') + 'bukti</span>' : '') + '</p>'
         + '<p class="text-xs text-gray-400 truncate">' + reconEsc_(it.mutasi.nama_pengirim) + ' · ' + reconRupiah_(it.mutasi.nominal) + ' · ' + reconEsc_(it.mutasi.tanggal) + '</p>'
         + '</div>'
-        + '<span class="text-sm font-bold text-emerald-600 flex-shrink-0">' + it.score + '</span>'
+        + '<span class="text-sm font-bold text-blue-600 flex-shrink-0">' + it.score + '</span>'
         + '</div>'
         + reconBreakdownHtml_(it.breakdown)
         + (applied
-            ? '<div class="flex items-center gap-1 mt-2 text-xs text-emerald-600 font-semibold">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Terkonfirmasi otomatis</div>'
+            ? '<div class="flex items-center gap-1 mt-2 text-xs text-blue-600 font-semibold">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Terkonfirmasi otomatis</div>'
             : '<div class="flex gap-2 mt-2">'
                 + '<button onclick="reconReject(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-xs font-semibold active:scale-95 transition">Bukan / Tolak</button>'
-                + '<button onclick="reconConfirm(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-emerald-500 text-white text-xs font-semibold active:scale-95 transition">Konfirmasi</button>'
+                + '<button onclick="reconConfirm(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-blue-500 text-white text-xs font-semibold active:scale-95 transition">Konfirmasi</button>'
               + '</div>')
         + '</div>';
     });
@@ -16540,7 +16540,7 @@ function reconRender_(res) {
         + '<p class="text-[10px] text-gray-400 mt-1">' + reconReason_(b) + '</p>'
         + '<div class="flex gap-2 mt-2">'
         + '<button onclick="reconReject(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-gray-100 text-gray-600 text-xs font-semibold active:scale-95 transition">Bukan / Tolak</button>'
-        + '<button onclick="reconConfirm(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-emerald-500 text-white text-xs font-semibold active:scale-95 transition">Konfirmasi</button>'
+        + '<button onclick="reconConfirm(' + it.submission.rowNum + ', this)" class="flex-1 py-1.5 rounded-lg bg-blue-500 text-white text-xs font-semibold active:scale-95 transition">Konfirmasi</button>'
         + '</div>'
         + '</div>';
     });
@@ -16558,7 +16558,7 @@ function reconRender_(res) {
         + '<div class="flex-1 min-w-0">'
         + '<p class="text-sm font-semibold text-gray-900 truncate">' + reconEsc_(it.warga.nama) + ' · ' + reconEsc_(it.warga.blok)
         + (it.matchedBy === 'blok'
-            ? ' <span class="inline-flex items-center gap-0.5 align-middle text-[10px] text-emerald-600 font-normal">' + reconIcon_('check', 'w-3 h-3') + 'via blok</span>'
+            ? ' <span class="inline-flex items-center gap-0.5 align-middle text-[10px] text-blue-600 font-normal">' + reconIcon_('check', 'w-3 h-3') + 'via blok</span>'
             : ' <span class="inline-flex items-center gap-0.5 align-middle text-[10px] text-amber-600 font-normal">' + reconIcon_('alert', 'w-3 h-3') + 'via nama ' + (it.skorNama || 0) + '%</span>')
         + '</p>'
         + '<p class="text-xs text-gray-400 truncate">Pengirim: ' + reconEsc_(it.mutasi.nama_pengirim) + ' · ' + reconRupiah_(it.mutasi.nominal) + '</p>'
@@ -16568,7 +16568,7 @@ function reconRender_(res) {
         + '<button onclick="reconRemindWAByIdx_(' + i + ', this)"' + (it.warga.noHp ? '' : ' disabled')
         + ' class="flex-1 inline-flex items-center justify-center gap-1 py-1.5 rounded-lg bg-blue-50 text-blue-600 text-xs font-semibold active:scale-95 transition disabled:opacity-40">' + reconIcon_('bell', 'w-3.5 h-3.5') + 'Reminder WA</button>'
         + '<button onclick="reconConfirmUnsubByIdx_(' + i + ', this)"' + (adaPeriode ? '' : ' disabled')
-        + ' class="flex-1 inline-flex items-center justify-center gap-1 py-1.5 rounded-lg bg-emerald-500 text-white text-xs font-semibold active:scale-95 transition disabled:opacity-40">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Konfirmasi</button>'
+        + ' class="flex-1 inline-flex items-center justify-center gap-1 py-1.5 rounded-lg bg-blue-500 text-white text-xs font-semibold active:scale-95 transition disabled:opacity-40">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Konfirmasi</button>'
         + '</div>'
         + (adaPeriode ? '' : '<p class="text-[10px] text-gray-400 mt-1">Periode tak terdeteksi di mutasi — pakai Reminder WA agar warga submit sendiri.</p>')
         + '</div>';
@@ -16608,7 +16608,7 @@ function reconConfirm(rowNumber, btn) {
   }).then(function (res) {
     if (res && res.success) {
       var row = document.getElementById('reconRow-' + rowNumber);
-      if (row) { row.style.opacity = '0.5'; row.innerHTML = '<p class="text-xs text-emerald-600 font-semibold py-1 flex items-center gap-1">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Dikonfirmasi</p>'; }
+      if (row) { row.style.opacity = '0.5'; row.innerHTML = '<p class="text-xs text-blue-600 font-semibold py-1 flex items-center gap-1">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Dikonfirmasi</p>'; }
       if (typeof showToast === 'function') showToast('Pembayaran dikonfirmasi', 'success');
     } else {
       reconResetBtns_(btn, 'Konfirmasi');
@@ -16705,7 +16705,7 @@ function reconConfirmUnsubByIdx_(i, btn) {
   }).then(function (res) {
     if (res && res.ok) {
       var row = document.getElementById('reconPns-' + i);
-      if (row) { row.style.opacity = '0.5'; row.innerHTML = '<p class="text-xs text-emerald-600 font-semibold py-1 flex items-center gap-1">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Dikonfirmasi & diposting</p>'; }
+      if (row) { row.style.opacity = '0.5'; row.innerHTML = '<p class="text-xs text-blue-600 font-semibold py-1 flex items-center gap-1">' + reconIcon_('check', 'w-3.5 h-3.5') + 'Dikonfirmasi & diposting</p>'; }
       if (typeof showToast === 'function') showToast('Pembayaran ' + it.warga.nama + ' dikonfirmasi', 'success');
     } else {
       reconResetBtns_(btn, 'Konfirmasi');

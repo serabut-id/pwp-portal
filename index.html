@@ -32,7 +32,7 @@
       theme: {
         extend: {
           colors: {
-            primary: '#43A047',
+            primary: '#2563eb',
             darkbg: '#0B1220',
             softbg: '#F7F9F7',
           },
@@ -46,7 +46,7 @@
 
 <link rel="stylesheet" href="/style.css">
 <link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#43A047">
+<meta name="theme-color" content="#2563eb">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -273,7 +273,7 @@
   <div class="mx-5 mb-4">
     <div id="homeTunggakanCard"
          class="rounded-3xl p-5 text-white relative overflow-hidden cursor-pointer active:scale-[0.98] transition"
-         style="background:#2E7D32;"
+         style="background:#1d4ed8;"
          onclick="openTunggakanDetail()">
 
       <!-- DEKORASI CIRCLE -->
@@ -284,12 +284,12 @@
       <div class="relative z-10">
         <!-- ROW 0: nama komplek/perumahan -->
         <div class="flex items-center gap-1.5 mb-3 pb-3 border-b border-white/10">
-          <svg class="w-4 h-4 text-green-200 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <svg class="w-4 h-4 text-blue-200 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <p class="text-sm font-bold text-white/90 tracking-wide js-perumahan">Jade Park Serpong 2</p>
         </div>
         <!-- ROW 1: label + badge -->
         <div class="flex justify-between items-center">
-          <p class="text-[11px] text-green-200 font-medium tracking-wide">Total Tunggakan</p>
+          <p class="text-[11px] text-blue-200 font-medium tracking-wide">Total Tunggakan</p>
           <div id="homeIplBadge"
                class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-white/15 text-white">
             —
@@ -302,7 +302,7 @@
         <!-- ROW 3: nominal besar + lihat detail -->
         <div class="mt-3 flex items-end justify-between">
           <div>
-            <p class="text-[11px] text-green-200 mb-0.5">Total tagihan</p>
+            <p class="text-[11px] text-blue-200 mb-0.5">Total tagihan</p>
             <p id="homeIplNominal" class="text-3xl font-bold tracking-tight">Memuat...</p>
           </div>
           <div class="flex items-center gap-1 text-white/70 text-xs mb-1">
@@ -325,13 +325,13 @@
               </svg>
             </div>
             <div class="flex items-center gap-1">
-              <p class="text-[11px] text-green-200">Saldo Kas Efektif</p>
-              <span class="text-[9px] font-bold text-green-900 bg-green-200/90 px-1.5 py-px rounded-full leading-none">Detail</span>
+              <p class="text-[11px] text-blue-200">Saldo Kas Efektif</p>
+              <span class="text-[9px] font-bold text-blue-900 bg-blue-200/90 px-1.5 py-px rounded-full leading-none">Detail</span>
             </div>
           </div>
           <div class="flex items-center gap-1.5">
             <p id="homeSaldoEfektifMini" class="text-xl font-black text-white tracking-tight">••••••</p>
-            <svg class="w-4 h-4 text-green-200 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            <svg class="w-4 h-4 text-blue-200 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
           </div>
         </div>
       </div>
@@ -373,7 +373,7 @@
       <button onclick="openKontakChooser()"
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="rounded-2xl flex items-center justify-center shadow-sm"
-             style="width:52px;height:52px;background:linear-gradient(135deg,#047857,#10B981);">
+             style="width:52px;height:52px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg class="w-6 h-6" fill="white" stroke="none" viewBox="0 0 24 24">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6108 1.75606C14.1978 1.70406 13.8278 2.00706 13.7828 2.41806C13.7368 2.83006 14.0338 3.20006 14.4448 3.24606C17.8218 3.62106 20.4438 6.24106 20.8228 9.61706C20.8658 10.0001 21.1898 10.2831 21.5668 10.2831C21.5948 10.2831 21.6238 10.2811 21.6518 10.2781C22.0628 10.2331 22.3588 9.86106 22.3128 9.44906C21.8558 5.37306 18.6888 2.20906 14.6108 1.75606Z"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M17.2915 9.68765C17.3615 10.0457 17.6755 10.2937 18.0265 10.2937C18.0745 10.2937 18.1225 10.2897 18.1715 10.2807C18.5775 10.2017 18.8435 9.80665 18.7645 9.40065C18.3575 7.31865 16.7505 5.71165 14.6705 5.30765C14.2735 5.22865 13.8705 5.49465 13.7915 5.90165C13.7125 6.30765 13.9785 6.70165 14.3855 6.78065C15.8615 7.06765 17.0035 8.20865 17.2915 9.68765Z"/>
@@ -388,7 +388,7 @@
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="relative rounded-2xl flex items-center justify-center shadow-sm"
              style="width:52px;height:52px;background:linear-gradient(135deg,#B45309,#F59E0B);">
-          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#00AA5B;letter-spacing:0.04em;">New</span>
+          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#2563eb;letter-spacing:0.04em;">New</span>
           <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="1.9" viewBox="0 0 24 24">
             <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
             <rect x="9" y="3" width="6" height="4" rx="1"/>
@@ -403,7 +403,7 @@
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="relative rounded-2xl flex items-center justify-center shadow-sm"
              style="width:52px;height:52px;background:linear-gradient(135deg,#86198F,#D946EF);">
-          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#00AA5B;letter-spacing:0.04em;">New</span>
+          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#2563eb;letter-spacing:0.04em;">New</span>
           <svg class="w-6 h-6" fill="white" stroke="none" viewBox="0 0 24 24">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5949 12.6875H8.37489C7.96089 12.6875 7.62489 12.3515 7.62489 11.9375C7.62489 11.5235 7.96089 11.1875 8.37489 11.1875H15.5949C16.0089 11.1875 16.3449 11.5235 16.3449 11.9375C16.3449 12.3515 16.0089 12.6875 15.5949 12.6875ZM15.5949 16.4465H8.37489C7.96089 16.4465 7.62489 16.1105 7.62489 15.6965C7.62489 15.2825 7.96089 14.9465 8.37489 14.9465H15.5949C16.0089 14.9465 16.3449 15.2825 16.3449 15.6965C16.3449 16.1105 16.0089 16.4465 15.5949 16.4465ZM8.37489 7.42651H11.1299C11.5439 7.42651 11.8799 7.76251 11.8799 8.17651C11.8799 8.59051 11.5439 8.92651 11.1299 8.92651H8.37489C7.96089 8.92651 7.62489 8.59051 7.62489 8.17651C7.62489 7.76251 7.96089 7.42651 8.37489 7.42651ZM11.9999 2.24951C5.43489 2.24951 3.10889 4.80151 3.10889 12.0005C3.10889 19.1985 5.43489 21.7505 11.9999 21.7505C18.5639 21.7505 20.8909 19.1985 20.8909 12.0005C20.8909 4.80151 18.5639 2.24951 11.9999 2.24951Z"/>
           </svg>
@@ -416,7 +416,7 @@
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="relative rounded-2xl flex items-center justify-center shadow-sm"
              style="width:52px;height:52px;background:linear-gradient(135deg,#1E3A8A,#3B82F6);">
-          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#00AA5B;letter-spacing:0.04em;">New</span>
+          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#2563eb;letter-spacing:0.04em;">New</span>
           <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="1.9" viewBox="0 0 24 24">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linejoin="round"/>
           </svg>
@@ -428,8 +428,8 @@
       <button onclick="openLaporPage()"
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="relative rounded-2xl flex items-center justify-center shadow-sm"
-             style="width:52px;height:52px;background:linear-gradient(135deg,#0F766E,#14B8A6);">
-          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#00AA5B;letter-spacing:0.04em;">New</span>
+             style="width:52px;height:52px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
+          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#2563eb;letter-spacing:0.04em;">New</span>
           <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24">
             <path d="M12 9v4M12 17h.01"/>
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
@@ -443,7 +443,7 @@
               class="flex flex-col items-center gap-2 py-3 active:scale-95 transition">
         <div class="relative rounded-2xl flex items-center justify-center shadow-sm"
              style="width:52px;height:52px;background:linear-gradient(135deg,#BE123C,#F43F5E);">
-          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#00AA5B;letter-spacing:0.04em;">New</span>
+          <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 text-white text-[9px] font-black px-2.5 py-[3px] rounded-full leading-none z-10 shadow-sm" style="background:#2563eb;letter-spacing:0.04em;">New</span>
           <svg class="w-6 h-6" fill="none" stroke="white" stroke-width="1.9" viewBox="0 0 24 24">
             <circle cx="9" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/>
             <path d="M2.5 3h2l2.2 12.2a1.5 1.5 0 0 0 1.5 1.3h8.6a1.5 1.5 0 0 0 1.5-1.2l1.4-7.3H6"/>
@@ -483,7 +483,7 @@
       <!-- Dot texture overlay (di atas slide, tidak menangkap klik) -->
       <div class="absolute inset-0 z-[2] pointer-events-none opacity-[0.07]" style="background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:14px 14px;"></div>
       <!-- live dot top-right -->
-      <span class="absolute top-3 right-3 w-2 h-2 rounded-full bg-green-400 z-[3] pointer-events-none" style="animation:liveDot 1.8s ease-in-out infinite;"></span>
+      <span class="absolute top-3 right-3 w-2 h-2 rounded-full bg-blue-400 z-[3] pointer-events-none" style="animation:liveDot 1.8s ease-in-out infinite;"></span>
       <!-- slide viewport (draggable) -->
       <div id="greetingBannerViewport" style="overflow:hidden;position:relative;z-index:1;touch-action:pan-y;cursor:grab;">
         <!-- track: semua slide berjajar horizontal, digeser via translateX -->
@@ -553,9 +553,9 @@
         <p class="text-sm font-bold text-gray-900">Info Fasilitas Umum</p>
         <p class="text-xs text-gray-400 mt-0.5">Status real-time <span class="js-perumahan">Jade Park Serpong 2</span></p>
       </div>
-      <div class="flex items-center gap-1.5 bg-green-50 px-2.5 py-1 rounded-full">
-        <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-        <span class="text-[11px] text-green-600 font-semibold">Live</span>
+      <div class="flex items-center gap-1.5 bg-blue-50 px-2.5 py-1 rounded-full">
+        <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+        <span class="text-[11px] text-blue-600 font-semibold">Live</span>
       </div>
     </div>
 
@@ -593,7 +593,7 @@
 
   <!-- Brand -->
   <div class="desktop-sidebar-brand">
-    <span class="font-black text-gray-900 tracking-tight" style="font-size:17px;color:#1B5E20;">PWP</span>
+    <span class="font-black text-gray-900 tracking-tight" style="font-size:17px;color:#1e3a8a;">PWP</span>
   </div>
 
   <!-- Profile -->
@@ -843,8 +843,8 @@
             class="absolute right-2 top-1/2 -translate-y-1/2
                 w-8 h-8 flex items-center justify-center
                 rounded-full
-                text-gray-400 hover:text-green-600
-                active:bg-green-50 active:scale-95 transition">
+                text-gray-400 hover:text-blue-600
+                active:bg-blue-50 active:scale-95 transition">
             <span id="blokSearchIcon">🔍</span>
           </button>
         </div>
@@ -856,15 +856,15 @@
 
         <!-- SUGGESTION: DATA WARGA (SYSTEM RECOMMENDATION) -->
         <div id="blokSuggestion"
-            class="hidden mt-3 rounded-xl border border-green-200
-              bg-green-50 px-4 py-4 text-sm">
+            class="hidden mt-3 rounded-xl border border-blue-200
+              bg-blue-50 px-4 py-4 text-sm">
 
           <div class="flex items-start gap-3">
             <!-- CONTENT -->
             <div class="flex-1">
               <!-- DYNAMIC TEXT (diisi JS, jangan diubah ID) -->
               <div id="blokSuggestionText"
-                  class="text-green-700 leading-relaxed">
+                  class="text-blue-700 leading-relaxed">
               </div>
             </div>
           </div>
@@ -1222,7 +1222,7 @@
         </div>
         <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
           <div id="uploadBar"
-              class="h-full bg-green-500 transition-all duration-300"
+              class="h-full bg-blue-500 transition-all duration-300"
               style="width:0%">
           </div>
         </div>
@@ -1414,16 +1414,16 @@
     <!-- TOTAL + CTA -->
     <div class="px-8 pt-4 pb-5 mt-1">
       <div class="flex justify-between items-center mb-4 px-4 py-3 rounded-2xl"
-           style="background:#f0fdf4;">
+           style="background:#eff6ff;">
         <span class="text-xs font-medium text-gray-500">Total Tagihan</span>
-        <span id="tunggakanModalTotal" class="text-base font-bold" style="color:#2e7d32;"></span>
+        <span id="tunggakanModalTotal" class="text-base font-bold" style="color:#1d4ed8;"></span>
       </div>
       <button id="tunggakanBayarBtn"
               onclick="openSheet(); closeTunggakanModal();"
               class="w-full text-white py-3.5 rounded-2xl font-semibold text-sm
                      active:scale-95 transition"
-              style="background: linear-gradient(135deg, #43A047, #2E7D32);
-                     box-shadow: 0 4px 14px rgba(67,160,71,0.3);">
+              style="background: linear-gradient(135deg, #2563eb, #1d4ed8);
+                     box-shadow: 0 4px 14px rgba(37, 99, 235,0.3);">
         Bayar Sekarang
       </button>
     </div>
@@ -1439,7 +1439,7 @@
          class="bg-white w-[92%] max-w-sm rounded-2xl shadow-2xl overflow-hidden max-h-[85vh] flex flex-col">
 
       <div class="px-4 sm:px-5 py-4 flex items-start justify-between gap-3 text-white relative overflow-hidden"
-           style="background:linear-gradient(135deg,#15803d,#22C55E);">
+           style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
         <div class="absolute inset-0 pointer-events-none opacity-[0.12]" style="background-image:radial-gradient(circle,#fff 1px,transparent 1px);background-size:14px 14px;"></div>
         <div class="flex-1 min-w-0 relative">
           <span id="infoArtikelKategori"
@@ -2170,7 +2170,7 @@
     </div>
     <div class="px-5 pb-5 pt-2 border-t border-gray-100 flex-shrink-0">
       <button id="pemasukanFormSaveBtn" onclick="savePemasukanForm()"
-              class="w-full py-3.5 rounded-2xl bg-green-600 text-white font-semibold text-sm active:scale-95 transition shadow-md shadow-green-600/20">
+              class="w-full py-3.5 rounded-2xl bg-blue-600 text-white font-semibold text-sm active:scale-95 transition shadow-md shadow-blue-600/20">
         Simpan
       </button>
     </div>
@@ -2387,8 +2387,8 @@
           <label class="flex items-center gap-3 px-3 py-2.5 rounded-xl border border-gray-100 bg-gray-50 cursor-pointer">
             <input type="checkbox" id="broadcastChannelWa"
                    class="w-4 h-4 rounded accent-primary flex-shrink-0">
-            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#F0FDF4;">
-              <svg class="w-4 h-4" fill="none" stroke="#16a34a" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#eff6ff;">
+              <svg class="w-4 h-4" fill="none" stroke="#2563eb" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
             </div>
             <div class="flex-1 min-w-0">
               <p class="text-sm font-semibold text-gray-900">WhatsApp Warga</p>
@@ -2734,18 +2734,18 @@
 
     <!-- RECEIPT AREA -->
     <div id="paymentReceiptArea" class="px-6 pt-8 pb-6 flex flex-col items-center text-center"
-         style="background: linear-gradient(170deg, #f0fdf4 0%, #ffffff 45%);"
+         style="background: linear-gradient(170deg, #eff6ff 0%, #ffffff 45%);"
 
       <!-- CHECK ICON -->
       <div class="w-13 h-13 rounded-full flex items-center justify-center mb-4"
-           style="background: rgba(67,160,71,0.1); width:52px; height:52px;">
-        <svg class="w-6 h-6" fill="none" stroke="#43A047" stroke-width="2.2" viewBox="0 0 24 24">
+           style="background: rgba(37, 99, 235,0.1); width:52px; height:52px;">
+        <svg class="w-6 h-6" fill="none" stroke="#2563eb" stroke-width="2.2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
         </svg>
       </div>
 
       <!-- TITLE -->
-      <p class="text-xs font-semibold uppercase mb-4" style="color:#43A047; letter-spacing:0.08em;">
+      <p class="text-xs font-semibold uppercase mb-4" style="color:#2563eb; letter-spacing:0.08em;">
         Pembayaran Berhasil Diterima
       </p>
 
@@ -2767,7 +2767,7 @@
         </div>
         <div class="flex justify-between items-center px-4 py-2.5" style="border-bottom:1px solid #f5f5f5;">
           <span class="text-xs text-gray-400">Nominal</span>
-          <span id="bannerNominal" class="text-xs font-bold" style="color:#2e7d32;"></span>
+          <span id="bannerNominal" class="text-xs font-bold" style="color:#1d4ed8;"></span>
         </div>
         <div class="flex justify-between items-center px-4 py-2.5">
           <span class="text-xs text-gray-400">Status</span>
@@ -2899,15 +2899,15 @@
         </div>
 
         <!-- Confirmed (admin) / Lunas (warga) -->
-        <div id="scConfirmedCard" onclick="dashScorecardFilter('confirmed')" class="flex-1 min-w-0 rounded-2xl px-2.5 py-2.5 cursor-pointer active:scale-95 transition" style="background:#F0FDF4;border:1px solid #BBF7D0;">
+        <div id="scConfirmedCard" onclick="dashScorecardFilter('confirmed')" class="flex-1 min-w-0 rounded-2xl px-2.5 py-2.5 cursor-pointer active:scale-95 transition" style="background:#eff6ff;border:1px solid #bfdbfe;">
           <div class="flex items-center gap-1 mb-1">
-            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:#22C55E;">
+            <div class="w-4 h-4 rounded-md flex items-center justify-center flex-shrink-0" style="background:#3b82f6;">
               <svg style="width:9px;height:9px;" fill="none" stroke="white" stroke-width="3" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
             </div>
-            <p class="text-[9px] text-green-700 font-bold uppercase leading-none truncate" id="scConfirmedLabel">Confirmed</p>
+            <p class="text-[9px] text-blue-700 font-bold uppercase leading-none truncate" id="scConfirmedLabel">Confirmed</p>
           </div>
           <p id="scConfirmedCount" class="text-lg font-black text-gray-900 leading-none">—</p>
-          <p id="scConfirmedAmount" class="text-[10px] text-green-700 font-semibold leading-none mt-1 truncate">Rp —</p>
+          <p id="scConfirmedAmount" class="text-[10px] text-blue-700 font-semibold leading-none mt-1 truncate">Rp —</p>
         </div>
 
         <!-- Total terkumpul -->
@@ -3076,7 +3076,7 @@
      style="background:rgba(0,0,0,0.5);">
   <div class="bg-white rounded-3xl mx-5 p-6 w-full max-w-sm shadow-2xl">
     <div class="flex flex-col items-center text-center gap-3 mb-5">
-      <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center">
+      <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center">
         <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
           <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
@@ -3188,7 +3188,7 @@
           </svg>
           <p class="text-xs text-gray-500 leading-relaxed">
             Kode OTP dikirim ke <span class="font-semibold text-gray-700">Email</span> bila login pakai email,
-            atau ke <span class="font-semibold text-emerald-600">WhatsApp</span> bila login pakai Blok / No HP.
+            atau ke <span class="font-semibold text-blue-600">WhatsApp</span> bila login pakai Blok / No HP.
           </p>
         </div>
 
@@ -3570,8 +3570,8 @@
 
           <!-- NO HP -->
           <div class="px-4 py-3.5 flex items-center gap-3">
-            <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
               </svg>
             </div>
@@ -3651,8 +3651,8 @@
         <button onclick="openCreatePINModal()"
                 class="w-full px-4 py-4 flex items-center justify-between active:bg-gray-50 transition">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center">
-              <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center">
+              <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                 <rect x="3" y="11" width="18" height="11" rx="2"/>
                 <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
               </svg>
@@ -3859,7 +3859,7 @@
 
     <!-- SUCCESS BODY -->
     <div id="daftarSuccessBody" class="hidden flex flex-col items-center gap-4 py-6 text-center">
-      <div class="w-16 h-16 rounded-3xl bg-green-50 flex items-center justify-center">
+      <div class="w-16 h-16 rounded-3xl bg-blue-50 flex items-center justify-center">
         <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
           <path d="M20 6L9 17l-5-5"/>
         </svg>
@@ -3932,7 +3932,7 @@
 
   <!-- EMPTY STATE -->
   <div id="laporEmptyState" class="hidden flex-1 flex flex-col items-center justify-center gap-3 px-8 text-center">
-    <div class="w-14 h-14 rounded-2xl bg-green-50 flex items-center justify-center">
+    <div class="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center">
       <svg class="w-7 h-7 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
         <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
       </svg>
@@ -4940,8 +4940,8 @@
         <!-- Verifikasi Bayar (shortcut bendahara) -->
         <div onclick="switchAdminTab('verifikasi')"
              class="rounded-2xl shadow-sm px-4 py-3.5 flex flex-col gap-1.5 cursor-pointer active:scale-95 transition"
-             style="background:#EAFAF1;border:1px solid #B7E4C7;">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:#43A047;">
+             style="background:#eff6ff;border:1px solid #bfdbfe;">
+          <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:#2563eb;">
             <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
               <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
             </svg>
@@ -4956,8 +4956,8 @@
         <!-- Fasum Bermasalah -->
         <div onclick="switchAdminTab('fasum')"
              class="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3.5 flex flex-col gap-1.5 cursor-pointer active:scale-95 transition">
-          <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:#EAFAF1;">
-            <svg class="w-4 h-4" fill="none" stroke="#27AE60" stroke-width="1.8" viewBox="0 0 24 24">
+          <div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:#eff6ff;">
+            <svg class="w-4 h-4" fill="none" stroke="#2563eb" stroke-width="1.8" viewBox="0 0 24 24">
               <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
               <polyline points="9 22 9 12 15 12 15 22"/>
             </svg>
@@ -5099,7 +5099,7 @@
               <button id="toggleVotingShortcut" role="switch" aria-checked="true"
                       onclick="toggleVotingShortcutSetting()"
                       class="relative w-12 h-7 rounded-full flex-shrink-0 transition-colors duration-200"
-                      style="background:#10B981;">
+                      style="background:#3b82f6;">
                 <span class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200" style="transform:translateX(20px);"></span>
               </button>
             </div>
@@ -5116,7 +5116,7 @@
               <button id="toggleLomba17" role="switch" aria-checked="true"
                       onclick="toggleFeatureFlag('lomba17Enabled')"
                       class="relative w-12 h-7 rounded-full flex-shrink-0 transition-colors duration-200"
-                      style="background:#10B981;">
+                      style="background:#3b82f6;">
                 <span class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200" style="transform:translateX(20px);"></span>
               </button>
             </div>
@@ -5133,7 +5133,7 @@
               <button id="toggleSurat" role="switch" aria-checked="true"
                       onclick="toggleFeatureFlag('suratEnabled')"
                       class="relative w-12 h-7 rounded-full flex-shrink-0 transition-colors duration-200"
-                      style="background:#10B981;">
+                      style="background:#3b82f6;">
                 <span class="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow transition-transform duration-200" style="transform:translateX(20px);"></span>
               </button>
             </div>
@@ -5224,8 +5224,8 @@
         <div data-panel="fasum" class="admin-panel hidden bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div class="px-4 pt-3.5 pb-2.5 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
-                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                   <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
                 </svg>
               </div>
@@ -5299,8 +5299,8 @@
         <div data-panel="kasipl" class="admin-panel hidden bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div class="px-4 pt-3.5 pb-2.5 flex items-center justify-between">
             <div class="flex items-center gap-2.5">
-              <div class="w-8 h-8 rounded-xl bg-teal-50 flex items-center justify-center flex-shrink-0">
-                <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
                   <line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/>
                 </svg>
@@ -5337,8 +5337,8 @@
           <!-- Upload & jalankan -->
           <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
             <div class="px-4 pt-3.5 pb-2.5 flex items-center gap-2.5 border-b border-gray-50">
-              <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
-                <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
               </div>
               <div>
                 <p class="text-sm font-bold text-gray-900">Rekonsiliasi Mutasi Bank</p>
@@ -5354,7 +5354,7 @@
 
               <label class="flex items-center justify-between gap-3 px-1">
                 <span class="text-xs text-gray-600">Auto-konfirmasi skor ≥ 90 (langsung posting & email)</span>
-                <input id="reconAutoApply" type="checkbox" checked class="w-4 h-4 accent-emerald-500">
+                <input id="reconAutoApply" type="checkbox" checked class="w-4 h-4 accent-blue-500">
               </label>
 
               <button id="reconRunBtn" onclick="reconRunMatch()" disabled
@@ -5366,9 +5366,9 @@
 
           <!-- Ringkasan hasil -->
           <div id="reconSummary" class="hidden grid grid-cols-4 gap-2">
-            <div class="bg-emerald-50 rounded-xl p-3 text-center">
-              <p id="reconCountAuto" class="text-lg font-bold text-emerald-600">0</p>
-              <p class="text-[11px] text-emerald-700/70 font-medium">Auto</p>
+            <div class="bg-blue-50 rounded-xl p-3 text-center">
+              <p id="reconCountAuto" class="text-lg font-bold text-blue-600">0</p>
+              <p class="text-[11px] text-blue-700/70 font-medium">Auto</p>
             </div>
             <div class="bg-amber-50 rounded-xl p-3 text-center">
               <p id="reconCountReview" class="text-lg font-bold text-amber-600">0</p>
@@ -5427,8 +5427,8 @@
         <div data-panel="jadwaljaga" class="admin-panel hidden bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div class="px-4 pt-3.5 pb-2.5">
             <div class="flex items-center gap-2.5 mb-3">
-              <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
-                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
                   <path d="M17 2.1l4 4-4 4M3 12.6V11a4 4 0 0 1 4-4h14M7 21.9l-4-4 4-4M21 11.4V13a4 4 0 0 1-4 4H3"/>
                 </svg>
               </div>
@@ -5527,7 +5527,7 @@
         </button>
         <button id="apTab_selesai"  onclick="switchAdminLaporTab('Selesai')"
                 class="admin-lapor-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-gray-100 text-gray-500 transition">
-          <span class="w-2 h-2 rounded-full bg-green-500 flex-shrink-0"></span>Selesai
+          <span class="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0"></span>Selesai
         </button>
         <button id="apTab_ditolak"  onclick="switchAdminLaporTab('Ditolak')"
                 class="admin-lapor-tab flex-shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-gray-100 text-gray-500 transition">
@@ -5884,7 +5884,7 @@
                class="mt-1 flex items-center gap-3 px-4 py-3 rounded-2xl
                       border-2 border-dashed border-gray-200 bg-gray-50
                       cursor-pointer active:scale-95 transition">
-          <div class="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
+          <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
             <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.8"
                  stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
@@ -6385,8 +6385,8 @@
         </a>
         <a href="#" onclick="openPedomanViewer('1R5Z6HvpanZPrPjKUgZkSm9-mpbCOeZhh');return false;"
            class="flex items-center gap-3 px-4 py-3.5 active:bg-gray-50 transition">
-          <div class="w-8 h-8 rounded-xl bg-green-50 flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
           <span class="flex-1 text-sm font-medium text-gray-800">Hewan Peliharaan</span>
           <svg class="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
@@ -6454,7 +6454,7 @@
       <button onclick="closeKontakChooser();openContactModal();"
               class="w-full flex items-center gap-3.5 p-4 rounded-2xl border border-gray-100 bg-gray-50/60 active:scale-[0.98] transition text-left">
         <div class="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-sm"
-             style="background:linear-gradient(135deg,#047857,#10B981);">
+             style="background:linear-gradient(135deg,#1d4ed8,#3b82f6);">
           <svg class="w-5 h-5" fill="none" stroke="white" stroke-width="1.9" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <div class="flex-1 min-w-0">
@@ -6548,8 +6548,8 @@
           <div class="px-5 py-2.5 flex items-center justify-between" style="background:#fafbfa;">
             <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wide">Info Rekening IPL</p>
             <div class="flex items-center gap-1.5">
-              <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-              <span class="text-[11px] text-green-600 font-semibold">Active</span>
+              <div class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
+              <span class="text-[11px] text-blue-600 font-semibold">Active</span>
             </div>
           </div>
 
@@ -6654,7 +6654,7 @@
     <button id="pwaInstallBtn"
             onclick="pwaInstall()"
             class="w-full py-3.5 rounded-2xl text-white font-bold text-sm active:scale-95 transition"
-            style="background:linear-gradient(135deg,#43A047,#2E7D32);box-shadow:0 4px 16px rgba(67,160,71,0.35);">
+            style="background:linear-gradient(135deg,#2563eb,#1d4ed8);box-shadow:0 4px 16px rgba(37, 99, 235,0.35);">
       Pasang Sekarang
     </button>
     <button onclick="pwaDismiss()"
@@ -6695,7 +6695,7 @@
         <p class="text-sm text-gray-700">Pilih <span class="font-bold">"Add to Home Screen"</span></p>
       </div>
       <div class="flex items-center gap-3">
-        <div class="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#43A047;">
+        <div class="w-7 h-7 rounded-xl flex items-center justify-center flex-shrink-0" style="background:#2563eb;">
           <svg class="w-4 h-4" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
         </div>
         <p class="text-sm text-gray-700">Tap <span class="font-bold">"Add"</span> — selesai!</p>
