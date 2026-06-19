@@ -1,7 +1,7 @@
 {
-  "name": "JPortal",
-  "short_name": "JPortal",
-  "description": "Portal warga Jade Park Serpong 2",
+  "name": "PWP — Portal Warga Pintar",
+  "short_name": "PWP",
+  "description": "Portal Warga Pintar — portal digital warga perumahan",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

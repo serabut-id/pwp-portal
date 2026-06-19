@@ -848,10 +848,34 @@ html, body {
     animation-delay: calc(0.35s + var(--i) * 0.06s);
   }
 
+  /* ===== PWP modern splash ===== */
+  #splashScreen {
+    background:
+      radial-gradient(120% 90% at 50% 18%, #EEF4FF 0%, #F7FAFF 42%, #ffffff 100%);
+  }
+
+  .splash-logo {
+    opacity: 0;
+    animation: splashLogoIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.1s;
+  }
+
+  .splash-wordmark {
+    opacity: 0;
+    animation: splashTaglineIn 0.45s ease forwards;
+    animation-delay: 0.45s;
+  }
+
+  .splash-name {
+    opacity: 0;
+    animation: splashTaglineIn 0.45s ease forwards;
+    animation-delay: 0.6s;
+  }
+
   .splash-tagline {
     opacity: 0;
     animation: splashTaglineIn 0.4s ease forwards;
-    animation-delay: 0.85s;
+    animation-delay: 0.78s;
   }
 
   .splash-bar-wrap {
@@ -1057,7 +1081,7 @@ html, body {
     }
 
     nav::after {
-      content: 'JPortal';
+      content: 'PWP';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 56px;

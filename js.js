@@ -212,7 +212,7 @@ function gasPost_(action, body) {
       if (!currentUser) {
         infoEl.classList.add('hidden');
         infoEl.innerText = '';
-        // Header tak lagi pakai brand JPortal → guest tetap dapat sapaan generik
+        // Header tak lagi pakai brand PWP → guest tetap dapat sapaan generik
         if (greetEl && greetTxt) {
           greetTxt.innerHTML = 'Selamat datang <span style="font-size:14px">👋</span>';
           greetEl.classList.remove('hidden');
@@ -10503,7 +10503,7 @@ function _kasBuildPDF_(res, settings){
     (expDetailRows?('<h3>Rincian Pengeluaran'+monthTitle+'</h3><table><thead><tr><th>Tanggal</th><th>Kategori</th><th>Keterangan</th><th style="text-align:right">Nominal</th></tr></thead><tbody>'+expDetailRows+'</tbody></table>'):'')+
     (incDetailRows?('<h3>Rincian Pemasukan'+monthTitle+'</h3><table><thead><tr><th>Tanggal</th><th>Sumber</th><th>Periode/Ket.</th><th style="text-align:right">Nominal</th></tr></thead><tbody>'+incDetailRows+'</tbody></table>'):'')+
     signatures+
-    '<div class="foot">Rincian transaksi di atas untuk <b>'+(detailMonth>=0?('bulan '+_MN_FULL[detailMonth]+' '+res.year):('semua bulan '+res.year))+'</b>. Jatuh tempo IPL: <b>tgl 5 bulan berikutnya</b> ("Telat" = bayar setelah jatuh tempo). Untuk bulan/tahun lain, silakan cek aplikasi JPortal.<br>Dicetak oleh: <b>'+printedBy+'</b> · '+res.generatedAt+'<br>Laporan otomatis & realtime dari JPortal. Rekap final dilakukan pengurus di akhir bulan.</div>'+
+    '<div class="foot">Rincian transaksi di atas untuk <b>'+(detailMonth>=0?('bulan '+_MN_FULL[detailMonth]+' '+res.year):('semua bulan '+res.year))+'</b>. Jatuh tempo IPL: <b>tgl 5 bulan berikutnya</b> ("Telat" = bayar setelah jatuh tempo). Untuk bulan/tahun lain, silakan cek aplikasi PWP.<br>Dicetak oleh: <b>'+printedBy+'</b> · '+res.generatedAt+'<br>Laporan otomatis & realtime dari PWP. Rekap final dilakukan pengurus di akhir bulan.</div>'+
     '</div>'+
     '</body></html>';
   _kasShowPdfPreview_(html);
@@ -11841,7 +11841,7 @@ function openJualanDetail(id){
   } else { photos.onscroll = null; }
 
   var waNum = String(d.kontak||'').replace(/[^0-9]/g,'').replace(/^0/, '62');
-  var waMsg = encodeURIComponent('Halo, saya tertarik dengan "'+d.judul+'" yang Anda jual di JPortal. Apakah masih tersedia?');
+  var waMsg = encodeURIComponent('Halo, saya tertarik dengan "'+d.judul+'" yang Anda jual di PWP. Apakah masih tersedia?');
   var st = d.status || 'published';
   var statusBadge = st==='sold'
       ? '<span class="inline-block text-[11px] font-bold text-white bg-gray-800 px-2 py-0.5 rounded-md ml-1">TERJUAL</span>'
@@ -13092,6 +13092,8 @@ function saveOrgSettings() {
     btn.disabled = false;
     btn.innerText = 'Simpan';
     if (res && res.ok) {
+      try { localStorage.setItem('pwp_perumahan', payload.namaPerumahan); } catch (_) {}
+      if (typeof applyPerumahanName === 'function') applyPerumahanName(payload.namaPerumahan);
       closeOrgSettings();
       showToast('Identitas wilayah tersimpan', 'success');
     } else {
@@ -14228,7 +14230,7 @@ function _saveAdminLaporStatus_(rowNumber, idx) {
 
 
 /* ============================================================
-   NOTIFICATION SYSTEM — JPortal
+   NOTIFICATION SYSTEM — PWP
    Polling-based, personal + public + admin categories
    ============================================================ */
 
@@ -14497,7 +14499,7 @@ function _showBrowserNotif_(items) {
   if (Notification.permission !== 'granted') return;
   items.slice(0, 3).forEach(function(n) {
     try {
-      new Notification(n.title || 'JPortal', {
+      new Notification(n.title || 'PWP', {
         body: n.body || '',
         icon: '/icons/icon-192.png',
         badge: '/icons/icon-192.png'
@@ -15241,7 +15243,7 @@ function exportLomba17PesertaPdf() {
     '<div class="sub">' + _escHtml_(namaLomba) + (infoBits.length ? (' · ' + _escHtml_(infoBits.join(' · '))) : '') + '</div>' +
     '<div class="cards"><div class="card"><div class="l">Total Peserta</div><div class="v">' + data.length + '</div></div></div>' +
     '<table><thead><tr><th style="text-align:center">No</th><th>Nama Peserta</th><th>Kategori</th><th style="text-align:center">Usia</th><th style="text-align:center">Blok</th><th>No. WhatsApp</th></tr></thead><tbody>' + rows + '</tbody></table>' +
-    '<div class="foot">Dicetak oleh: <b>' + _escHtml_(printedBy) + '</b> · ' + generatedAt + '<br>Laporan otomatis dari JPortal.</div>' +
+    '<div class="foot">Dicetak oleh: <b>' + _escHtml_(printedBy) + '</b> · ' + generatedAt + '<br>Laporan otomatis dari PWP.</div>' +
     '</body></html>';
   _kasShowPdfPreview_(html);
 }
@@ -16145,6 +16147,33 @@ function loadFeatureFlags() {
     if (res && res.ok && res.flags) applyFeatureFlags(res.flags);
   }).catch(function() { /* offline → biarkan default (tampil) */ });
 }
+
+/* ===== NAMA PERUMAHAN — dinamis dari OrgSettings.namaPerumahan =====
+   Dipakai sebagai tagline splash & subjudul brand. Di-cache di localStorage
+   agar tampil instan saat splash (sebelum fetch selesai). */
+window.PWP_PERUMAHAN = '';
+function applyPerumahanName(name) {
+  name = (name || '').trim();
+  window.PWP_PERUMAHAN = name;
+  var sp = document.getElementById('splashPerumahan');
+  if (sp) sp.textContent = name;
+  // Label nama perumahan di seluruh app — hanya ditimpa jika sudah dikonfigurasi
+  if (name) {
+    document.querySelectorAll('.js-perumahan').forEach(function(el) { el.textContent = name; });
+    if (document.title.indexOf('—') > -1) document.title = 'PWP — ' + name;
+  }
+}
+function loadPerumahanName() {
+  try { applyPerumahanName(localStorage.getItem('pwp_perumahan') || ''); } catch (_) {}
+  return gasGet_('getOrgSettings').then(function(res) {
+    if (res && res.ok && res.settings) {
+      var nm = res.settings.namaPerumahan || '';
+      try { localStorage.setItem('pwp_perumahan', nm); } catch (_) {}
+      applyPerumahanName(nm);
+    }
+  }).catch(function() { /* offline → pakai cache */ });
+}
+document.addEventListener('DOMContentLoaded', loadPerumahanName);
 
 // Sinkronkan tampilan satu switch di Admin > Menu Depan
 function _syncFlagToggleUI_(key) {
