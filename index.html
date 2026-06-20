@@ -78,10 +78,13 @@
     <div class="splash-stage">
       <img src="/icons/logo-mark.png" alt="PWP" width="104" height="104"
            style="width:104px;height:104px;display:block;" />
-      <!-- Bayangan kusen (kedalaman ruang di balik pintu) -->
-      <div class="splash-doorway" aria-hidden="true"></div>
-      <!-- Daun pintu kecil tepat di kusen pintu logo (awal tertutup → membuka) -->
-      <div class="splash-door"><span class="splash-knob"></span></div>
+      <!-- Bingkai lubang: meng-clip daun pintu agar tersembunyi di balik P saat menggeser -->
+      <div class="splash-doorframe" aria-hidden="true">
+        <!-- Bayangan kusen (kedalaman ruang di balik pintu) -->
+        <div class="splash-doorway"></div>
+        <!-- Daun pintu yang menggeser masuk ke balik dinding P -->
+        <div class="splash-door"><span class="splash-knob"></span></div>
+      </div>
     </div>
   </div>
 

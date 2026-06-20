@@ -884,17 +884,24 @@ html, body {
      dinding kiri x43.2%, kanan x55.3%, atas y38.5% (miring), bawah y65%.
      Daun & kusen memakai kotak + clip-path yang sama agar pas mengisi lubang. */
 
-  /* Kusen/ruang di balik pintu → muncul saat pintu membuka, beri kedalaman */
-  .splash-doorway {
+  /* Bingkai lubang pintu: SATU-SATUNYA clip-path. Daun pintu yang menggeser
+     keluar dari bingkai ini otomatis terpotong → tersembunyi di balik badan P
+     (efek pocket door), bukan melintas di atasnya. */
+  .splash-doorframe {
     position: absolute;
     left: 43.2%;
     top: 38.5%;
     width: 12.1%;
     height: 26.5%;
-    z-index: 1;
-    /* slant atas-kiri mengikuti kusen pintu di logo */
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);
-    /* gelap di sisi engsel (kiri) → melandai ke terang: bayangan interior */
+    z-index: 2;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);  /* dinding lurus + atas miring */
+  }
+
+  /* Kusen/ruang di balik pintu → beri kedalaman saat daun menggeser */
+  .splash-doorway {
+    position: absolute;
+    inset: 0;
+    /* gelap di sisi dalam (kiri) → melandai ke terang: bayangan interior */
     background: linear-gradient(90deg,
       rgba(18, 40, 92, 0.45) 0%,
       rgba(18, 40, 92, 0.18) 55%,
@@ -914,20 +921,13 @@ html, body {
 
   .splash-door {
     position: absolute;
-    left: 43.2%;
-    top: 38.5%;
-    width: 12.1%;
-    height: 26.5%;
-    z-index: 3;
-    /* clip mengikuti bentuk lubang: dinding lurus + atas miring */
-    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);
-    /* gradient halus → daun pintu menangkap cahaya saat berputar (depth) */
+    inset: 0;
     background: linear-gradient(90deg, rgb(10, 82, 220) 0%, rgb(30, 112, 255) 100%);
     transform: translateX(0);
-    will-change: transform, opacity;
+    will-change: transform;
     box-shadow: inset -1.5px 0 0 rgba(255,255,255,.3);  /* highlight tepi bebas */
-    /* PINTU GESER: menggeser ke kiri masuk ke badan P lalu menghilang,
-       sehingga tak tertinggal saat logo mengambang naik */
+    /* PINTU GESER: menggeser ke kiri keluar dari bingkai → terpotong &
+       tersembunyi di balik dinding P, tak terlihat dari luar */
     animation: splashDoorSlide 1.4s cubic-bezier(0.45, 0, 0.15, 1) forwards;
     animation-delay: 0.7s;
   }
@@ -943,10 +943,9 @@ html, body {
   }
 
   @keyframes splashDoorSlide {
-    0%   { transform: translateX(0);    opacity: 1; }
-    14%  { transform: translateX(0);    opacity: 1; }  /* jeda halus sebelum menggeser */
-    65%  { transform: translateX(-78%); opacity: 1; }  /* menggeser masuk ke badan P */
-    100% { transform: translateX(-104%); opacity: 0; } /* lenyap di balik dinding */
+    0%   { transform: translateX(0);     }
+    14%  { transform: translateX(0);     }  /* jeda halus sebelum menggeser */
+    100% { transform: translateX(-112%); }  /* keluar penuh dari bingkai → terpotong, tak terlihat */
   }
 
   .splash-wordmark {
