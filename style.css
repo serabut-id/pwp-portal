@@ -900,12 +900,16 @@ html, body {
       rgba(18, 40, 92, 0.18) 55%,
       rgba(18, 40, 92, 0.03) 100%);
     opacity: 0;
-    animation: splashDoorwayIn 1.2s ease forwards;
-    animation-delay: 0.95s;     /* mulai tampak sesaat setelah pintu bergerak */
+    /* tampak saat daun menggeser, lalu meredup lagi → tak ada yang
+       tertinggal sebelum logo mengambang naik */
+    animation: splashDoorwayInOut 1.5s ease forwards;
+    animation-delay: 0.85s;
   }
-  @keyframes splashDoorwayIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  @keyframes splashDoorwayInOut {
+    0%   { opacity: 0; }
+    30%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { opacity: 0; }
   }
 
   .splash-door {
@@ -919,13 +923,12 @@ html, body {
     clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);
     /* gradient halus → daun pintu menangkap cahaya saat berputar (depth) */
     background: linear-gradient(90deg, rgb(10, 82, 220) 0%, rgb(30, 112, 255) 100%);
-    transform-origin: left center;
-    transform: rotateY(0deg);
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-    will-change: transform, filter;
+    transform: translateX(0);
+    will-change: transform, opacity;
     box-shadow: inset -1.5px 0 0 rgba(255,255,255,.3);  /* highlight tepi bebas */
-    animation: splashDoorOpen 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    /* PINTU GESER: menggeser ke kiri masuk ke badan P lalu menghilang,
+       sehingga tak tertinggal saat logo mengambang naik */
+    animation: splashDoorSlide 1.4s cubic-bezier(0.45, 0, 0.15, 1) forwards;
     animation-delay: 0.7s;
   }
   /* Gagang pintu di sisi bebas (kanan) */
@@ -939,10 +942,11 @@ html, body {
     transform: translateY(-50%);
   }
 
-  @keyframes splashDoorOpen {
-    0%   { transform: rotateY(0deg);   filter: brightness(1);    }
-    16%  { transform: rotateY(0deg);   filter: brightness(1);    }  /* jeda halus sebelum dibuka */
-    100% { transform: rotateY(-66deg); filter: brightness(0.84); }  /* terbuka ajar, daun menjauh dari cahaya → meredup */
+  @keyframes splashDoorSlide {
+    0%   { transform: translateX(0);    opacity: 1; }
+    14%  { transform: translateX(0);    opacity: 1; }  /* jeda halus sebelum menggeser */
+    65%  { transform: translateX(-78%); opacity: 1; }  /* menggeser masuk ke badan P */
+    100% { transform: translateX(-104%); opacity: 0; } /* lenyap di balik dinding */
   }
 
   .splash-wordmark {
