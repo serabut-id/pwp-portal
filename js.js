@@ -251,11 +251,8 @@ function gasPost_(action, body) {
       if (typeof _showDarkModeBtn_ === 'function') _showDarkModeBtn_();
     }
 
-    function updateTarifDisplay_(isLoggedIn) {
-      var el200 = document.getElementById('tarifNominal200');
-      var el175 = document.getElementById('tarifNominal175');
-      if (el200) el200.innerHTML = isLoggedIn ? 'Rp200.000' : 'Rp&nbsp;<span style="letter-spacing:2px">••••••</span>';
-      if (el175) el175.innerHTML = isLoggedIn ? 'Rp175.000' : 'Rp&nbsp;<span style="letter-spacing:2px">••••••</span>';
+    function updateTarifDisplay_(isLoggedIn, rate, res) {
+      renderTarifCards_({ loggedIn: !!isLoggedIn, rate: (rate != null ? rate : null), res: res || null });
     }
 
     function handleHeaderAuthClick() {
@@ -6579,7 +6576,7 @@ function loadHomeTunggakan() {
         }
       }
       if (res.rate) {
-        updateTarifDisplay_(true);
+        updateTarifDisplay_(true, res.rate, res);
 
         var isMultiBlok = res.bloks && res.bloks.length > 1;
         var allSame200 = isMultiBlok && (Number(res.rate) % 200000 === 0) && (Number(res.rate) / 200000 === res.bloks.length);
@@ -16182,6 +16179,59 @@ function applyOrgRekening_(s) {
   }
 }
 
+/* ===== TARIF IPL dinamis (1-3) dari OrgSettings ===== */
+window.PWP_TARIFS = [];
+function _tarifFromSettings_(s) {
+  var a = [];
+  for (var i = 1; i <= 3; i++) {
+    var label = String((s && s['tarif' + i + 'Label']) || '').trim();
+    var nominal = parseInt(String((s && s['tarif' + i + 'Nominal']) || '').replace(/[^0-9]/g, ''), 10) || 0;
+    if (nominal > 0) a.push({ label: label || ('Tarif ' + i), nominal: nominal });
+  }
+  return a;
+}
+function _rateMatchesTarif_(rate, nominal, res) {
+  rate = Number(rate) || 0;
+  if (!rate || !nominal) return false;
+  if (rate === nominal) return true;
+  if (res && res.bloks && res.bloks.length > 1) {
+    var n = res.bloks.length;
+    if (rate % nominal === 0 && rate / nominal === n) return true;   // semua blok tarif ini
+    var rb = res.rateByBlok || {};
+    for (var k in rb) { if (Number(rb[k]) === nominal) return true; } // mixed
+  }
+  return false;
+}
+function _escTarif_(t) { return String(t == null ? '' : t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderTarifCards_(opts) {
+  opts = opts || {};
+  var grid = document.getElementById('tarifGrid');
+  if (!grid) return;
+  var tarifs = (window.PWP_TARIFS && window.PWP_TARIFS.length)
+    ? window.PWP_TARIFS
+    : [{ label: 'Dihuni', nominal: 200000 }, { label: 'Tidak Dihuni', nominal: 175000 }];
+  var loggedIn = !!opts.loggedIn;
+  var rate = (opts.rate != null) ? Number(opts.rate) : null;
+  grid.style.display = 'grid';
+  grid.style.gridTemplateColumns = 'repeat(' + tarifs.length + ',minmax(0,1fr))';
+  var badge = '<span style="display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;color:#1d4ed8;background:#dbeafe;border-radius:999px;padding:2px 7px;margin-left:6px;letter-spacing:0.02em;vertical-align:middle;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Tarif Anda</span>';
+  var html = tarifs.map(function (t, idx) {
+    var match = loggedIn && rate != null && _rateMatchesTarif_(rate, t.nominal, opts.res);
+    var last = idx === tarifs.length - 1;
+    var nom = loggedIn ? ('Rp' + Number(t.nominal).toLocaleString('id-ID')) : 'Rp&nbsp;<span style="letter-spacing:2px">••••••</span>';
+    var style = 'padding:12px 16px;transition:all .3s;'
+      + 'border-top:3px solid ' + (match ? '#2563eb' : 'transparent') + ';'
+      + (last ? '' : ('border-right:1px solid ' + (match ? '#bfdbfe' : '#f3f4f6') + ';'))
+      + 'background:' + (match ? '#eff6ff' : (loggedIn ? '#fafafa' : '#fff')) + ';'
+      + 'opacity:' + ((loggedIn && !match) ? '0.55' : '1') + ';';
+    return '<div style="' + style + '">'
+      + '<p class="text-[9px] uppercase tracking-widest font-semibold" style="color:' + (match ? '#1d4ed8' : '#9ca3af') + '">' + _escTarif_(t.label) + (match ? badge : '') + '</p>'
+      + '<p class="text-sm font-black mt-0.5" style="color:' + (match ? '#1d4ed8' : '#111827') + '">' + nom + '</p>'
+      + '<p class="text-[9px] text-gray-400">/ bulan</p></div>';
+  }).join('');
+  grid.innerHTML = html;
+}
+
 function loadPerumahanName() {
   try { applyPerumahanName(localStorage.getItem('pwp_perumahan') || ''); } catch (_) {}
   return gasGet_('getOrgSettings').then(function(res) {
@@ -16190,6 +16240,8 @@ function loadPerumahanName() {
       try { localStorage.setItem('pwp_perumahan', nm); } catch (_) {}
       applyPerumahanName(nm);
       applyOrgRekening_(res.settings);
+      window.PWP_TARIFS = _tarifFromSettings_(res.settings);
+      renderTarifCards_({ loggedIn: !!(window.currentUser && window.currentUser.email) });
     }
   }).catch(function() { /* offline → pakai cache */ });
 }

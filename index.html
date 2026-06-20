@@ -6619,23 +6619,11 @@
 
           </div>
 
-          <!-- STRIP BAWAH: Tarif Dihuni | Tidak Dihuni -->
-          <div class="grid grid-cols-2" id="tarifGrid">
-
-            <div id="tarifCard200"
-                 class="px-4 py-3 border-r border-gray-50 transition-all duration-300">
-              <p class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold">Dihuni</p>
-              <p id="tarifNominal200" class="text-sm font-black text-gray-900 mt-0.5">Rp****</p>
-              <p class="text-[9px] text-gray-400">/ bulan</p>
-            </div>
-
-            <div id="tarifCard175"
-                 class="px-4 py-3 transition-all duration-300">
-              <p class="text-[9px] uppercase tracking-widest text-gray-400 font-semibold">Tidak Dihuni</p>
-              <p id="tarifNominal175" class="text-sm font-black text-gray-900 mt-0.5">Rp****</p>
-              <p class="text-[9px] text-gray-400">/ bulan</p>
-            </div>
-
+          <!-- STRIP BAWAH: Tarif (1-3 dinamis dari OrgSettings, diisi renderTarifCards_) -->
+          <div class="grid grid-cols-2" id="tarifGrid"></div>
+          <div class="hidden">
+            <!-- placeholder lama agar referensi JS legacy aman (no-op) -->
+            <span id="tarifNominal200"></span><span id="tarifNominal175"></span>
           </div>
 
         </div>

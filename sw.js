@@ -1,6 +1,6 @@
 importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');
 
-const CACHE_NAME = 'pwp-v8';
+const CACHE_NAME = 'pwp-v9';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
