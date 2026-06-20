@@ -9073,7 +9073,7 @@ var _pedomanTitles = {
   '1jjFWxgbabwZgov9aQI8CM35tgCMQW13K': 'Struktur Organisasi'
 };
 
-function openPedomanViewer(fileId) {
+function openPedomanViewer(fileId, judul) {
   if (!currentUser) {
     openMePage();
     return;
@@ -9085,7 +9085,7 @@ function openPedomanViewer(fileId) {
   if (!modal || !frame) return;
 
   frame.src = 'https://drive.google.com/file/d/' + fileId + '/preview';
-  if (title) title.innerText = _pedomanTitles[fileId] || 'Dokumen';
+  if (title) title.innerText = judul || _pedomanTitles[fileId] || 'Dokumen';
 
   modal.classList.remove('hidden');
   history.pushState({ pedomanViewer: true }, '');
@@ -16262,6 +16262,37 @@ function loadPerumahanName() {
   }).catch(function() { /* offline → pakai cache */ });
 }
 document.addEventListener('DOMContentLoaded', loadPerumahanName);
+
+/* ===== PEDOMAN dinamis dari tab 'Pedoman' (Judul | Link) ===== */
+function _pedomanAttr_(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function loadPedoman() {
+  var box = document.getElementById('pedomanList');
+  if (!box) return;
+  return gasGet_('getPedoman').then(function(res){
+    if (!res || !res.ok || !res.items || !res.items.length) {
+      box.innerHTML = '<p class="px-4 py-4 text-xs text-gray-400">Belum ada dokumen.</p>';
+      return;
+    }
+    box.innerHTML = res.items.map(function(it){
+      var j = _pedomanAttr_(it.judul);
+      return '<a href="#" class="pedoman-item flex items-center gap-3 px-4 py-3.5 active:bg-gray-50 transition" data-fileid="' + _pedomanAttr_(it.fileId) + '" data-judul="' + j + '">'
+        + '<div class="w-8 h-8 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">'
+        + '<svg class="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>'
+        + '<span class="flex-1 text-sm font-medium text-gray-800">' + j + '</span>'
+        + '<svg class="w-4 h-4 text-gray-300 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>';
+    }).join('');
+  }).catch(function(){ box.innerHTML = '<p class="px-4 py-4 text-xs text-gray-400">Gagal memuat dokumen.</p>'; });
+}
+document.addEventListener('DOMContentLoaded', function(){
+  loadPedoman();
+  var box = document.getElementById('pedomanList');
+  if (box) box.addEventListener('click', function(e){
+    var a = e.target.closest('.pedoman-item');
+    if (!a) return;
+    e.preventDefault();
+    openPedomanViewer(a.dataset.fileid, a.dataset.judul);
+  });
+});
 
 // Sinkronkan tampilan satu switch di Admin > Menu Depan
 function _syncFlagToggleUI_(key) {
