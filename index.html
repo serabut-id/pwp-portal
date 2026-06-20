@@ -73,21 +73,17 @@
      class="fixed inset-0 z-[9999] flex flex-col items-center justify-center
             transition-opacity duration-500 overflow-hidden">
 
-  <!-- App logo: scales in -->
+  <!-- App logo: clean, no shadow/gradient — gentle spring-in + float -->
   <div class="splash-logo">
-    <img src="/icons/icon-192.png" alt="PWP" width="92" height="92"
-         style="width:92px;height:92px;border-radius:24px;display:block;
-                box-shadow:0 18px 40px -12px rgba(37,99,235,.45);" />
+    <img src="/icons/icon-192.png" alt="PWP" width="96" height="96"
+         style="width:96px;height:96px;border-radius:22px;display:block;" />
   </div>
 
   <!-- Wordmark -->
-  <h1 class="splash-wordmark" style="font-size:2.1rem;font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1d4ed8;margin-top:22px;">PWP</h1>
+  <h1 class="splash-wordmark" style="font-size:2.15rem;font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1d4ed8;margin-top:24px;">PWP</h1>
 
-  <!-- Full name -->
-  <p class="splash-name" style="font-size:13px;font-weight:600;color:#374151;margin-top:6px;">Portal Warga Pintar</p>
-
-  <!-- Dynamic perumahan tagline (diisi dari OrgSettings) -->
-  <p id="splashPerumahan" class="splash-tagline" style="font-size:10.5px;color:#9CA3AF;font-weight:600;margin-top:10px;letter-spacing:0.18em;text-transform:uppercase;"></p>
+  <!-- Subtitle: Portal Warga Pintar · Nama Perumahan (perumahan diisi dinamis) -->
+  <p class="splash-name" style="font-size:13px;font-weight:600;color:#374151;margin-top:7px;text-align:center;padding:0 24px;line-height:1.45;">Portal Warga Pintar<span id="splashPerumahan" class="splash-perum"></span></p>
 
   <!-- Loading bar -->
   <div class="splash-bar-wrap absolute bottom-16">
