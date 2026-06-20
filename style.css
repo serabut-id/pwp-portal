@@ -844,8 +844,8 @@ html, body {
   .splash-letter {
     opacity: 0;
     display: inline-block;
-    animation: splashLetterIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    animation-delay: calc(0.35s + var(--i) * 0.06s);
+    animation: splashLetterIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: calc(0.4s + var(--i) * 0.12s);
   }
 
   /* ===== PWP modern splash ===== */
@@ -870,16 +870,16 @@ html, body {
     animation-delay: 0.85s;
   }
 
-  /* Nama perumahan dinamis, inline setelah "Portal Warga Pintar" */
-  .splash-perum {
-    color: #9CA3AF;
-    font-weight: 600;
+  /* Nama perumahan di bawah — fade-in halus */
+  .splash-perum-btm {
+    opacity: 0;
+    animation: splashTaglineIn 0.5s ease forwards;
+    animation-delay: 1s;
   }
 
   .splash-wordmark {
-    opacity: 0;
-    animation: splashTaglineIn 0.45s ease forwards;
-    animation-delay: 0.45s;
+    /* container; animasi dijalankan per-huruf via .splash-letter */
+    justify-content: center;
   }
 
   .splash-name {

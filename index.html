@@ -79,16 +79,22 @@
          style="width:96px;height:96px;border-radius:22px;display:block;" />
   </div>
 
-  <!-- Wordmark -->
-  <h1 class="splash-wordmark" style="font-size:2.15rem;font-weight:900;line-height:1;letter-spacing:-0.02em;color:#1d4ed8;margin-top:24px;">PWP</h1>
+  <!-- Wordmark PWP — animasi stagger per huruf (ala OLX) -->
+  <h1 class="splash-wordmark" style="font-size:2.3rem;font-weight:900;line-height:1;letter-spacing:-0.01em;color:#1d4ed8;margin-top:24px;display:flex;">
+    <span class="splash-letter" style="--i:0;">P</span><span class="splash-letter" style="--i:1;">W</span><span class="splash-letter" style="--i:2;">P</span>
+  </h1>
 
-  <!-- Subtitle: Portal Warga Pintar · Nama Perumahan (perumahan diisi dinamis) -->
-  <p class="splash-name" style="font-size:13px;font-weight:600;color:#374151;margin-top:7px;text-align:center;padding:0 24px;line-height:1.45;">Portal Warga Pintar<span id="splashPerumahan" class="splash-perum"></span></p>
+  <!-- Brand + tagline 3 kata -->
+  <p class="splash-name" style="font-size:13px;font-weight:600;color:#374151;margin-top:8px;">Portal Warga Pintar</p>
+  <p class="splash-tagline" style="font-size:11px;font-weight:600;color:#9CA3AF;margin-top:5px;letter-spacing:0.03em;">Mudah, Aman, Transparan</p>
 
-  <!-- Loading bar -->
-  <div class="splash-bar-wrap absolute bottom-16">
-    <div class="splash-bar-track" style="width:84px;height:3px;background:#EEF2FF;border-radius:99px;overflow:hidden;">
-      <div class="splash-bar-fill" style="height:100%;background:linear-gradient(90deg,#2563EB,#60A5FA);border-radius:99px;"></div>
+  <!-- Bawah: nama perumahan + loading bar -->
+  <div class="splash-bottom absolute bottom-14 left-0 right-0 flex flex-col items-center gap-4">
+    <p id="splashPerumahan" class="splash-perum-btm" style="font-size:10.5px;font-weight:600;color:#9CA3AF;letter-spacing:0.2em;text-transform:uppercase;text-align:center;padding:0 24px;"></p>
+    <div class="splash-bar-wrap">
+      <div class="splash-bar-track" style="width:84px;height:3px;background:#EEF2FF;border-radius:99px;overflow:hidden;">
+        <div class="splash-bar-fill" style="height:100%;background:linear-gradient(90deg,#2563EB,#60A5FA);border-radius:99px;"></div>
+      </div>
     </div>
   </div>
 

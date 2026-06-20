@@ -16156,7 +16156,7 @@ function applyPerumahanName(name) {
   name = (name || '').trim();
   window.PWP_PERUMAHAN = name;
   var sp = document.getElementById('splashPerumahan');
-  if (sp) sp.textContent = name ? '  ·  ' + name : '';
+  if (sp) sp.textContent = name;
   // Label nama perumahan di seluruh app — hanya ditimpa jika sudah dikonfigurasi
   if (name) {
     document.querySelectorAll('.js-perumahan').forEach(function(el) { el.textContent = name; });
