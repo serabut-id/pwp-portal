@@ -880,23 +880,52 @@ html, body {
 
   /* Daun pintu kecil tepat di kusen pintu dalam logo P.
      Tertutup (rotateY 0) menutupi celah → mengayun membuka (engsel kiri). */
+  /* Geometri lubang pintu diukur dari logo:
+     dinding kiri x43.2%, kanan x55.3%, atas y38.5% (miring), bawah y65%.
+     Daun & kusen memakai kotak + clip-path yang sama agar pas mengisi lubang. */
+
+  /* Kusen/ruang di balik pintu → muncul saat pintu membuka, beri kedalaman */
+  .splash-doorway {
+    position: absolute;
+    left: 43.2%;
+    top: 38.5%;
+    width: 12.1%;
+    height: 26.5%;
+    z-index: 1;
+    /* slant atas-kiri mengikuti kusen pintu di logo */
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);
+    /* gelap di sisi engsel (kiri) → melandai ke terang: bayangan interior */
+    background: linear-gradient(90deg,
+      rgba(18, 40, 92, 0.45) 0%,
+      rgba(18, 40, 92, 0.18) 55%,
+      rgba(18, 40, 92, 0.03) 100%);
+    opacity: 0;
+    animation: splashDoorwayIn 1.2s ease forwards;
+    animation-delay: 0.95s;     /* mulai tampak sesaat setelah pintu bergerak */
+  }
+  @keyframes splashDoorwayIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
   .splash-door {
     position: absolute;
-    left: 42%;
-    top: 37%;
-    width: 15%;
-    height: 29.5%;
-    z-index: 2;
+    left: 43.2%;
+    top: 38.5%;
+    width: 12.1%;
+    height: 26.5%;
+    z-index: 3;
+    /* clip mengikuti bentuk lubang: dinding lurus + atas miring */
+    clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 19%);
     /* gradient halus → daun pintu menangkap cahaya saat berputar (depth) */
-    background: linear-gradient(90deg, rgb(8, 78, 214) 0%, rgb(28, 108, 255) 100%);
-    border-radius: 3px 3px 1.5px 1.5px;
+    background: linear-gradient(90deg, rgb(10, 82, 220) 0%, rgb(30, 112, 255) 100%);
     transform-origin: left center;
     transform: rotateY(0deg);
     transform-style: preserve-3d;
     backface-visibility: hidden;
     will-change: transform, filter;
-    box-shadow: inset -1.5px 0 0 rgba(255,255,255,.28);
-    animation: splashDoorOpen 1.7s cubic-bezier(0.42, 0, 0.12, 1) forwards;
+    box-shadow: inset -1.5px 0 0 rgba(255,255,255,.3);  /* highlight tepi bebas */
+    animation: splashDoorOpen 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     animation-delay: 0.7s;
   }
   /* Gagang pintu di sisi bebas (kanan) */
@@ -911,12 +940,9 @@ html, body {
   }
 
   @keyframes splashDoorOpen {
-    0%   { transform: rotateY(0deg);   filter: brightness(1); }
-    18%  { transform: rotateY(0deg);   filter: brightness(1); }   /* jeda halus sebelum dibuka */
-    55%  { transform: rotateY(-72deg); filter: brightness(1.06); } /* fase utama: cepat lalu melambat */
-    78%  { transform: rotateY(-91deg); filter: brightness(0.9); }  /* ayun melewati titik buka */
-    90%  { transform: rotateY(-85deg); filter: brightness(0.94); } /* settle balik lembut */
-    100% { transform: rotateY(-87deg); filter: brightness(0.92); } /* berhenti tenang, sedikit menghadap */
+    0%   { transform: rotateY(0deg);   filter: brightness(1);    }
+    16%  { transform: rotateY(0deg);   filter: brightness(1);    }  /* jeda halus sebelum dibuka */
+    100% { transform: rotateY(-66deg); filter: brightness(0.84); }  /* terbuka ajar, daun menjauh dari cahaya → meredup */
   }
 
   .splash-wordmark {
