@@ -73,24 +73,29 @@
      class="fixed inset-0 z-[9999] flex flex-col items-center justify-center
             transition-opacity duration-500 overflow-hidden">
 
-  <!-- App logo: clean, no shadow/gradient — gentle spring-in + float -->
+  <!-- App logo: pintu membuka (door-open reveal) -->
   <div class="splash-logo">
-    <img src="/icons/logo-mark.png" alt="PWP" width="104" height="104"
-         style="width:104px;height:104px;display:block;" />
+    <div class="splash-stage">
+      <img src="/icons/logo-mark.png" alt="PWP" width="104" height="104"
+           style="width:104px;height:104px;display:block;" />
+      <!-- Dua daun pintu (biru, mirip tile ikon) yang membuka -->
+      <div class="splash-door splash-door-l"><span class="splash-knob"></span></div>
+      <div class="splash-door splash-door-r"><span class="splash-knob"></span></div>
+    </div>
   </div>
 
-  <!-- Wordmark PWP — animasi stagger per huruf (ala OLX) -->
-  <h1 class="splash-wordmark" style="font-size:2.3rem;font-weight:900;line-height:1;letter-spacing:-0.01em;color:#1d4ed8;margin-top:24px;display:flex;">
+  <!-- Wordmark PWP — stagger per huruf -->
+  <h1 class="splash-wordmark" style="font-size:2.5rem;font-weight:900;line-height:1;letter-spacing:-0.01em;color:#1d4ed8;margin-top:26px;display:flex;">
     <span class="splash-letter" style="--i:0;">P</span><span class="splash-letter" style="--i:1;">W</span><span class="splash-letter" style="--i:2;">P</span>
   </h1>
 
-  <!-- Brand + tagline 3 kata -->
-  <p class="splash-name" style="font-size:13px;font-weight:600;color:#374151;margin-top:8px;">Portal Warga Pintar</p>
-  <p class="splash-tagline" style="font-size:11px;font-weight:600;color:#9CA3AF;margin-top:5px;letter-spacing:0.03em;">Mudah, Aman, Transparan</p>
+  <!-- Brand + tagline -->
+  <p class="splash-name" style="font-size:14px;font-weight:800;color:#1f2937;margin-top:9px;letter-spacing:-0.01em;">Portal Warga Pintar</p>
+  <p class="splash-tagline" style="font-size:11px;font-weight:700;color:#9CA3AF;margin-top:6px;letter-spacing:0.04em;">Mudah&nbsp; · &nbsp;Aman&nbsp; · &nbsp;Transparan</p>
 
   <!-- Bawah: nama perumahan + loading bar -->
   <div class="splash-bottom absolute bottom-14 left-0 right-0 flex flex-col items-center gap-4">
-    <p id="splashPerumahan" class="splash-perum-btm" style="font-size:10.5px;font-weight:600;color:#9CA3AF;letter-spacing:0.2em;text-transform:uppercase;text-align:center;padding:0 24px;"></p>
+    <p id="splashPerumahan" class="splash-perum-btm" style="font-size:12px;font-weight:800;color:#4B5563;letter-spacing:0.16em;text-transform:uppercase;text-align:center;padding:0 24px;"></p>
     <div class="splash-bar-wrap">
       <div class="splash-bar-track" style="width:84px;height:3px;background:#EEF2FF;border-radius:99px;overflow:hidden;">
         <div class="splash-bar-fill" style="height:100%;background:linear-gradient(90deg,#2563EB,#60A5FA);border-radius:99px;"></div>

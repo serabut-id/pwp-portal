@@ -165,7 +165,7 @@ function gasPost_(action, body) {
         setTimeout(function() {
           splash.style.display = 'none';
         }, 500);
-      }, 2000);
+      }, 3600);
     })();
 
     const VALID_BLOK_LIST = [
