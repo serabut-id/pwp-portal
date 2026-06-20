@@ -1813,15 +1813,14 @@ function gasPost_(action, body) {
       });
     });
 
-    // ===== STATUS HUNIAN (CARD BUTTON) =====
-    document.querySelectorAll('.hunian-card').forEach(card => {
-      card.addEventListener('click', () => {
+    // ===== STATUS HUNIAN (CARD BUTTON) — delegation, kartu di-render dinamis =====
+    var _hunianBox = document.getElementById('hunianCards');
+    if (_hunianBox) {
+      _hunianBox.addEventListener('click', function (e) {
+        var card = e.target.closest('.hunian-card');
+        if (!card || card.disabled || !_hunianBox.contains(card)) return;
 
-        // reset semua
-        document.querySelectorAll('.hunian-card')
-          .forEach(c => c.classList.remove('active'));
-
-        // set aktif
+        _hunianBox.querySelectorAll('.hunian-card').forEach(function (c) { c.classList.remove('active'); });
         card.classList.add('active');
 
         selectedRate = Number(card.dataset.value) || 0;
@@ -1832,7 +1831,7 @@ function gasPost_(action, body) {
         updateNominalBreakdown_();
         updateSubmitButtonState();
       });
-    });
+    }
 
     // ===== MANUAL TOGGLE =====
     manualCheckbox.addEventListener('change', () => {
@@ -2102,7 +2101,7 @@ function gasPost_(action, body) {
 
         statusTinggal: (function() {
           var activeCard = document.querySelector('.hunian-card.active');
-          if (activeCard) return Number(activeCard.dataset.value) === 200000 ? 'Rumah Dihuni' : 'Rumah Tidak Dihuni';
+          if (activeCard) return activeCard.dataset.label || (Number(activeCard.dataset.value) >= 190000 ? 'Rumah Dihuni' : 'Rumah Tidak Dihuni');
           // Fallback: derive per-house rate from selectedRate / blok count
           var _bc = (window._wargaBloks_ && window._wargaBloks_.length > 1) ? window._wargaBloks_.length : 1;
           return Math.round(selectedRate / _bc) >= 190000 ? 'Rumah Dihuni' : 'Rumah Tidak Dihuni';
@@ -16232,6 +16231,22 @@ function renderTarifCards_(opts) {
   grid.innerHTML = html;
 }
 
+/* Kartu pilih tarif di form Bayar (1-3 dinamis dari OrgSettings). */
+function renderHunianCards_() {
+  var box = document.getElementById('hunianCards');
+  if (!box) return;
+  var tarifs = (window.PWP_TARIFS && window.PWP_TARIFS.length)
+    ? window.PWP_TARIFS
+    : [{ label: 'Dihuni', nominal: 200000 }, { label: 'Tidak Dihuni', nominal: 175000 }];
+  box.style.gridTemplateColumns = 'repeat(' + Math.min(tarifs.length, 3) + ',minmax(0,1fr))';
+  box.innerHTML = tarifs.map(function (t) {
+    return '<button type="button" data-value="' + t.nominal + '" data-label="' + _escTarif_(t.label) + '" class="hunian-card">'
+      + '<div class="font-medium">' + _escTarif_(t.label) + '</div>'
+      + '<div class="text-xs mt-1 opacity-80">Rp' + Number(t.nominal).toLocaleString('id-ID') + ' / bulan</div>'
+      + '</button>';
+  }).join('');
+}
+
 function loadPerumahanName() {
   try { applyPerumahanName(localStorage.getItem('pwp_perumahan') || ''); } catch (_) {}
   return gasGet_('getOrgSettings').then(function(res) {
@@ -16242,6 +16257,7 @@ function loadPerumahanName() {
       applyOrgRekening_(res.settings);
       window.PWP_TARIFS = _tarifFromSettings_(res.settings);
       renderTarifCards_({ loggedIn: !!(window.currentUser && window.currentUser.email) });
+      renderHunianCards_();
     }
   }).catch(function() { /* offline → pakai cache */ });
 }
