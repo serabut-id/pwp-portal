@@ -865,7 +865,7 @@ html, body {
     position: relative;
     width: 104px;
     height: 104px;
-    perspective: 720px;
+    perspective: 520px;
   }
   .splash-stage img { position: relative; z-index: 1; }
 
@@ -876,57 +876,44 @@ html, body {
   }
   .splash-stage img {
     animation: splashFloat 3.6s ease-in-out infinite;
-    animation-delay: 2s;
+    animation-delay: 2.2s;
   }
 
-  /* Dua daun pintu biru (tertutup = mirip tile ikon) lalu membuka */
+  /* Daun pintu kecil tepat di kusen pintu dalam logo P.
+     Tertutup (rotateY 0) menutupi celah → mengayun membuka (engsel kiri). */
   .splash-door {
     position: absolute;
-    top: 0;
-    width: 52px;
-    height: 104px;
-    z-index: 3;
-    background: linear-gradient(135deg, #3b7bff 0%, #1d4ed8 100%);
-    box-shadow: inset 0 0 0 0.5px rgba(255,255,255,.08);
-    backface-visibility: hidden;
-  }
-  .splash-door-l {
-    left: 0;
-    border-radius: 24px 4px 4px 24px;
+    left: 42%;
+    top: 37%;
+    width: 15%;
+    height: 29.5%;
+    z-index: 2;
+    background: rgb(12, 96, 250);            /* sama dengan biru logo */
+    border-radius: 3px 3px 1.5px 1.5px;
     transform-origin: left center;
-    animation: splashDoorL 1.45s cubic-bezier(0.55, 0.06, 0.18, 1) forwards;
-    animation-delay: 0.55s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    box-shadow: inset -1.5px 0 0 rgba(255,255,255,.22);
+    animation: splashDoorOpen 1.5s cubic-bezier(0.5, 0.04, 0.18, 1) forwards;
+    animation-delay: 0.7s;
   }
-  .splash-door-r {
-    right: 0;
-    border-radius: 4px 24px 24px 4px;
-    transform-origin: right center;
-    animation: splashDoorR 1.45s cubic-bezier(0.55, 0.06, 0.18, 1) forwards;
-    animation-delay: 0.55s;
-  }
-  /* Gagang pintu dekat celah tengah */
+  /* Gagang pintu di sisi bebas (kanan) */
   .splash-knob {
     position: absolute;
+    right: 1.5px;
     top: 50%;
-    width: 4px; height: 14px;
+    width: 2px; height: 6px;
     border-radius: 99px;
-    background: rgba(255,255,255,.65);
+    background: rgba(255,255,255,.85);
     transform: translateY(-50%);
   }
-  .splash-door-l .splash-knob { right: 4px; }
-  .splash-door-r .splash-knob { left: 4px; }
 
-  @keyframes splashDoorL {
-    0%   { transform: rotateY(0deg);   opacity: 1; }
-    20%  { transform: rotateY(0deg);   opacity: 1; }   /* jeda elegan sebelum membuka */
-    80%  { transform: rotateY(-115deg); opacity: 1; }
-    100% { transform: rotateY(-118deg); opacity: 0; }
-  }
-  @keyframes splashDoorR {
-    0%   { transform: rotateY(0deg);   opacity: 1; }
-    20%  { transform: rotateY(0deg);   opacity: 1; }
-    80%  { transform: rotateY(115deg);  opacity: 1; }
-    100% { transform: rotateY(118deg);  opacity: 0; }
+  @keyframes splashDoorOpen {
+    0%   { transform: rotateY(0deg); }
+    22%  { transform: rotateY(0deg); }       /* jeda sebelum dibuka */
+    70%  { transform: rotateY(-92deg); }
+    85%  { transform: rotateY(-82deg); }     /* sedikit ayun balik */
+    100% { transform: rotateY(-88deg); }
   }
 
   .splash-wordmark {
