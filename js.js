@@ -4753,7 +4753,7 @@ function gasPost_(action, body) {
       // 6. Reset greeting
       var nameEl = document.getElementById('homeUsername');
       var greetEl = document.getElementById('homeGreeting');
-      if (nameEl) nameEl.innerText = 'Warga JPS2';
+      if (nameEl) nameEl.innerText = 'Warga';
       if (greetEl) {
         var hour = new Date().getHours();
         var _g = _getGreetingHTML_(hour);
@@ -6109,7 +6109,7 @@ function updateHomeGreeting() {
   } else if (currentUser && currentUser.email) {
     nameEl.innerText = currentUser.email.split('@')[0];
   } else {
-    nameEl.innerText = 'Warga JPS2';
+    nameEl.innerText = 'Warga';
   }
 }
 
@@ -11959,7 +11959,7 @@ function _jualanShare_(id){
   var harga = (d.harga > 0) ? ('Rp ' + Number(d.harga).toLocaleString('id-ID')) : 'Nego';
   var text = '🛒 ' + d.judul + '\n' + harga + (d.kategori ? (' · ' + d.kategori) : '') +
              (d.deskripsi ? ('\n\n' + d.deskripsi) : '') +
-             '\n\nLihat di Lapak JPS2 — jual-beli antar warga.';
+             '\n\nLihat di Lapak — jual-beli antar warga.';
   var url = location.origin + location.pathname;
   if(navigator.share){
     navigator.share({ title: d.judul, text: text, url: url }).catch(function(){});
