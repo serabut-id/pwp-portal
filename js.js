@@ -7030,7 +7030,7 @@ function closeInfoArtikelModal() {
 
 // --- REKENING COPY ---
 function copyRekening() {
-  const noRek = '7305014010';
+  const noRek = (document.getElementById('rekening') && document.getElementById('rekening').value) || window.PWP_NOREK || '7305014010';
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(noRek).then(function() {
       showCopySuccess();
@@ -16163,6 +16163,25 @@ function applyPerumahanName(name) {
     if (document.title.indexOf('—') > -1) document.title = 'PWP — ' + name;
   }
 }
+/* Rekening IPL dinamis dari OrgSettings — fallback ke nilai existing bila kosong.
+   Keys: bankNama, noRek, rekeningAtasNama */
+function applyOrgRekening_(s) {
+  if (!s) return;
+  var bank = (s.bankNama || '').trim();
+  var noRek = (s.noRek || '').trim();
+  var atasNama = (s.rekeningAtasNama || '').trim();
+  if (noRek) {
+    ['rekNoBayar', 'rekNoInfo'].forEach(function(id) { var el = document.getElementById(id); if (el) el.textContent = noRek; });
+    var rk = document.getElementById('rekening'); if (rk) rk.value = noRek;
+    window.PWP_NOREK = noRek;
+  }
+  if (bank) { var bk = document.getElementById('bank'); if (bk) bk.value = bank; }
+  if (bank || atasNama) {
+    var line = (bank || 'BCA') + ' · a.n. ' + (atasNama || '-');
+    ['rekLineBayar', 'rekLineInfo'].forEach(function(id) { var el = document.getElementById(id); if (el) el.textContent = line; });
+  }
+}
+
 function loadPerumahanName() {
   try { applyPerumahanName(localStorage.getItem('pwp_perumahan') || ''); } catch (_) {}
   return gasGet_('getOrgSettings').then(function(res) {
@@ -16170,6 +16189,7 @@ function loadPerumahanName() {
       var nm = res.settings.namaPerumahan || '';
       try { localStorage.setItem('pwp_perumahan', nm); } catch (_) {}
       applyPerumahanName(nm);
+      applyOrgRekening_(res.settings);
     }
   }).catch(function() { /* offline → pakai cache */ });
 }

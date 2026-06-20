@@ -1166,8 +1166,8 @@
           <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Transfer ke</p>
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-[10px] text-gray-400 mb-0.5">BCA · a.n. Imam Jaswidi Al Hamdani</p>
-              <p class="text-base font-black text-gray-900 tracking-tight">7305014010</p>
+              <p id="rekLineBayar" class="text-[10px] text-gray-400 mb-0.5">BCA · a.n. Imam Jaswidi Al Hamdani</p>
+              <p id="rekNoBayar" class="text-base font-black text-gray-900 tracking-tight">7305014010</p>
             </div>
             <button onclick="copyRekeningSheet()"
                     id="copyRekeningSheetBtn"
@@ -4236,8 +4236,8 @@
   <!-- HEADER -->
   <div class="bg-white px-5 py-3 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
     <div class="flex items-center gap-2 min-w-0">
-      <button onclick="openHome()" class="w-8 h-8 -ml-1 rounded-xl flex items-center justify-center text-gray-400 active:bg-gray-100">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <button onclick="openHome()" class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 active:scale-95 transition flex-shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       </button>
       <div class="min-w-0">
         <h1 class="text-base font-semibold text-gray-900">Jadwal Jaga</h1>
@@ -4295,8 +4295,8 @@
   <!-- HEADER -->
   <div class="bg-white px-5 py-3 border-b border-gray-100 flex items-center justify-between flex-shrink-0">
     <div class="flex items-center gap-2 min-w-0">
-      <button onclick="openHome()" class="w-8 h-8 -ml-1 rounded-xl flex items-center justify-center text-gray-400 active:bg-gray-100">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <button onclick="openHome()" class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 active:scale-95 transition flex-shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       </button>
       <div class="min-w-0">
         <h1 class="text-base font-semibold text-gray-900">Lapak</h1>
@@ -5568,7 +5568,9 @@
   <!-- HEADER -->
   <div class="sticky top-0 z-20 bg-white px-5 py-4 flex items-center justify-between gap-3 border-b border-gray-100">
     <div class="flex items-center gap-3">
-      <button id="btnBackMudik" onclick="closeFormMudik()" class="md:hidden text-gray-700 text-xl active:scale-95 transition">←</button>
+      <button id="btnBackMudik" onclick="closeFormMudik()" class="md:hidden w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 active:scale-95 transition flex-shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
       <div>
         <h2 class="text-base font-semibold text-gray-900">Konfirmasi Mudik</h2>
         <p class="text-xs text-gray-500">Informasikan kepada pengurus</p>
@@ -5737,7 +5739,9 @@
   <!-- HEADER -->
   <div class="sticky top-0 z-20 bg-white px-5 py-4 flex items-center justify-between gap-3 border-b border-gray-100">
     <div class="flex items-center gap-3">
-      <button id="btnBackRenovasi" onclick="closeFormRenovasi()" class="md:hidden text-gray-700 text-xl active:scale-95 transition">←</button>
+      <button id="btnBackRenovasi" onclick="closeFormRenovasi()" class="md:hidden w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center text-gray-500 active:scale-95 transition flex-shrink-0">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      </button>
       <div>
         <h2 class="text-base font-semibold text-gray-900">Konfirmasi Renovasi</h2>
         <p class="text-xs text-gray-500">Daftarkan rencana renovasi rumah Anda</p>
@@ -6562,7 +6566,7 @@
             <div class="px-4 pt-4 pb-4 border-r border-gray-50 flex flex-col gap-1">
               <p class="text-[9px] text-gray-400 uppercase tracking-widest font-semibold">Rekening Tujuan</p>
               <div class="flex items-center gap-1.5">
-                <p class="text-base font-black text-gray-900 tracking-tight">7305014010</p>
+                <p id="rekNoInfo" class="text-base font-black text-gray-900 tracking-tight">7305014010</p>
                 <button onclick="copyRekening()"
                         class="w-5 h-5 rounded-lg bg-gray-100 flex items-center justify-center
                                active:scale-95 transition flex-shrink-0"
@@ -6573,7 +6577,7 @@
                   </svg>
                 </button>
               </div>
-              <p class="text-[9px] text-gray-400 leading-tight">BCA · a.n. Imam Jaswidi Al Hamdani</p>
+              <p id="rekLineInfo" class="text-[9px] text-gray-400 leading-tight">BCA · a.n. Imam Jaswidi Al Hamdani</p>
             </div>
 
             <!-- JATUH TEMPO -->
