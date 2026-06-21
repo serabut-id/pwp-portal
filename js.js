@@ -7679,14 +7679,21 @@ var _adminWargaBaruCache_ = null;
 // ===== SHOW/HIDE navAdmin BASED ON ROLE =====
 function updateNavAdminVisibility() {
   var btn = document.getElementById('navAdmin');
-  if (!btn) return;
-  var isAdmin = currentUser && currentUser.role === 'admin';
-  if (isAdmin) {
-    btn.classList.remove('hidden');
-    btn.classList.add('flex');
-  } else {
-    btn.classList.add('hidden');
-    btn.classList.remove('flex');
+  var role = currentUser && currentUser.role ? String(currentUser.role).toLowerCase() : '';
+  var isAdmin = role === 'admin';
+  if (btn) {
+    btn.classList.toggle('hidden', !isAdmin);
+    btn.classList.toggle('flex', isAdmin);
+  }
+  // Kartu "Pengaturan Perumahan" di halaman Saya — admin/pengurus/bendahara
+  var card = document.getElementById('sayaSettingsCard');
+  if (card) {
+    var canSettings = (role === 'admin' || role === 'pengurus' || role === 'bendahara');
+    card.classList.toggle('hidden', !canSettings);
+    var hint = document.getElementById('sayaSettingsHint');
+    if (hint) hint.textContent = (role === 'bendahara') ? 'Rekening & tarif IPL'
+      : (role === 'pengurus') ? 'Identitas, alamat, folder, dll'
+      : 'Identitas, rekening, tarif, folder';
   }
 }
 
@@ -12924,10 +12931,6 @@ function _renderSuratPengantarPage_() {
 
   var isAdmin = currentUser && currentUser.role === 'admin';
   if (tabAll) tabAll.classList.toggle('hidden', !isAdmin);
-  var _role = currentUser && currentUser.role ? String(currentUser.role).toLowerCase() : '';
-  var canOpenSettings = (_role === 'admin' || _role === 'pengurus' || _role === 'bendahara');
-  var orgBtn = document.getElementById('suratOrgSettingsBtn');
-  if (orgBtn) orgBtn.classList.toggle('hidden', !canOpenSettings);
 
   if (emptyState) emptyState.classList.add('hidden');
 
