@@ -7685,16 +7685,6 @@ function updateNavAdminVisibility() {
     btn.classList.toggle('hidden', !isAdmin);
     btn.classList.toggle('flex', isAdmin);
   }
-  // Kartu "Pengaturan Perumahan" di halaman Saya — admin/pengurus/bendahara
-  var card = document.getElementById('sayaSettingsCard');
-  if (card) {
-    var canSettings = (role === 'admin' || role === 'pengurus' || role === 'bendahara');
-    card.classList.toggle('hidden', !canSettings);
-    var hint = document.getElementById('sayaSettingsHint');
-    if (hint) hint.textContent = (role === 'bendahara') ? 'Rekening & tarif IPL'
-      : (role === 'pengurus') ? 'Identitas, alamat, folder, dll'
-      : 'Identitas, rekening, tarif, folder';
-  }
 }
 
 // ===== SHOW/HIDE ADMIN SECTION =====
