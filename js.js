@@ -4056,6 +4056,12 @@ function gasPost_(action, body) {
     if (namaEl)  namaEl.value  = wRes.data[0].nama  || '';
     if (hpEl)    hpEl.value    = wRes.data[0].noHp  || '';
     if (emailEl) emailEl.value = wRes.data[0].email || '';
+    // Nama profil atas ikut data fresh (hindari beda dgn field NAMA)
+    if (wRes.data[0].nama) {
+      var _pn2 = document.getElementById('sayaProfileName');
+      if (_pn2) _pn2.innerText = wRes.data[0].nama;
+      if (currentUser) { currentUser.fullName = wRes.data[0].nama; currentUser.nama = wRes.data[0].nama; }
+    }
     if (badgeEl) {
       var statusHunian = String(wRes.data[0].statusHunian || '').trim().toLowerCase();
       badgeEl.classList.remove('bg-amber-100', 'text-amber-700', 'bg-blue-100', 'text-blue-700');
@@ -4887,6 +4893,12 @@ function gasPost_(action, body) {
           if (currentUser) { currentUser.fullName = payload.nama; currentUser.nama = payload.nama; currentUser.name = payload.nama; }
         }
         if (payload.noHp && currentUser) currentUser.noHp = payload.noHp;
+        // Update cache wargaData + persist session agar tidak balik ke nama lama
+        if (currentUser && currentUser.wargaData && currentUser.wargaData.length) {
+          if (payload.nama) currentUser.wargaData[0].nama = payload.nama;
+          if (payload.noHp) currentUser.wargaData[0].noHp = payload.noHp;
+        }
+        try { if (typeof saveSession === 'function') saveSession(currentUser); } catch(_) {}
         setTimeout(function() {
           [namaEl, hpEl].forEach(function(el) {
             if (!el) return;
