@@ -4879,6 +4879,14 @@ function gasPost_(action, body) {
           return;
         }
         btn.innerHTML = '<span class="flex items-center justify-center gap-2"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Berhasil</span>';
+        // ===== Auto-reflect data baru di seluruh UI (tanpa reload) =====
+        if (payload.nama) {
+          var _pn = document.getElementById('sayaProfileName'); if (_pn) _pn.innerText = payload.nama;
+          var _hu = document.getElementById('homeUsername'); if (_hu) _hu.innerText = payload.nama;
+          var _dsn = document.getElementById('desktopSidebarName'); if (_dsn) _dsn.innerText = payload.nama;
+          if (currentUser) { currentUser.fullName = payload.nama; currentUser.nama = payload.nama; currentUser.name = payload.nama; }
+        }
+        if (payload.noHp && currentUser) currentUser.noHp = payload.noHp;
         setTimeout(function() {
           [namaEl, hpEl].forEach(function(el) {
             if (!el) return;
@@ -10198,8 +10206,16 @@ function _toggleAktivitasMore_(){
   _setAktivitasToggleLabel_();
 }
 
+// Penyewa murni (semua baris warga = penyewa) → tak boleh akses detail kas (sensitif)
+function _isPenyewaUser_(){
+  var wd = (currentUser && currentUser.wargaData) || [];
+  if (!wd.length) return false; // status tak diketahui → jangan blokir owner
+  return wd.every(function(d){ return String(d.statusHunian||'').trim().toLowerCase() === 'penyewa'; });
+}
+
 function openKasReport(){
   if(!currentUser){ if(typeof openLoginRequiredModal==='function') openLoginRequiredModal('Login untuk melihat laporan kas.'); return; }
+  if(_isPenyewaUser_()){ showToast('Laporan kas hanya untuk pemilik rumah', 'info'); return; }
   document.getElementById('kasReportModal').classList.remove('hidden');
   document.getElementById('kasReportBody').innerHTML =
     '<div class="flex flex-col gap-3 pt-1"><div class="skeleton rounded-2xl w-full" style="height:84px;"></div><div class="skeleton rounded-2xl w-full" style="height:240px;"></div></div>';
@@ -11226,6 +11242,7 @@ var _kasIPLData = {
 };
 
 function openKasIPL(year) {
+  if(_isPenyewaUser_()){ showToast('Laporan kas hanya untuk pemilik rumah', 'info'); return; }
   var data = _kasIPLData[year];
   if (!data) return;
 
@@ -13094,7 +13111,7 @@ function closeOrgSettings() {
 function saveOrgSettings() {
   var btn = document.getElementById('orgSaveBtn');
   btn.disabled = true;
-  btn.innerText = 'Menyimpan...';
+  btn.innerHTML = '<span style="display:inline-flex;align-items:center;justify-content:center;gap:8px;"><svg style="width:16px;height:16px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="rgba(255,255,255,0.3)" stroke-width="3"/><path d="M12 2a10 10 0 0 1 10 10" stroke="#fff" stroke-width="3"/></svg>Menyimpan...</span>';
   var role = _orgRole_();
   var canSet = role === 'admin' || role === 'pengurus';
   var canFin = role === 'admin' || role === 'bendahara';
