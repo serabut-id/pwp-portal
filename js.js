@@ -12924,8 +12924,10 @@ function _renderSuratPengantarPage_() {
 
   var isAdmin = currentUser && currentUser.role === 'admin';
   if (tabAll) tabAll.classList.toggle('hidden', !isAdmin);
+  var _role = currentUser && currentUser.role ? String(currentUser.role).toLowerCase() : '';
+  var canOpenSettings = (_role === 'admin' || _role === 'pengurus' || _role === 'bendahara');
   var orgBtn = document.getElementById('suratOrgSettingsBtn');
-  if (orgBtn) orgBtn.classList.toggle('hidden', !isAdmin);
+  if (orgBtn) orgBtn.classList.toggle('hidden', !canOpenSettings);
 
   if (emptyState) emptyState.classList.add('hidden');
 
