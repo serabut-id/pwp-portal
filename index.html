@@ -1981,7 +1981,9 @@
         <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Role / Akses</label>
         <select id="dataWargaFormRole" class="app-input mt-1">
           <option value="warga">Warga</option>
-          <option value="admin">Admin</option>
+          <option value="pengurus">Pengurus (identitas, konten, operasional)</option>
+          <option value="bendahara">Bendahara (keuangan: rekening &amp; tarif)</option>
+          <option value="admin">Admin (akses penuh)</option>
         </select>
       </div>
 
@@ -4069,7 +4071,8 @@
       </button>
     </div>
     <div class="flex-1 overflow-y-auto px-5 py-4 space-y-3">
-      <p class="text-[11px] text-gray-400 leading-relaxed">Dipakai untuk mengisi placeholder template PDF Surat Pengantar (Kabupaten, Kecamatan, Desa, RT, RW, Nama Perumahan, Alamat, Ketua).</p>
+      <div id="orgGroupIdentitas" class="space-y-3">
+      <p class="text-[11px] text-gray-400 leading-relaxed">Identitas & operasional perumahan (dipakai di app, Surat Pengantar, dll).</p>
       <div>
         <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Kabupaten</label>
         <input id="orgKabupaten" class="app-input" placeholder="Contoh: Bogor"/>
@@ -4115,6 +4118,47 @@
           <button type="button" onclick="document.getElementById('orgKetuaSignFile').click()" class="flex-1 py-2 rounded-xl border border-dashed border-gray-300 text-xs font-semibold text-gray-500">+ Upload TTD</button>
         </div>
         <p class="text-[10px] text-gray-400 leading-relaxed">PNG latar transparan disarankan. Otomatis disisipkan ke PDF di posisi placeholder <code>{{ketuaTtd}}</code>.</p>
+      </div>
+      </div><!-- /orgGroupIdentitas -->
+
+      <!-- ===== KEUANGAN (bendahara/admin) ===== -->
+      <div id="orgGroupFinance" class="pt-3 border-t border-gray-100 space-y-3">
+        <p class="text-xs font-bold text-gray-700 uppercase tracking-widest">Keuangan</p>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Bank</label>
+          <input id="orgBankNama" class="app-input" placeholder="Contoh: BCA"/>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">No. Rekening</label>
+          <input id="orgNoRek" class="app-input" placeholder="7305014010" inputmode="numeric"/>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Atas Nama</label>
+          <input id="orgRekeningAtasNama" class="app-input" placeholder="Nama pemilik rekening"/>
+        </div>
+        <p class="text-[10px] text-gray-400 leading-relaxed">Tarif IPL — isi yang dipakai (1–3 opsi), kosongkan yang tak perlu.</p>
+        <div class="flex gap-2">
+          <input id="orgTarif1Label" class="app-input flex-1" placeholder="Label (mis. Dihuni)"/>
+          <input id="orgTarif1Nominal" class="app-input w-28" placeholder="200000" inputmode="numeric"/>
+        </div>
+        <div class="flex gap-2">
+          <input id="orgTarif2Label" class="app-input flex-1" placeholder="Label (mis. Tidak Dihuni)"/>
+          <input id="orgTarif2Nominal" class="app-input w-28" placeholder="175000" inputmode="numeric"/>
+        </div>
+        <div class="flex gap-2">
+          <input id="orgTarif3Label" class="app-input flex-1" placeholder="Label (opsional)"/>
+          <input id="orgTarif3Nominal" class="app-input w-28" placeholder="nominal" inputmode="numeric"/>
+        </div>
+      </div>
+
+      <!-- ===== OPERASIONAL (pengurus/admin) ===== -->
+      <div id="orgGroupOps" class="pt-3 border-t border-gray-100 space-y-3">
+        <p class="text-xs font-bold text-gray-700 uppercase tracking-widest">Operasional</p>
+        <div>
+          <label class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Folder Foto Lapak (Drive)</label>
+          <input id="orgJualanFolderId" class="app-input" placeholder="Folder ID / link Drive"/>
+          <p class="text-[10px] text-gray-400 mt-1 leading-relaxed">Kosong = otomatis pakai folder "JPortal-Jualan". Folder harus bisa diakses akun sistem.</p>
+        </div>
       </div>
     </div>
     <div class="px-5 pb-5 pt-2 border-t border-gray-100 flex-shrink-0">

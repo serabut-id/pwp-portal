@@ -8325,7 +8325,10 @@ function openDataWargaForm(data) {
   document.getElementById('dataWargaFormHp').value    = data ? data.noHp  : '';
   document.getElementById('dataWargaFormEmail').value = data ? data.email : '';
   var roleEl = document.getElementById('dataWargaFormRole');
-  if (roleEl) roleEl.value = (data && data.role === 'admin') ? 'admin' : 'warga';
+  if (roleEl) {
+    var _r = (data && data.role) ? String(data.role).toLowerCase() : 'warga';
+    roleEl.value = (['admin','pengurus','bendahara','warga'].indexOf(_r) > -1) ? _r : 'warga';
+  }
 
   // ===== Pengaturan IPL (dari sheet IPL tahun berjalan) =====
   var ipl = (data && data.ipl) ? data.ipl : {};
@@ -13043,11 +13046,23 @@ function _orgPickSign_(input) {
   reader.readAsDataURL(file);
 }
 
+function _orgRole_() { return (currentUser && currentUser.role) ? String(currentUser.role).toLowerCase() : ''; }
+function _orgToggle_(id, show) { var el = document.getElementById(id); if (el) el.classList.toggle('hidden', !show); }
+
 function openOrgSettings() {
   document.getElementById('orgSettingsModal').classList.remove('hidden');
   _orgKetuaSign_ = '';
   var prev = document.getElementById('orgKetuaSignPrev');
   prev.src = ''; prev.classList.add('hidden');
+
+  // Role gating: pengurus→identitas+operasional, bendahara→keuangan, admin→semua
+  var role = _orgRole_();
+  var canSet = role === 'admin' || role === 'pengurus';
+  var canFin = role === 'admin' || role === 'bendahara';
+  _orgToggle_('orgGroupIdentitas', canSet);
+  _orgToggle_('orgGroupOps', canSet);
+  _orgToggle_('orgGroupFinance', canFin);
+
   gasGet_('getOrgSettings').then(function(res) {
     var s = (res && res.settings) ? res.settings : {};
     document.getElementById('orgKabupaten').value = s.kabupaten || '';
@@ -13058,6 +13073,18 @@ function openOrgSettings() {
     document.getElementById('orgNamaPerumahan').value = s.namaPerumahan || '';
     document.getElementById('orgAlamatLengkap').value = s.alamatLengkap || '';
     document.getElementById('orgKetuaNama').value = s.ketuaNama || '';
+    // Keuangan
+    document.getElementById('orgBankNama').value = s.bankNama || '';
+    document.getElementById('orgNoRek').value = s.noRek || '';
+    document.getElementById('orgRekeningAtasNama').value = s.rekeningAtasNama || '';
+    document.getElementById('orgTarif1Label').value = s.tarif1Label || '';
+    document.getElementById('orgTarif1Nominal').value = s.tarif1Nominal || '';
+    document.getElementById('orgTarif2Label').value = s.tarif2Label || '';
+    document.getElementById('orgTarif2Nominal').value = s.tarif2Nominal || '';
+    document.getElementById('orgTarif3Label').value = s.tarif3Label || '';
+    document.getElementById('orgTarif3Nominal').value = s.tarif3Nominal || '';
+    // Operasional
+    document.getElementById('orgJualanFolderId').value = s.jualanFolderId || '';
     if (s.ketuaSign) {
       _orgKetuaSign_ = s.ketuaSign;
       prev.src = s.ketuaSign; prev.classList.remove('hidden');
@@ -13073,27 +13100,42 @@ function saveOrgSettings() {
   var btn = document.getElementById('orgSaveBtn');
   btn.disabled = true;
   btn.innerText = 'Menyimpan...';
-  var payload = {
-    kabupaten: document.getElementById('orgKabupaten').value.trim(),
-    kecamatan: document.getElementById('orgKecamatan').value.trim(),
-    desa: document.getElementById('orgDesa').value.trim(),
-    rt: document.getElementById('orgRt').value.trim(),
-    rw: document.getElementById('orgRw').value.trim(),
-    namaPerumahan: document.getElementById('orgNamaPerumahan').value.trim(),
-    alamatLengkap: document.getElementById('orgAlamatLengkap').value.trim(),
-    ketuaNama: document.getElementById('orgKetuaNama').value.trim(),
-    ketuaSign: _orgKetuaSign_ || ''
-  };
+  var role = _orgRole_();
+  var canSet = role === 'admin' || role === 'pengurus';
+  var canFin = role === 'admin' || role === 'bendahara';
+  var payload = {};
+  if (canSet) {
+    payload.kabupaten = document.getElementById('orgKabupaten').value.trim();
+    payload.kecamatan = document.getElementById('orgKecamatan').value.trim();
+    payload.desa = document.getElementById('orgDesa').value.trim();
+    payload.rt = document.getElementById('orgRt').value.trim();
+    payload.rw = document.getElementById('orgRw').value.trim();
+    payload.namaPerumahan = document.getElementById('orgNamaPerumahan').value.trim();
+    payload.alamatLengkap = document.getElementById('orgAlamatLengkap').value.trim();
+    payload.ketuaNama = document.getElementById('orgKetuaNama').value.trim();
+    payload.ketuaSign = _orgKetuaSign_ || '';
+    payload.jualanFolderId = document.getElementById('orgJualanFolderId').value.trim();
+  }
+  if (canFin) {
+    payload.bankNama = document.getElementById('orgBankNama').value.trim();
+    payload.noRek = document.getElementById('orgNoRek').value.trim();
+    payload.rekeningAtasNama = document.getElementById('orgRekeningAtasNama').value.trim();
+    payload.tarif1Label = document.getElementById('orgTarif1Label').value.trim();
+    payload.tarif1Nominal = document.getElementById('orgTarif1Nominal').value.trim();
+    payload.tarif2Label = document.getElementById('orgTarif2Label').value.trim();
+    payload.tarif2Nominal = document.getElementById('orgTarif2Nominal').value.trim();
+    payload.tarif3Label = document.getElementById('orgTarif3Label').value.trim();
+    payload.tarif3Nominal = document.getElementById('orgTarif3Nominal').value.trim();
+  }
   gasPost_('adminSetOrgSettings', { payload: payload, adminEmail: currentUser.email }).then(function(res) {
     btn.disabled = false;
     btn.innerText = 'Simpan';
     if (res && res.ok) {
-      try { localStorage.setItem('pwp_perumahan', payload.namaPerumahan); } catch (_) {}
-      if (typeof applyPerumahanName === 'function') applyPerumahanName(payload.namaPerumahan);
       closeOrgSettings();
-      showToast('Identitas wilayah tersimpan', 'success');
+      showToast('Pengaturan tersimpan', 'success');
+      if (typeof loadPerumahanName === 'function') loadPerumahanName(); // re-sync semua UI dinamis dari sheet
     } else {
-      showToast('Gagal menyimpan', 'error');
+      showToast((res && res.error) || 'Gagal menyimpan', 'error');
     }
   }).catch(function() {
     btn.disabled = false;
