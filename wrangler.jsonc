@@ -11,7 +11,7 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
-  "workers_dev": true,
+  "workers_dev": false,
   "routes": [
     { "pattern": "pwp.serabut.id", "custom_domain": true }
   ]
