@@ -4905,6 +4905,7 @@ function gasPost_(action, body) {
           var _hu = document.getElementById('homeUsername'); if (_hu) _hu.innerText = payload.nama;
           var _dsn = document.getElementById('desktopSidebarName'); if (_dsn) _dsn.innerText = payload.nama;
           if (currentUser) { currentUser.fullName = payload.nama; currentUser.nama = payload.nama; currentUser.name = payload.nama; }
+          try { if (typeof updateHeaderAuthUI === 'function') updateHeaderAuthUI(); } catch (_) {} // refresh sapaan home live
         }
         if (payload.noHp && currentUser) currentUser.noHp = payload.noHp;
         // Update cache wargaData + persist session agar tidak balik ke nama lama
