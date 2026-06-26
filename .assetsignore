@@ -1,0 +1,16 @@
+# Jangan upload file dev/meta ke Cloudflare Assets (hanya aset web yang perlu)
+.git
+.git/**
+.wrangler
+.wrangler/**
+.claude
+.claude/**
+node_modules
+node_modules/**
+scripts
+scripts/**
+.gitignore
+.assetsignore
+.DS_Store
+*.md
+wrangler.jsonc
