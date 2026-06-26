@@ -7,6 +7,13 @@ function gasGet_(action, params) {
       url += '&' + k + '=' + encodeURIComponent(params[k]);
     });
   }
+  // S1b: sertakan token sesi utk action admin* (read). Diabaikan utk action publik.
+  try {
+    if (typeof currentUser !== 'undefined' && currentUser) {
+      url += '&callerEmail=' + encodeURIComponent(currentUser.email || '');
+      url += '&authToken=' + encodeURIComponent(currentUser.authToken || '');
+    }
+  } catch (_) {}
   // Cache-busting: paksa GAS kirim response fresh setiap request
   url += '&_t=' + Date.now();
   return fetch(url).then(function(r) { return r.json(); });
@@ -9019,7 +9026,7 @@ function handleRenovKtpUpload(input) {
       .then(function(res) {
         renovKtpFileUrl = res.url;
         if (filenameEl) {
-          filenameEl.innerHTML = '<span class="flex items-center gap-2 text-blue-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="text-sm font-medium">' + file.name + '</span></span>';
+          filenameEl.innerHTML = '<span class="flex items-center gap-2 text-blue-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="text-sm font-medium">' + _esc_(file.name) + '</span></span>';
         }
         var preview = document.getElementById('renovKtpPreview');
         var img = document.getElementById('renovKtpImg');
@@ -13705,7 +13712,7 @@ function onDaftarBlokInput() {
         if (!info) return;
         if (res && res.found) {
           info.className = 'rounded-2xl border border-blue-200 bg-blue-50 px-4 py-3 text-sm leading-relaxed text-blue-700';
-          info.innerHTML = 'Rumah <strong>' + val + '</strong> tercatat atas nama <strong>' + (res.nama || '-') + '</strong>. ' +
+          info.innerHTML = 'Rumah <strong>' + _esc_(val) + '</strong> tercatat atas nama <strong>' + _esc_(res.nama || '-') + '</strong>. ' +
             'Jika kamu penghuni baru atau pindah, lanjutkan isi data kamu di bawah.';
         } else {
           info.className = 'rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-700';
