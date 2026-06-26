@@ -14,6 +14,13 @@ function gasGet_(action, params) {
 
 function gasPost_(action, body) {
   body.action = action;
+  // S1: sertakan token sesi + email pemanggil agar backend bisa verifikasi action admin*
+  try {
+    if (typeof currentUser !== 'undefined' && currentUser) {
+      body.authToken  = currentUser.authToken || '';
+      body.callerEmail = currentUser.email || '';
+    }
+  } catch (_) {}
   return fetch(GAS_URL, {
     method: 'POST',
     body: JSON.stringify(body)
