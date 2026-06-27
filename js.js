@@ -1,5 +1,22 @@
 const GAS_URL = 'https://script.google.com/macros/s/AKfycby9BUAzLgACK62SpA35zAb5hQP57CFNOjb2I2xwbb6g3rdYORIhRHcDyw-QuxOPmMQoSA/exec';
 
+// UX: bila backend menolak karena sesi tak valid → bersihkan sesi & arahkan ke login
+var _authExpiredHandling_ = false;
+function _handleAuthExpired_() {
+  if (_authExpiredHandling_) return;
+  _authExpiredHandling_ = true;
+  try { currentUser = null; } catch (_) {}
+  try { if (typeof clearSession === 'function') clearSession(); } catch (_) {}
+  try { if (typeof updateHeaderAuthUI === 'function') updateHeaderAuthUI(); } catch (_) {}
+  try { if (typeof showToast === 'function') showToast('Sesi berakhir — silakan login ulang', 'warning'); } catch (_) {}
+  try { if (typeof openPageSaya === 'function') openPageSaya(); } catch (_) {}
+  setTimeout(function () { _authExpiredHandling_ = false; }, 4000);
+}
+function _checkAuthResp_(j) {
+  try { if (j && j.error && /unauthorized|login ulang/i.test(String(j.error))) _handleAuthExpired_(); } catch (_) {}
+  return j;
+}
+
 function gasGet_(action, params) {
   var url = GAS_URL + '?action=' + action;
   if (params) {
@@ -16,7 +33,7 @@ function gasGet_(action, params) {
   } catch (_) {}
   // Cache-busting: paksa GAS kirim response fresh setiap request
   url += '&_t=' + Date.now();
-  return fetch(url).then(function(r) { return r.json(); });
+  return fetch(url).then(function(r) { return r.json(); }).then(_checkAuthResp_);
 }
 
 function gasPost_(action, body) {
@@ -31,7 +48,7 @@ function gasPost_(action, body) {
   return fetch(GAS_URL, {
     method: 'POST',
     body: JSON.stringify(body)
-  }).then(function(r) { return r.json(); });
+  }).then(function(r) { return r.json(); }).then(_checkAuthResp_);
 }
 
 
