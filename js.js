@@ -1778,9 +1778,11 @@ function gasPost_(action, body) {
     });
 
     // ===== TAHUN DIBAYAR (SINGLE SELECT) =====
-    document.querySelectorAll('.chip-year').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        if (btn.disabled) return;
+    var _tahunBox = document.getElementById('tahunChips');
+    if (_tahunBox) {
+      _tahunBox.addEventListener('click', function(e) {
+        var btn = e.target.closest('.chip-year');
+        if (!btn || !_tahunBox.contains(btn) || btn.disabled) return;
 
         // toggle active — boleh multi-tahun
         btn.classList.toggle('active');
@@ -1842,7 +1844,7 @@ function gasPost_(action, body) {
         updateNominalBreakdown_();
         updateSubmitButtonState();
       });
-    });
+    }
 
     // ===== STATUS HUNIAN (CARD BUTTON) — delegation, kartu di-render dinamis =====
     var _hunianBox = document.getElementById('hunianCards');
@@ -16360,6 +16362,25 @@ function loadPerumahanName() {
   }).catch(function() { /* offline → pakai cache */ });
 }
 document.addEventListener('DOMContentLoaded', loadPerumahanName);
+
+/* ===== TAHUN BAYAR dinamis — hanya tahun yang punya sheet IPL-YYYY ===== */
+window.PWP_IPL_YEARS = [];
+function renderTahunChips_(years) {
+  var box = document.getElementById('tahunChips');
+  if (!box) return;
+  var ys = (years && years.length) ? years : [new Date().getFullYear()];
+  box.innerHTML = ys.map(function (y) { return '<button type="button" class="chip-year">' + y + '</button>'; }).join('');
+}
+function loadIplYears() {
+  renderTahunChips_(window.PWP_IPL_YEARS); // fallback (tahun ini) sampai data masuk
+  return gasGet_('getIplYears').then(function (res) {
+    if (res && res.ok && res.years && res.years.length) {
+      window.PWP_IPL_YEARS = res.years;
+      renderTahunChips_(res.years);
+    }
+  }).catch(function () {});
+}
+document.addEventListener('DOMContentLoaded', loadIplYears);
 
 /* ===== PEDOMAN dinamis dari tab 'Pedoman' (Judul | Link) ===== */
 function _pedomanAttr_(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
